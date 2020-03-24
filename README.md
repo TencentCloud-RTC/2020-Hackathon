@@ -1,6 +1,58 @@
 # 2020-Hackathon
 
-## SDK 下载
+# 报名参赛
+
+[参赛报名地址](https://wj.qq.com/s2/5724914/acf8)
+
+
+
+
+# 比赛类型
+
+## 全能型应用：
+
+### 应用要求
+
+填写[报名表单](https://wj.qq.com/s2/5724914/acf8)
+
+登录 [实时音视频控制台](https://console.cloud.tencent.com/rav) ，单击【创建应用】。 如果您已有应用，请记录其 SDKAppID 然后直接 下载 SDK 和 Demo 源码。
+
+[下载对应平台的Demo](https://github.com/tencentyun/TRTCSDK)（下载自己参赛对应平台的Demo），然后在本地端进行开发
+
+Fork官方仓库（https://github.com/TencentCloud-RTC/2020-Hackathon） 至个人 github 仓库
+
+Clone 个人 github 仓库至本地
+
+在本地 ProjectOne 文件夹下创建个人项目文件夹，将本地的参赛作品放置个人项目文件夹（以用户名 + 平台名字命名文件夹)
+
+Pull Request 提交本人作品至官方仓库
+
+作品文件夹内须包含源码、可执行文件，在文档中介绍项目的应用场景，编译方式，开发者介绍及联系方式等。
+
+
+## 创意型应用：
+
+### 应用要求
+
+填写[报名表单](https://wj.qq.com/s2/5724914/acf8)
+
+登录 [实时音视频控制台](https://console.cloud.tencent.com/rav) ，单击【创建应用】。 如果您已有应用，请记录其 SDKAppID 然后直接 下载 SDK 和 Demo 源码。
+
+[下载对应平台的Demo](https://github.com/tencentyun/TRTCSDK)（下载自己参赛对应平台的Demo），然后在本地端进行开发
+
+Fork [官方仓库](https://github.com/TencentCloud-RTC/2020-Hackathon) 至个人 github 仓库
+
+Clone 个人 github 仓库至本地
+
+在本地 ProjectTwo 文件夹下创建个人项目文件夹，将本地的参赛作品放置个人项目文件夹（以用户名 + 平台名字命名文件夹)
+
+Pull Request 提交本人作品至官方仓库
+
+作品文件夹内须包含源码、可执行文件，在文档中介绍项目的应用场景，编译方式，开发者介绍及联系方式等。
+
+
+
+# SDK & 官方demo 下载
 
 访问 Github 较慢的客户可以考虑使用国内下载地址： [DOWNLOAD](https://cloud.tencent.com/document/product/647/32689) 。
 
