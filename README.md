@@ -2,7 +2,7 @@
 
 # 报名参赛
 
-[参赛报名地址](https://wj.qq.com/s2/5724914/acf8)
+[参赛报名地址](https://wj.qq.com/s2/5720832/d09b/)
 
 
 
@@ -13,7 +13,7 @@
 
 ### 应用要求
 
-填写[报名表单](https://wj.qq.com/s2/5724914/acf8)
+填写[报名表单](https://wj.qq.com/s2/5720832/d09b/)
 
 登录 [实时音视频控制台](https://console.cloud.tencent.com/rav) ，单击【创建应用】。 如果您已有应用，请记录其 SDKAppID 然后直接 下载 SDK 和 Demo 源码。
 
@@ -34,7 +34,7 @@ Pull Request 提交本人作品至官方仓库
 
 ### 应用要求
 
-填写[报名表单](https://wj.qq.com/s2/5724914/acf8)
+填写[报名表单](https://wj.qq.com/s2/5720832/d09b/)
 
 登录 [实时音视频控制台](https://console.cloud.tencent.com/rav) ，单击【创建应用】。 如果您已有应用，请记录其 SDKAppID 然后直接 下载 SDK 和 Demo 源码。
 
