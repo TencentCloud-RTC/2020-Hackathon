@@ -1,0 +1,8 @@
+﻿[2020-05-26 13:38:35,097]  10 -- ERROR YZCLASS.UI.LogHelp.WriteLog-- 字体安装失败！
+System.Exception: [PingFang Regular] 字体安装失败！原因：当前用户无管理员权限，无法安装字体。
+   在 YZCLASS.UI.FontHelp.InstallFont(String fontFilePath) 位置 D:\工作\GITHUP\2020-Hackathon\ProjectOne\中软国际科技服务有限公司\Windows\YZCLASS\YZCLASS.UI\Resource\Code\FontHelp.cs:行号 56
+   在 YZCLASS.UI.App.OnStartup(StartupEventArgs e) 位置 D:\工作\GITHUP\2020-Hackathon\ProjectOne\中软国际科技服务有限公司\Windows\YZCLASS\YZCLASS.UI\App.xaml.cs:行号 28
+[2020-05-26 13:39:54,894]  9 -- ERROR YZCLASS.UI.LogHelp.WriteLog-- 字体安装失败！
+System.Exception: [PingFang Regular] 字体安装失败！原因：当前用户无管理员权限，无法安装字体。
+   在 YZCLASS.UI.FontHelp.InstallFont(String fontFilePath) 位置 D:\工作\GITHUP\2020-Hackathon\ProjectOne\中软国际科技服务有限公司\Windows\YZCLASS\YZCLASS.UI\Resource\Code\FontHelp.cs:行号 56
+   在 YZCLASS.UI.App.OnStartup(StartupEventArgs e) 位置 D:\工作\GITHUP\2020-Hackathon\ProjectOne\中软国际科技服务有限公司\Windows\YZCLASS\YZCLASS.UI\App.xaml.cs:行号 28

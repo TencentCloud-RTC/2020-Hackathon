@@ -1,0 +1,7 @@
+
+【项目结构说明】
+
+会话模块   —— Chat
+课程模块   —— Course
+直播间模块 —— LiveRoom
+资源包     —— Resource(包含：代码Code、图片Image、样式Style、UserControl用户控件等子目录)

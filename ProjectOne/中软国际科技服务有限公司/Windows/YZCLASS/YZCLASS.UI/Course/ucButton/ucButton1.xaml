@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="YZCLASS.UI.Course.ucButton.ucButton1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:YZCLASS.UI.Course.ucButton"
+             mc:Ignorable="d" 
+             d:DesignHeight="45" d:DesignWidth="460.5">
+    <Grid >
+        <Border x:Name="btnNext" Grid.Column="2" Grid.Row="3"  Background="#43B478" BorderBrush="#43B478"   Height="25" Width="70" CornerRadius="2" MouseLeftButtonDown="btnNext_MouseLeftButtonDown">
+            <TextBlock FontSize="14" Text="完成" FontFamily="苹方 常规" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+    </Grid>
+</UserControl>

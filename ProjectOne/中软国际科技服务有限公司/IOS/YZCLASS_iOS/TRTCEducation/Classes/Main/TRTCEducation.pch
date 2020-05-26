@@ -1,0 +1,39 @@
+//
+//  TRTCEducation.pch
+//  TRTCEducation
+//
+//  Created by caijunlai on 2020/4/30.
+//  Copyright © 2020 caijunlai. All rights reserved.
+//
+
+#ifndef TRTCEducation_pch
+#define TRTCEducation_pch
+
+#ifdef __OBJC__
+
+#import "TEUIStyleMacros.h"
+#import "TEUtilFunction.h"
+#import "TEURLStringMacros.h"
+#import "UIView+Additions.h"
+#import "UIView+MMLayout.h"
+//#import "ZYUtilFunction.h"
+//#import "NSString+TUICommon.h"
+//#import "NSData+Common.h"
+#import "UIImage+Additions.h"
+//#import "ZYCreatUI.h"
+//#import "UIButton+Glossy.h"
+//#import "UIBarButtonItem+Item.h"
+#import "MBProgressHUD+HUD.h"
+//#import "ZYURLStringMacros.h"
+//#import "ZYAlertView.h"
+//#import "ZYUserInfo.h"
+//#import "ZYAppConfig.h"
+//#import "ZYConstStringHelper.h"
+//#import "ZYFileCacheManager.h"
+//#import "UIImage+TUIKIT.h"
+//#import "NSDate+TUIKIT.h"
+//#import "ZYTencentCloudConfig.h"
+
+#endif
+
+#endif /* TRTCEducation_pch */

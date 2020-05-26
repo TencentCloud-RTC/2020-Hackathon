@@ -1,0 +1,10 @@
+D:\工作\TRTC比赛\YZCLASS\bin\x64\Debug\ZYTool.DBService.dll
+D:\工作\TRTC比赛\YZCLASS\bin\x64\Debug\ZYTool.DBService.pdb
+D:\工作\TRTC比赛\YZCLASS\YZCLASS.DBService\obj\x64\Debug\YZCLASS.DBService.csprojResolveAssemblyReference.cache
+D:\工作\TRTC比赛\YZCLASS\YZCLASS.DBService\obj\x64\Debug\ZYTool.DBService.dll
+D:\工作\TRTC比赛\YZCLASS\YZCLASS.DBService\obj\x64\Debug\ZYTool.DBService.pdb
+D:\工作\GITHUP\2020-Hackathon\ProjectOne\中软国际科技服务有限公司\Windows\YZCLASS\bin\x64\Debug\ZYTool.DBService.dll
+D:\工作\GITHUP\2020-Hackathon\ProjectOne\中软国际科技服务有限公司\Windows\YZCLASS\bin\x64\Debug\ZYTool.DBService.pdb
+D:\工作\GITHUP\2020-Hackathon\ProjectOne\中软国际科技服务有限公司\Windows\YZCLASS\YZCLASS.DBService\obj\x64\Debug\YZCLASS.DBService.csprojResolveAssemblyReference.cache
+D:\工作\GITHUP\2020-Hackathon\ProjectOne\中软国际科技服务有限公司\Windows\YZCLASS\YZCLASS.DBService\obj\x64\Debug\ZYTool.DBService.dll
+D:\工作\GITHUP\2020-Hackathon\ProjectOne\中软国际科技服务有限公司\Windows\YZCLASS\YZCLASS.DBService\obj\x64\Debug\ZYTool.DBService.pdb

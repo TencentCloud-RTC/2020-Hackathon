@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="IM.Controls.FileUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IM.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="66" d:DesignWidth="290">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources;component/Themes/AllControls.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid>
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <Grid Margin="3,3,3,3" Width="60" Height="60"  HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Image Width="60" Source="{Binding ImageSource}"/>
+                </Grid>
+                <Grid Margin="2,3,3,1" Width="220">
+                    <StackPanel>
+                        <TextBlock TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" MaxWidth="220" Text="{Binding FileName}" FontSize="14"/>
+                        <TextBlock Margin="5,5,0,0" Foreground="#7c7c7c" >
+                            <Run Text="{Binding SizeString,Mode=OneWay}"> </Run>
+                                  <Run Text="  "> </Run>
+                        </TextBlock>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="67,41,64,6">
+                <Button Cursor="Hand" x:Name="btnOpenFile" BorderThickness="0" Content="查看" Foreground="#8d8888" Margin="0,0,20,0"></Button>
+                <Button Cursor="Hand" x:Name="btnOpenDir" BorderThickness="0" Content="打开文件夹" Foreground="#8d8888" Margin="0,0,20,0"></Button>
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</UserControl>

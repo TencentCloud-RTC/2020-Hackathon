@@ -1,0 +1,5 @@
+D:\工作\TRTC比赛\YZCLASS\bin\x64\Debug\ZYTool.DBService.dll
+D:\工作\TRTC比赛\YZCLASS\bin\x64\Debug\ZYTool.DBService.pdb
+D:\工作\TRTC比赛\YZCLASS\YZCLASS.DBService\obj\Debug\YZCLASS.DBService.csproj.CopyComplete
+D:\工作\TRTC比赛\YZCLASS\YZCLASS.DBService\obj\Debug\ZYTool.DBService.dll
+D:\工作\TRTC比赛\YZCLASS\YZCLASS.DBService\obj\Debug\ZYTool.DBService.pdb

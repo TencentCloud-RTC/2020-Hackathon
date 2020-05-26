@@ -1,0 +1,50 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:YZCLASS.UI">
+    <Style x:Key="CheckBoxStyle" TargetType="CheckBox">
+        <Setter Property="IsChecked" Value="False"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="#999"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <DockPanel  Background="{TemplateBinding Background}" LastChildFill="False" Width="{TemplateBinding Width}">
+                        <Image Margin="2 0 0 0" DockPanel.Dock="Left" x:Name="_img"  Stretch="Fill" Width="13" Height="13" Source="/YZCLASS.UI;component/Resource/Image/checkbox.png"/>
+                        <TextBlock DockPanel.Dock="Left" Foreground="{TemplateBinding Foreground}" Margin="7.5 0 0 0" VerticalAlignment="Center" Text="{Binding Content,RelativeSource={RelativeSource TemplatedParent}}" />
+                    </DockPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="_img" Property="Source" Value="/YZCLASS.UI;component/Resource/Image/checkbox-pre.png"/>
+                        </Trigger>
+                        <!--<Trigger Property="IsChecked" Value="{x:Null}">
+                            <Setter TargetName="_img" Property="Source" Value="/Images/chk_null.png"/>
+                        </Trigger>-->
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="CheckButtonStyle" TargetType="CheckBox">
+        <Setter Property="IsChecked" Value="False"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="#999"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <DockPanel  Background="{TemplateBinding Background}" LastChildFill="False" Width="{TemplateBinding Width}">
+                        <Image Margin="2 0 0 0" DockPanel.Dock="Left" x:Name="_img"  Stretch="Fill" Width="30" Source="/YZCLASS.UI;component/Resource/Image/livepage-icon-clos.png"/>
+                        <TextBlock DockPanel.Dock="Left" Foreground="{TemplateBinding Foreground}" Margin="7.5 0 0 0" VerticalAlignment="Center" Text="{Binding Content,RelativeSource={RelativeSource TemplatedParent}}" />
+                    </DockPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="_img" Property="Source" Value="/YZCLASS.UI;component/Resource/Image/livepage-icon-ope.png"/>
+                        </Trigger>
+                        <!--<Trigger Property="IsChecked" Value="{x:Null}">
+                            <Setter TargetName="_img" Property="Source" Value="/Images/chk_null.png"/>
+                        </Trigger>-->
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

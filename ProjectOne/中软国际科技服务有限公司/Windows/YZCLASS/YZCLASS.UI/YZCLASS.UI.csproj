@@ -1,0 +1,893 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{03DB2A91-7975-4B53-BB67-88E3BEDC7E2E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>YZCLASS.UI</RootNamespace>
+    <AssemblyName>YZCLASS.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Pdf, Version=10.1.0.0, Culture=neutral, PublicKeyToken=00725b1ceb58d0a9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\x64\Debug\Aspose.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Slides, Version=15.1.0.0, Culture=neutral, PublicKeyToken=00725b1ceb58d0a9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\x64\Debug\Aspose.Slides.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Words, Version=18.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\x64\Debug\Aspose.Words.dll</HintPath>
+    </Reference>
+    <Reference Include="ComeCapture, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\x64\Debug\ComeCapture.dll</HintPath>
+    </Reference>
+    <Reference Include="COSXML">
+      <HintPath>..\bin\x64\Debug\COSXML.dll</HintPath>
+    </Reference>
+    <Reference Include="ESBasic, Version=2.0.0.0, Culture=neutral, PublicKeyToken=ba1538489f75683e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\x64\Debug\ESBasic.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight">
+      <HintPath>..\bin\x64\Debug\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="Geckofx-Core, Version=45.0.34.0, Culture=neutral, PublicKeyToken=3209ac31600d1857, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\x64\Debug\Geckofx-Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Geckofx-Winforms, Version=45.0.34.0, Culture=neutral, PublicKeyToken=3209ac31600d1857, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\x64\Debug\Geckofx-Winforms.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\x64\Debug\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="ManageLiteAV, Version=2.0.7227.31832, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\x64\Debug\ManageLiteAV.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\bin\x64\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Oraycn.MCapture, Version=2.5.0.0, Culture=neutral, PublicKeyToken=ba1538489f75683e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\x64\Debug\Oraycn.MCapture.dll</HintPath>
+    </Reference>
+    <Reference Include="Oraycn.MFile, Version=2.5.0.0, Culture=neutral, PublicKeyToken=ba1538489f75683e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\x64\Debug\Oraycn.MFile.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="Resources">
+      <HintPath>..\bin\x64\Debug\Resources.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.112.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\x64\Debug\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="ThoughtWorks.QRCode, Version=1.0.2774.19990, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\x64\Debug\ThoughtWorks.QRCode.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WpfAnimatedGif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9e7cd3b544a090dc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\x64\Debug\WpfAnimatedGif.dll</HintPath>
+    </Reference>
+    <Reference Include="YZCLASS.DBService">
+      <HintPath>..\bin\x64\Debug\YZCLASS.DBService.dll</HintPath>
+    </Reference>
+    <Reference Include="zlib.net">
+      <HintPath>..\bin\x64\Debug\zlib.net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Chat\Util\ChatUtil.cs" />
+    <Compile Include="Chat\Util\TIMElemType.cs" />
+    <Compile Include="Chat\Util\WindowsThumbnailProvider.cs" />
+    <Compile Include="Course\CreateCourse.xaml.cs">
+      <DependentUpon>CreateCourse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Course\ucButton\ucButton1.xaml.cs">
+      <DependentUpon>ucButton1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Course\ucButton\ucButton5.xaml.cs">
+      <DependentUpon>ucButton5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Course\ucCourseList.xaml.cs">
+      <DependentUpon>ucCourseList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Course\ucMain\ucBaseInformation.xaml.cs">
+      <DependentUpon>ucBaseInformation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Course\ucMain\ucIntoCourse.xaml.cs">
+      <DependentUpon>ucIntoCourse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LiveRoom\ucTalkAgree.xaml.cs">
+      <DependentUpon>ucTalkAgree.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LiveRoom\ucTalkAsk.xaml.cs">
+      <DependentUpon>ucTalkAsk.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LiveRoom\BoardFile.cs" />
+    <Compile Include="LiveRoom\DataManager.cs" />
+    <Compile Include="LiveRoom\GenerateTestUserSig.cs" />
+    <Compile Include="LiveRoom\ImageView.xaml.cs">
+      <DependentUpon>ImageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LiveRoom\LocalRecordManage.cs" />
+    <Compile Include="LiveRoom\ScreenWindow.xaml.cs">
+      <DependentUpon>ScreenWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LiveRoom\TLSSigAPIv2.cs" />
+    <Compile Include="LiveRoom\TRTCManage.cs" />
+    <Compile Include="LiveRoom\ucBoardTool.xaml.cs">
+      <DependentUpon>ucBoardTool.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LiveRoom\Util.cs" />
+    <Compile Include="Resource\Code\FontHelp.cs" />
+    <Compile Include="Resource\Code\LogHelp.cs" />
+    <Compile Include="Resource\Code\BaseWindow.cs" />
+    <Compile Include="Resource\Code\Common.cs" />
+    <Compile Include="Resource\Code\COS\QCloudServer.cs" />
+    <Compile Include="Resource\Code\DockHelp.cs" />
+    <Compile Include="LiveRoom\LiveRoomWindow.xaml.cs">
+      <DependentUpon>LiveRoomWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resource\Code\CurrentUser.cs" />
+    <Compile Include="Resource\Code\Log.cs" />
+    <Compile Include="Resource\Code\TopTab.cs" />
+    <Compile Include="Resource\Code\UserInfo.cs" />
+    <Compile Include="Resource\Code\UserSig.cs" />
+    <Compile Include="Resource\Code\WaterMarkHelp.cs" />
+    <Compile Include="Resource\UC\Button\ImageButton.cs" />
+    <Compile Include="Resource\UC\DialogWindow.xaml.cs">
+      <DependentUpon>DialogWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resource\UC\LoadingWindow.xaml.cs">
+      <DependentUpon>LoadingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resource\UC\ucLoginByAccount.xaml.cs">
+      <DependentUpon>ucLoginByAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resource\Code\ListControl.cs" />
+    <Compile Include="Resource\UC\UserInfoTxtHelp.cs" />
+    <Compile Include="Resource\UC\TopBar.xaml.cs">
+      <DependentUpon>TopBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LiveRoom\WhiteBoardManage.cs" />
+    <Page Include="Course\ucCourseList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LiveRoom\ImageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LiveRoom\ucTalkAgree.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LiveRoom\ucTalkAsk.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resource\Style\ChatContextMenuTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LiveRoom\ucBoardTool.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource\Style\ContextMunuTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Course\CreateCourse.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Course\ucButton\ucButton1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Course\ucButton\ucButton5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Course\ucMain\ucBaseInformation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Course\ucMain\ucIntoCourse.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LiveRoom\LiveRoomWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LiveRoom\ScreenWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Resource\Style\ContextMenuStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resource\UC\Button\ButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource\UC\CheckBox\CheckBoxStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resource\UC\ComboBox\ComboBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource\UC\DialogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource\UC\LoadingWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resource\UC\MySlider.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resource\UC\RadioButton\RadioButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource\UC\ScrollViewerStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resource\UC\ucLoginByAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource\UC\TopBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Log4Net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <Resource Include="Resource\Font\PingFang_Bold.ttf" />
+    <Resource Include="Resource\Font\PingFang_Light.ttf" />
+    <Resource Include="Resource\Font\PingFang_Medium.ttf" />
+    <Resource Include="Resource\Font\PingFang_Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\login-input-icon-up.png" />
+    <Resource Include="项目结构说明.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IM.UI\IM.UI.csproj">
+      <Project>{2fcc9962-1b4b-4f8f-aa76-40d3a6e41713}</Project>
+      <Name>IM.UI</Name>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\sysface\0022cb45e57684b4e87b48783dc12183.gif" />
+    <Resource Include="Resource\Image\sysface\0022cb45e57684b4e87b48783dc12183_s.gif" />
+    <Resource Include="Resource\Image\sysface\01025799c89cb1eb67814b5ef3f102b6.gif" />
+    <Resource Include="Resource\Image\sysface\01025799c89cb1eb67814b5ef3f102b6_s.gif" />
+    <Resource Include="Resource\Image\sysface\013f44177c9661fa9e9b53a5d7ad810a.gif" />
+    <Resource Include="Resource\Image\sysface\013f44177c9661fa9e9b53a5d7ad810a_s.gif" />
+    <Resource Include="Resource\Image\sysface\01b1605d5595de7fe670ebc148d5970d.gif" />
+    <Resource Include="Resource\Image\sysface\01b1605d5595de7fe670ebc148d5970d_s.gif" />
+    <Resource Include="Resource\Image\sysface\0228e4709bddba1e11e0df49f40b039a.gif" />
+    <Resource Include="Resource\Image\sysface\0228e4709bddba1e11e0df49f40b039a_s.gif" />
+    <Resource Include="Resource\Image\sysface\0d98833aee6e63fcd3f1cfc728dad66b.gif" />
+    <Resource Include="Resource\Image\sysface\0d98833aee6e63fcd3f1cfc728dad66b_s.gif" />
+    <Resource Include="Resource\Image\sysface\0f6c2477050285a33347805d86a94d17.gif" />
+    <Resource Include="Resource\Image\sysface\0f6c2477050285a33347805d86a94d17_s.gif" />
+    <Resource Include="Resource\Image\sysface\0fd150d82ae7f2d174c9601f9ee09247.gif" />
+    <Resource Include="Resource\Image\sysface\0fd150d82ae7f2d174c9601f9ee09247_16.gif" />
+    <Resource Include="Resource\Image\sysface\1105a0ae3b17c52432a65833ad825739.gif" />
+    <Resource Include="Resource\Image\sysface\1105a0ae3b17c52432a65833ad825739_s.gif" />
+    <Resource Include="Resource\Image\sysface\11d117a72c9cd5ffa2110c31cb4a385b.gif" />
+    <Resource Include="Resource\Image\sysface\11d117a72c9cd5ffa2110c31cb4a385b_16.gif" />
+    <Resource Include="Resource\Image\sysface\1693bff59ce27d5537f8c1c35bea08f6.gif" />
+    <Resource Include="Resource\Image\sysface\1693bff59ce27d5537f8c1c35bea08f6_s.gif" />
+    <Resource Include="Resource\Image\sysface\17a002956048d2cc3e7136a60995f4c5.gif" />
+    <Resource Include="Resource\Image\sysface\17a002956048d2cc3e7136a60995f4c5_16.gif" />
+    <Resource Include="Resource\Image\sysface\18c3ccd14d992d8e5aa30acfe670d42f.gif" />
+    <Resource Include="Resource\Image\sysface\18c3ccd14d992d8e5aa30acfe670d42f_16.gif" />
+    <Resource Include="Resource\Image\sysface\1aa61038900f78cb8b4f57ca6f00fa17.gif" />
+    <Resource Include="Resource\Image\sysface\1aa61038900f78cb8b4f57ca6f00fa17_s.gif" />
+    <Resource Include="Resource\Image\sysface\1e376a99d4059562772aad9ac065fd71.gif" />
+    <Resource Include="Resource\Image\sysface\1e376a99d4059562772aad9ac065fd71_16.gif" />
+    <Resource Include="Resource\Image\sysface\1eac4820cb2162ad0ea9050f730701ea.gif" />
+    <Resource Include="Resource\Image\sysface\1eac4820cb2162ad0ea9050f730701ea_16.gif" />
+    <Resource Include="Resource\Image\sysface\1eb8aabfaa423e6fbdfa2e6faedea210.gif" />
+    <Resource Include="Resource\Image\sysface\1eb8aabfaa423e6fbdfa2e6faedea210_s.gif" />
+    <Resource Include="Resource\Image\sysface\24bdf1f85b7335a2bfdea21aecaa502d.gif" />
+    <Resource Include="Resource\Image\sysface\24bdf1f85b7335a2bfdea21aecaa502d_s.gif" />
+    <Resource Include="Resource\Image\sysface\266fc64ac2949059bc4247ff36c8c72a.gif" />
+    <Resource Include="Resource\Image\sysface\266fc64ac2949059bc4247ff36c8c72a_s.gif" />
+    <Resource Include="Resource\Image\sysface\28a6dcccc96ad6d3082a0ff5554bebd6.gif" />
+    <Resource Include="Resource\Image\sysface\28a6dcccc96ad6d3082a0ff5554bebd6_16.gif" />
+    <Resource Include="Resource\Image\sysface\29c4befb29a5b1d3856b2812c6426246.gif" />
+    <Resource Include="Resource\Image\sysface\29c4befb29a5b1d3856b2812c6426246_s.gif" />
+    <Resource Include="Resource\Image\sysface\2d15778775f3c0f76bcf47abc8a375f8.gif" />
+    <Resource Include="Resource\Image\sysface\2d15778775f3c0f76bcf47abc8a375f8_s.gif" />
+    <Resource Include="Resource\Image\sysface\2d27536e0981cec8f6654f3f638e0cfe.gif" />
+    <Resource Include="Resource\Image\sysface\2d27536e0981cec8f6654f3f638e0cfe_s.gif" />
+    <Resource Include="Resource\Image\sysface\2e95741468c5cf64bb9d51a12c374646.gif" />
+    <Resource Include="Resource\Image\sysface\2e95741468c5cf64bb9d51a12c374646_s.gif" />
+    <Resource Include="Resource\Image\sysface\2ea09b4e887a6871e22d6e52a014179c.gif" />
+    <Resource Include="Resource\Image\sysface\2ea09b4e887a6871e22d6e52a014179c_16.gif" />
+    <Resource Include="Resource\Image\sysface\2f5113cfd0a33bfec485c222051db205.gif" />
+    <Resource Include="Resource\Image\sysface\2f5113cfd0a33bfec485c222051db205_16.gif" />
+    <Resource Include="Resource\Image\sysface\31f561aa78f16cea9e1f02183312b58c.gif" />
+    <Resource Include="Resource\Image\sysface\31f561aa78f16cea9e1f02183312b58c_s.gif" />
+    <Resource Include="Resource\Image\sysface\33037bedc05c33f5998f875c608d4ba1.gif" />
+    <Resource Include="Resource\Image\sysface\33037bedc05c33f5998f875c608d4ba1_16.gif" />
+    <Resource Include="Resource\Image\sysface\33991a718d98b7bde46d1656acd1d84f.gif" />
+    <Resource Include="Resource\Image\sysface\33991a718d98b7bde46d1656acd1d84f_16.gif" />
+    <Resource Include="Resource\Image\sysface\3567d74d273570047d563a52487b458d.gif" />
+    <Resource Include="Resource\Image\sysface\3567d74d273570047d563a52487b458d_16.gif" />
+    <Resource Include="Resource\Image\sysface\36c7fbde6243e1ab056d26ed04da4626.gif" />
+    <Resource Include="Resource\Image\sysface\36c7fbde6243e1ab056d26ed04da4626_s.gif" />
+    <Resource Include="Resource\Image\sysface\3890735fdd2f25319367532f660bbcd2.gif" />
+    <Resource Include="Resource\Image\sysface\3890735fdd2f25319367532f660bbcd2_16.gif" />
+    <Resource Include="Resource\Image\sysface\3984744c44406f9516ac97f14f8f4a94.gif" />
+    <Resource Include="Resource\Image\sysface\3984744c44406f9516ac97f14f8f4a94_s.gif" />
+    <Resource Include="Resource\Image\sysface\399ca36413576124428b2a89c51e6970.gif" />
+    <Resource Include="Resource\Image\sysface\399ca36413576124428b2a89c51e6970_s.gif" />
+    <Resource Include="Resource\Image\sysface\3b225583cb9c3bdd7f4e7d47f3ff98a6.gif" />
+    <Resource Include="Resource\Image\sysface\3b225583cb9c3bdd7f4e7d47f3ff98a6_s.gif" />
+    <Resource Include="Resource\Image\sysface\3ced67ed7484ec180470b6cf8f0e44b3.gif" />
+    <Resource Include="Resource\Image\sysface\3ced67ed7484ec180470b6cf8f0e44b3_16.gif" />
+    <Resource Include="Resource\Image\sysface\40ad40f89dce47fc7f020e86cf951750.gif" />
+    <Resource Include="Resource\Image\sysface\40ad40f89dce47fc7f020e86cf951750_s.gif" />
+    <Resource Include="Resource\Image\sysface\46e7c6b53203f314943f5af66f6b9daf.gif" />
+    <Resource Include="Resource\Image\sysface\46e7c6b53203f314943f5af66f6b9daf_16.gif" />
+    <Resource Include="Resource\Image\sysface\47198bf11c75a03e6249a1ccc1064bce.gif" />
+    <Resource Include="Resource\Image\sysface\47198bf11c75a03e6249a1ccc1064bce_16.gif" />
+    <Resource Include="Resource\Image\sysface\47ad9be303e3f1ffe93876051959a787.gif" />
+    <Resource Include="Resource\Image\sysface\47ad9be303e3f1ffe93876051959a787_s.gif" />
+    <Resource Include="Resource\Image\sysface\480e05a180234b2eed917659ad8bc5b9.gif" />
+    <Resource Include="Resource\Image\sysface\480e05a180234b2eed917659ad8bc5b9_s.gif" />
+    <Resource Include="Resource\Image\sysface\490183579bb95ab6eee1d695cdaef213.gif" />
+    <Resource Include="Resource\Image\sysface\490183579bb95ab6eee1d695cdaef213_16.gif" />
+    <Resource Include="Resource\Image\sysface\4a19620c98f2d809ea46900a0b552d7c.gif" />
+    <Resource Include="Resource\Image\sysface\4a19620c98f2d809ea46900a0b552d7c_16.gif" />
+    <Resource Include="Resource\Image\sysface\4afbd9e87b0e27b98d4620e457a8ac63.gif" />
+    <Resource Include="Resource\Image\sysface\4afbd9e87b0e27b98d4620e457a8ac63_s.gif" />
+    <Resource Include="Resource\Image\sysface\4b5649fe0d7ca648e9ef875430726629.gif" />
+    <Resource Include="Resource\Image\sysface\4b5649fe0d7ca648e9ef875430726629_s.gif" />
+    <Resource Include="Resource\Image\sysface\4c753e16dd5c9dc0da21402374691735.gif" />
+    <Resource Include="Resource\Image\sysface\4c753e16dd5c9dc0da21402374691735_s.gif" />
+    <Resource Include="Resource\Image\sysface\4f4dd01413a96ec2982cd318f4b7f317.gif" />
+    <Resource Include="Resource\Image\sysface\4f4dd01413a96ec2982cd318f4b7f317_s.gif" />
+    <Resource Include="Resource\Image\sysface\4fc9d77ddbc754ee674f0f9c50e2056f.gif" />
+    <Resource Include="Resource\Image\sysface\4fc9d77ddbc754ee674f0f9c50e2056f_s.gif" />
+    <Resource Include="Resource\Image\sysface\5231f00f23672f96b49e23b903f51571.gif" />
+    <Resource Include="Resource\Image\sysface\5231f00f23672f96b49e23b903f51571_s.gif" />
+    <Resource Include="Resource\Image\sysface\53cdc51684cc27b688cebd3e8a4801a5.gif" />
+    <Resource Include="Resource\Image\sysface\53cdc51684cc27b688cebd3e8a4801a5_s.gif" />
+    <Resource Include="Resource\Image\sysface\564396330c9e704c27533dd0a9f38d56.gif" />
+    <Resource Include="Resource\Image\sysface\564396330c9e704c27533dd0a9f38d56_16.gif" />
+    <Resource Include="Resource\Image\sysface\5a68de543ec8c72fb3142c939e2fb2e2.gif" />
+    <Resource Include="Resource\Image\sysface\5a68de543ec8c72fb3142c939e2fb2e2_s.gif" />
+    <Resource Include="Resource\Image\sysface\5bbb83756e3e652b43f9f03d638718b4.gif" />
+    <Resource Include="Resource\Image\sysface\5bbb83756e3e652b43f9f03d638718b4_16.gif" />
+    <Resource Include="Resource\Image\sysface\5bc342dfc4b92d4c0cad3a4207a99380.gif" />
+    <Resource Include="Resource\Image\sysface\5bc342dfc4b92d4c0cad3a4207a99380_16.gif" />
+    <Resource Include="Resource\Image\sysface\5c0aacf4ce01a07aa72ced20edfb1fb0.gif" />
+    <Resource Include="Resource\Image\sysface\5c0aacf4ce01a07aa72ced20edfb1fb0_16.gif" />
+    <Resource Include="Resource\Image\sysface\5e5db52f522182d91051c607be072a37.gif" />
+    <Resource Include="Resource\Image\sysface\5e5db52f522182d91051c607be072a37_s.gif" />
+    <Resource Include="Resource\Image\sysface\5ef9889599d2f0ddfd990746809d6166.gif" />
+    <Resource Include="Resource\Image\sysface\5ef9889599d2f0ddfd990746809d6166_s.gif" />
+    <Resource Include="Resource\Image\sysface\5f4fdb939b838fce3f78161d4f5b5a3e.gif" />
+    <Resource Include="Resource\Image\sysface\5f4fdb939b838fce3f78161d4f5b5a3e_s.gif" />
+    <Resource Include="Resource\Image\sysface\630df8bd6950c9395b39c611809822fb.gif" />
+    <Resource Include="Resource\Image\sysface\630df8bd6950c9395b39c611809822fb_s.gif" />
+    <Resource Include="Resource\Image\sysface\63ceb8fc549ab868cc2eb588f24805fa.gif" />
+    <Resource Include="Resource\Image\sysface\63ceb8fc549ab868cc2eb588f24805fa_s.gif" />
+    <Resource Include="Resource\Image\sysface\646ec54dda651d383db0038e925eb601.gif" />
+    <Resource Include="Resource\Image\sysface\646ec54dda651d383db0038e925eb601_s.gif" />
+    <Resource Include="Resource\Image\sysface\64996975385f3239169de64f0726e351.gif" />
+    <Resource Include="Resource\Image\sysface\64996975385f3239169de64f0726e351_s.gif" />
+    <Resource Include="Resource\Image\sysface\658d87d64e128385f28a59c15aa8cb91.gif" />
+    <Resource Include="Resource\Image\sysface\658d87d64e128385f28a59c15aa8cb91_16.gif" />
+    <Resource Include="Resource\Image\sysface\6915fe7dea48ceb50e57296782b423f7.gif" />
+    <Resource Include="Resource\Image\sysface\6915fe7dea48ceb50e57296782b423f7_s.gif" />
+    <Resource Include="Resource\Image\sysface\6d177c2e8caa44b47950afd1c2d94ea1.gif" />
+    <Resource Include="Resource\Image\sysface\6d177c2e8caa44b47950afd1c2d94ea1_16.gif" />
+    <Resource Include="Resource\Image\sysface\6eeeea78151b0d992342b5d974ea9748.gif" />
+    <Resource Include="Resource\Image\sysface\6eeeea78151b0d992342b5d974ea9748_16.gif" />
+    <Resource Include="Resource\Image\sysface\6f5cf65eb4860e5b9c161e96334257a5.gif" />
+    <Resource Include="Resource\Image\sysface\6f5cf65eb4860e5b9c161e96334257a5_s.gif" />
+    <Resource Include="Resource\Image\sysface\6fc208bfaff0d8f40bb0db9196446b12.gif" />
+    <Resource Include="Resource\Image\sysface\6fc208bfaff0d8f40bb0db9196446b12_s.gif" />
+    <Resource Include="Resource\Image\sysface\745e57c9ea78d1c48a030b793a2539af.gif" />
+    <Resource Include="Resource\Image\sysface\745e57c9ea78d1c48a030b793a2539af_s.gif" />
+    <Resource Include="Resource\Image\sysface\75132ac5d361fd71a0b8acc6d99b7692.gif" />
+    <Resource Include="Resource\Image\sysface\75132ac5d361fd71a0b8acc6d99b7692_16.gif" />
+    <Resource Include="Resource\Image\sysface\78703efec3547b13f2e6e5a3dd63286a.gif" />
+    <Resource Include="Resource\Image\sysface\78703efec3547b13f2e6e5a3dd63286a_s.gif" />
+    <Resource Include="Resource\Image\sysface\7b7492097c2fbb7a4c553c254f4a5994.gif" />
+    <Resource Include="Resource\Image\sysface\7b7492097c2fbb7a4c553c254f4a5994_s.gif" />
+    <Resource Include="Resource\Image\sysface\7e9cbda5e0b325f01d478f8e4adf69b2.gif" />
+    <Resource Include="Resource\Image\sysface\7e9cbda5e0b325f01d478f8e4adf69b2_16.gif" />
+    <Resource Include="Resource\Image\sysface\7f73aeabe8ddb4bb23e06de4e6072e40.gif" />
+    <Resource Include="Resource\Image\sysface\7f73aeabe8ddb4bb23e06de4e6072e40_16.gif" />
+    <Resource Include="Resource\Image\sysface\8006125c59cb94d0f73d5404a25725ae.gif" />
+    <Resource Include="Resource\Image\sysface\8006125c59cb94d0f73d5404a25725ae_s.gif" />
+    <Resource Include="Resource\Image\sysface\8173ba953e8b2cba6a9745e798964940.gif" />
+    <Resource Include="Resource\Image\sysface\8173ba953e8b2cba6a9745e798964940_s.gif" />
+    <Resource Include="Resource\Image\sysface\82f2fac9575da046058dd47e204a2a5f.gif" />
+    <Resource Include="Resource\Image\sysface\82f2fac9575da046058dd47e204a2a5f_s.gif" />
+    <Resource Include="Resource\Image\sysface\82fa0db5f4ac8e95c7fa97c2f028a411.gif" />
+    <Resource Include="Resource\Image\sysface\82fa0db5f4ac8e95c7fa97c2f028a411_s.gif" />
+    <Resource Include="Resource\Image\sysface\83128d1230675135df522efa6fdd32e7.gif" />
+    <Resource Include="Resource\Image\sysface\83128d1230675135df522efa6fdd32e7_s.gif" />
+    <Resource Include="Resource\Image\sysface\8467ecac043b423891b928f654483156.gif" />
+    <Resource Include="Resource\Image\sysface\8467ecac043b423891b928f654483156_s.gif" />
+    <Resource Include="Resource\Image\sysface\8484e2fcd13826ff6d311fa23f6133f1.gif" />
+    <Resource Include="Resource\Image\sysface\8484e2fcd13826ff6d311fa23f6133f1_16.gif" />
+    <Resource Include="Resource\Image\sysface\865e4984298507c91356f7ea93bb9c91.gif" />
+    <Resource Include="Resource\Image\sysface\865e4984298507c91356f7ea93bb9c91_s.gif" />
+    <Resource Include="Resource\Image\sysface\8bf6b90924fe625318b23753915d179b.gif" />
+    <Resource Include="Resource\Image\sysface\8bf6b90924fe625318b23753915d179b_s.gif" />
+    <Resource Include="Resource\Image\sysface\8c1066c3a4fc9115b46e3ae72a19e3f4.gif" />
+    <Resource Include="Resource\Image\sysface\8c1066c3a4fc9115b46e3ae72a19e3f4_16.gif" />
+    <Resource Include="Resource\Image\sysface\97a3bc26de5e7d5c578ffcff92784234.gif" />
+    <Resource Include="Resource\Image\sysface\97a3bc26de5e7d5c578ffcff92784234_s.gif" />
+    <Resource Include="Resource\Image\sysface\97aac5ef30ca5c313f5055d3303a901a.gif" />
+    <Resource Include="Resource\Image\sysface\97aac5ef30ca5c313f5055d3303a901a_16.gif" />
+    <Resource Include="Resource\Image\sysface\97d24895c4d6033ab5d302ebbb72edb6.gif" />
+    <Resource Include="Resource\Image\sysface\97d24895c4d6033ab5d302ebbb72edb6_s.gif" />
+    <Resource Include="Resource\Image\sysface\98b000b5aa8f6f200d4c227bd0406e42.gif" />
+    <Resource Include="Resource\Image\sysface\98b000b5aa8f6f200d4c227bd0406e42_s.gif" />
+    <Resource Include="Resource\Image\sysface\9b84f79c40188db4771c2577187b154e.gif" />
+    <Resource Include="Resource\Image\sysface\9b84f79c40188db4771c2577187b154e_s.gif" />
+    <Resource Include="Resource\Image\sysface\9c1abc04d03aef9f13672fcb7c27b5df.gif" />
+    <Resource Include="Resource\Image\sysface\9c1abc04d03aef9f13672fcb7c27b5df_s.gif" />
+    <Resource Include="Resource\Image\sysface\9ef7d4c187f298a10953f5096cbe9162.gif" />
+    <Resource Include="Resource\Image\sysface\9ef7d4c187f298a10953f5096cbe9162_16.gif" />
+    <Resource Include="Resource\Image\sysface\a0bed224deffa67327623313cc5c5231.gif" />
+    <Resource Include="Resource\Image\sysface\a0bed224deffa67327623313cc5c5231_s.gif" />
+    <Resource Include="Resource\Image\sysface\a21bf8c01f41b9148b81aa1b53fb3a0e.gif" />
+    <Resource Include="Resource\Image\sysface\a21bf8c01f41b9148b81aa1b53fb3a0e_16.gif" />
+    <Resource Include="Resource\Image\sysface\a2d411f7eb8472b2dc5cb5d0e6cd871d.gif" />
+    <Resource Include="Resource\Image\sysface\a2d411f7eb8472b2dc5cb5d0e6cd871d_s.gif" />
+    <Resource Include="Resource\Image\sysface\a75928d0fe98d17c084ac411750da03b.gif" />
+    <Resource Include="Resource\Image\sysface\a75928d0fe98d17c084ac411750da03b_s.gif" />
+    <Resource Include="Resource\Image\sysface\a8a488035f25ca63530a8a979beb72e5.gif" />
+    <Resource Include="Resource\Image\sysface\a8a488035f25ca63530a8a979beb72e5_s.gif" />
+    <Resource Include="Resource\Image\sysface\a95a3f61f00c3c6a2542c44e5a8c54f1.gif" />
+    <Resource Include="Resource\Image\sysface\a95a3f61f00c3c6a2542c44e5a8c54f1_s.gif" />
+    <Resource Include="Resource\Image\sysface\a9a909e49309d8430bd88bedcd213d9f.gif" />
+    <Resource Include="Resource\Image\sysface\a9a909e49309d8430bd88bedcd213d9f_s.gif" />
+    <Resource Include="Resource\Image\sysface\ac7bb47cb022f8215e059573b7a721f5.gif" />
+    <Resource Include="Resource\Image\sysface\ac7bb47cb022f8215e059573b7a721f5_s.gif" />
+    <Resource Include="Resource\Image\sysface\ae2b37bc2c8186a5dad63a583ad278cb.gif" />
+    <Resource Include="Resource\Image\sysface\ae2b37bc2c8186a5dad63a583ad278cb_16.gif" />
+    <Resource Include="Resource\Image\sysface\afb7b910b894d8638a5f5f60d66080bb.gif" />
+    <Resource Include="Resource\Image\sysface\afb7b910b894d8638a5f5f60d66080bb_16.gif" />
+    <Resource Include="Resource\Image\sysface\b143058415f04e4f21302736326fb37c.gif" />
+    <Resource Include="Resource\Image\sysface\b143058415f04e4f21302736326fb37c_16.gif" />
+    <Resource Include="Resource\Image\sysface\b26fcee08cea8022c47f75f2a092823f.gif" />
+    <Resource Include="Resource\Image\sysface\b26fcee08cea8022c47f75f2a092823f_s.gif" />
+    <Resource Include="Resource\Image\sysface\b5fbcef53bf2d695db6bd48faa326585.gif" />
+    <Resource Include="Resource\Image\sysface\b5fbcef53bf2d695db6bd48faa326585_16.gif" />
+    <Resource Include="Resource\Image\sysface\b6db7f3a9e8a9c864046eb0eaa15942d.gif" />
+    <Resource Include="Resource\Image\sysface\b6db7f3a9e8a9c864046eb0eaa15942d_16.gif" />
+    <Resource Include="Resource\Image\sysface\b7c86b2b58cfded752fef914143325bb.gif" />
+    <Resource Include="Resource\Image\sysface\b7c86b2b58cfded752fef914143325bb_s.gif" />
+    <Resource Include="Resource\Image\sysface\b86896b74da4e6ba4f45e06438d67434_s.gif" />
+    <Resource Include="Resource\Image\sysface\bb1fe4972c6846449ce5787544e22b4a.gif" />
+    <Resource Include="Resource\Image\sysface\bb1fe4972c6846449ce5787544e22b4a_s.gif" />
+    <Resource Include="Resource\Image\sysface\c2cd066e8df775ee02e1f84f4c8febb0.gif" />
+    <Resource Include="Resource\Image\sysface\c2cd066e8df775ee02e1f84f4c8febb0_s.gif" />
+    <Resource Include="Resource\Image\sysface\c5c3990f843ff99b964dfbc5ce77f3ac.gif" />
+    <Resource Include="Resource\Image\sysface\c5c3990f843ff99b964dfbc5ce77f3ac_s.gif" />
+    <Resource Include="Resource\Image\sysface\c5ce7689438e5ee92c5942d4885fc198.gif" />
+    <Resource Include="Resource\Image\sysface\c5ce7689438e5ee92c5942d4885fc198_16.gif" />
+    <Resource Include="Resource\Image\sysface\c66071425f7cfffa00acc9c5ae299e77.gif" />
+    <Resource Include="Resource\Image\sysface\c66071425f7cfffa00acc9c5ae299e77_s.gif" />
+    <Resource Include="Resource\Image\sysface\c6d1d4982260a4bad13aab943f7799f0.gif" />
+    <Resource Include="Resource\Image\sysface\c6d1d4982260a4bad13aab943f7799f0_16.gif" />
+    <Resource Include="Resource\Image\sysface\c6fbb9628da63dc12c9a1fef25dea934.gif" />
+    <Resource Include="Resource\Image\sysface\c6fbb9628da63dc12c9a1fef25dea934_16.gif" />
+    <Resource Include="Resource\Image\sysface\ce0efd9b1065a9c32120f57cfce01fa7.gif" />
+    <Resource Include="Resource\Image\sysface\ce0efd9b1065a9c32120f57cfce01fa7_s.gif" />
+    <Resource Include="Resource\Image\sysface\cf8370a69fbdf95f4cf56145687b37cd.gif" />
+    <Resource Include="Resource\Image\sysface\cf8370a69fbdf95f4cf56145687b37cd_s.gif" />
+    <Resource Include="Resource\Image\sysface\d237de97c3277b7749ce839db39b0649.gif" />
+    <Resource Include="Resource\Image\sysface\d237de97c3277b7749ce839db39b0649_16.gif" />
+    <Resource Include="Resource\Image\sysface\d2f1967481629b751c015ddb2897aef5.gif" />
+    <Resource Include="Resource\Image\sysface\d2f1967481629b751c015ddb2897aef5_s.gif" />
+    <Resource Include="Resource\Image\sysface\d2ff68289e44c32d61f17e9cfb8f781a.gif" />
+    <Resource Include="Resource\Image\sysface\d2ff68289e44c32d61f17e9cfb8f781a_16.gif" />
+    <Resource Include="Resource\Image\sysface\d32893593db6217773e102bd694db4d8.gif" />
+    <Resource Include="Resource\Image\sysface\d32893593db6217773e102bd694db4d8_16.gif" />
+    <Resource Include="Resource\Image\sysface\d4696e8fba488cf64b920900eae2474b.gif" />
+    <Resource Include="Resource\Image\sysface\d4696e8fba488cf64b920900eae2474b_s.gif" />
+    <Resource Include="Resource\Image\sysface\d6bde4b624846fd08500053358e154ae.gif" />
+    <Resource Include="Resource\Image\sysface\d6bde4b624846fd08500053358e154ae_16.gif" />
+    <Resource Include="Resource\Image\sysface\d6c03a77dc812595b2f41fdde34d05a6.gif" />
+    <Resource Include="Resource\Image\sysface\d6c03a77dc812595b2f41fdde34d05a6_16.gif" />
+    <Resource Include="Resource\Image\sysface\d6c92983218597f1e03374f90b0c8896.gif" />
+    <Resource Include="Resource\Image\sysface\d6c92983218597f1e03374f90b0c8896_s.gif" />
+    <Resource Include="Resource\Image\sysface\d885a150c3d14aafeaf823fa57a09c68.gif" />
+    <Resource Include="Resource\Image\sysface\d885a150c3d14aafeaf823fa57a09c68_s.gif" />
+    <Resource Include="Resource\Image\sysface\d923dbf00b642078c2e3783f6f79b7bc.gif" />
+    <Resource Include="Resource\Image\sysface\d923dbf00b642078c2e3783f6f79b7bc_s.gif" />
+    <Resource Include="Resource\Image\sysface\d9513f71ad92be76312f665fcb241879.gif" />
+    <Resource Include="Resource\Image\sysface\d9513f71ad92be76312f665fcb241879_s.gif" />
+    <Resource Include="Resource\Image\sysface\da3c71a49ef9ea18e10b6201d9fb793f.gif" />
+    <Resource Include="Resource\Image\sysface\da3c71a49ef9ea18e10b6201d9fb793f_s.gif" />
+    <Resource Include="Resource\Image\sysface\dcb31cac1b742034e9cdc5254f309d00.gif" />
+    <Resource Include="Resource\Image\sysface\dcb31cac1b742034e9cdc5254f309d00_16.gif" />
+    <Resource Include="Resource\Image\sysface\e22e54f7be1e2e999c0a4b10c6c1fd36.gif" />
+    <Resource Include="Resource\Image\sysface\e22e54f7be1e2e999c0a4b10c6c1fd36_s.gif" />
+    <Resource Include="Resource\Image\sysface\e23def0114dd74dca485b1c31d59f3f3.gif" />
+    <Resource Include="Resource\Image\sysface\e23def0114dd74dca485b1c31d59f3f3_s.gif" />
+    <Resource Include="Resource\Image\sysface\e3aac3a4e1e36a02959f62d9bbcab7ac.gif" />
+    <Resource Include="Resource\Image\sysface\e3aac3a4e1e36a02959f62d9bbcab7ac_16.gif" />
+    <Resource Include="Resource\Image\sysface\e5744442fa792ea055ad78137f1a1cac.gif" />
+    <Resource Include="Resource\Image\sysface\e5744442fa792ea055ad78137f1a1cac_s.gif" />
+    <Resource Include="Resource\Image\sysface\e62073630069871b7f8ade45ba13c9a3.gif" />
+    <Resource Include="Resource\Image\sysface\e62073630069871b7f8ade45ba13c9a3_s.gif" />
+    <Resource Include="Resource\Image\sysface\e63b0f3f136ff6f48b214c19b0547a1d.gif" />
+    <Resource Include="Resource\Image\sysface\e63b0f3f136ff6f48b214c19b0547a1d_s.gif" />
+    <Resource Include="Resource\Image\sysface\e70bf9f4757ae74b4f86471aa0dc72d5.gif" />
+    <Resource Include="Resource\Image\sysface\e70bf9f4757ae74b4f86471aa0dc72d5_s.gif" />
+    <Resource Include="Resource\Image\sysface\e91b1ccab6f366af693fec4067cdbd7a.gif" />
+    <Resource Include="Resource\Image\sysface\e91b1ccab6f366af693fec4067cdbd7a_s.gif" />
+    <Resource Include="Resource\Image\sysface\ea12132c217e29cc32a70ef2123baa55.gif" />
+    <Resource Include="Resource\Image\sysface\ea12132c217e29cc32a70ef2123baa55_16.gif" />
+    <Resource Include="Resource\Image\sysface\ea8dd5a956ba9e59160e9a6a97fd3159.gif" />
+    <Resource Include="Resource\Image\sysface\ea8dd5a956ba9e59160e9a6a97fd3159_s.gif" />
+    <Resource Include="Resource\Image\sysface\eb06e9170d5b470f124d3943f537e714.gif" />
+    <Resource Include="Resource\Image\sysface\eb06e9170d5b470f124d3943f537e714_16.gif" />
+    <Resource Include="Resource\Image\sysface\eb2defeb5905451d0d07f1ff466909aa.gif" />
+    <Resource Include="Resource\Image\sysface\eb2defeb5905451d0d07f1ff466909aa_s.gif" />
+    <Resource Include="Resource\Image\sysface\eb4e6ddad686dc9a01983ade1c2959c0.gif" />
+    <Resource Include="Resource\Image\sysface\eb4e6ddad686dc9a01983ade1c2959c0_s.gif" />
+    <Resource Include="Resource\Image\sysface\ece2d90fabf36d2868d033fe941c2505.gif" />
+    <Resource Include="Resource\Image\sysface\ece2d90fabf36d2868d033fe941c2505_s.gif" />
+    <Resource Include="Resource\Image\sysface\ed27bd44748988b291e3de517000a8ea.gif" />
+    <Resource Include="Resource\Image\sysface\ed27bd44748988b291e3de517000a8ea_s.gif" />
+    <Resource Include="Resource\Image\sysface\ede07ac7f02fbc613381069a77ff1b5c.gif" />
+    <Resource Include="Resource\Image\sysface\ede07ac7f02fbc613381069a77ff1b5c_16.gif" />
+    <Resource Include="Resource\Image\sysface\ee8fa5bcbd36241820d14ae1b46648d2.gif" />
+    <Resource Include="Resource\Image\sysface\ee8fa5bcbd36241820d14ae1b46648d2_s.gif" />
+    <Resource Include="Resource\Image\sysface\eeb68b5c092155df924e69b2a1de21f9.gif" />
+    <Resource Include="Resource\Image\sysface\eeb68b5c092155df924e69b2a1de21f9_16.gif" />
+    <Resource Include="Resource\Image\sysface\f054e7cb63e9c3ae6dc92e4f7970b15a.gif" />
+    <Resource Include="Resource\Image\sysface\f054e7cb63e9c3ae6dc92e4f7970b15a_s.gif" />
+    <Resource Include="Resource\Image\sysface\f08d998e04027d92feaf0f8667bb016c.gif" />
+    <Resource Include="Resource\Image\sysface\f08d998e04027d92feaf0f8667bb016c_16.gif" />
+    <Resource Include="Resource\Image\sysface\f0d88e469af4fefd1170c4c85d2bfb99.gif" />
+    <Resource Include="Resource\Image\sysface\f0d88e469af4fefd1170c4c85d2bfb99_s.gif" />
+    <Resource Include="Resource\Image\sysface\f143718613f47bb929e7134b2457f260.gif" />
+    <Resource Include="Resource\Image\sysface\f143718613f47bb929e7134b2457f260_16.gif" />
+    <Resource Include="Resource\Image\sysface\f1a07cb1c44d659831dbef7e8d4fa13d.gif" />
+    <Resource Include="Resource\Image\sysface\f1a07cb1c44d659831dbef7e8d4fa13d_s.gif" />
+    <Resource Include="Resource\Image\sysface\f2468ad19982b6109525f86e60da0a40.gif" />
+    <Resource Include="Resource\Image\sysface\f2468ad19982b6109525f86e60da0a40_16.gif" />
+    <Resource Include="Resource\Image\sysface\f2e7df81f1e48584a82c82f99d266b7c.gif" />
+    <Resource Include="Resource\Image\sysface\f2e7df81f1e48584a82c82f99d266b7c_16.gif" />
+    <Resource Include="Resource\Image\sysface\f4075f32764665658fe69d475536685f.gif" />
+    <Resource Include="Resource\Image\sysface\f4075f32764665658fe69d475536685f_16.gif" />
+    <Resource Include="Resource\Image\sysface\f593596553738a8070b15cbe3b453a4b.gif" />
+    <Resource Include="Resource\Image\sysface\f593596553738a8070b15cbe3b453a4b_s.gif" />
+    <Resource Include="Resource\Image\sysface\f6dffd7867799a07b36a6d5d548c8247.gif" />
+    <Resource Include="Resource\Image\sysface\f6dffd7867799a07b36a6d5d548c8247_s.gif" />
+    <Resource Include="Resource\Image\sysface\face.xml" />
+    <Resource Include="Resource\Image\sysface\fcf60dc85c60f1800d030bd89e07e3f4.gif" />
+    <Resource Include="Resource\Image\sysface\fcf60dc85c60f1800d030bd89e07e3f4_s.gif" />
+    <Resource Include="Resource\Image\sysface\fd2bdb138346f328795d068df107ec90.gif" />
+    <Resource Include="Resource\Image\sysface\fd2bdb138346f328795d068df107ec90_16.gif" />
+    <Resource Include="Resource\Image\sysface\fd2f51cd66989306299d8ad075abbc89.gif" />
+    <Resource Include="Resource\Image\sysface\fd2f51cd66989306299d8ad075abbc89_16.gif" />
+    <Resource Include="Resource\Image\sysface\fd78f2b8f16086a940e90f370b2bb0d4.gif" />
+    <Resource Include="Resource\Image\sysface\fd78f2b8f16086a940e90f370b2bb0d4_16.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\-s-loding-user.png" />
+    <Resource Include="Resource\Image\curpage-icon-open.png" />
+    <Resource Include="Resource\Image\curpage-icon-ppt.png" />
+    <Resource Include="Resource\Image\curpage-icon-world.png" />
+    <Resource Include="Resource\Image\curpage-usergbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\curpage-icon-pdf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\livepage-icon-arrow-right-on.png" />
+    <Resource Include="Resource\Image\livepage-icon-arrow-right.png" />
+    <Resource Include="Resource\Image\livepage-icon-big-pen-pre.png" />
+    <Resource Include="Resource\Image\livepage-icon-big-pen.png" />
+    <Resource Include="Resource\Image\livepage-icon-cle-on.png" />
+    <Resource Include="Resource\Image\livepage-icon-cle.png" />
+    <Resource Include="Resource\Image\livepage-icon-fix-on.png" />
+    <Resource Include="Resource\Image\livepage-icon-fix.png" />
+    <Resource Include="Resource\Image\livepage-icon-hua-on.png" />
+    <Resource Include="Resource\Image\livepage-icon-hua.png" />
+    <Resource Include="Resource\Image\livepage-icon-ie-on.png" />
+    <Resource Include="Resource\Image\livepage-icon-ie.png" />
+    <Resource Include="Resource\Image\livepage-icon-mixpen-on.png" />
+    <Resource Include="Resource\Image\livepage-icon-mixpen.png" />
+    <Resource Include="Resource\Image\livepage-icon-pdf-pre.png" />
+    <Resource Include="Resource\Image\livepage-icon-pdf.png" />
+    <Resource Include="Resource\Image\livepage-icon-pen-pre.png" />
+    <Resource Include="Resource\Image\livepage-icon-pen.png" />
+    <Resource Include="Resource\Image\livepage-icon-ppt-pre.png" />
+    <Resource Include="Resource\Image\livepage-icon-ppt.png" />
+    <Resource Include="Resource\Image\livepage-icon-rubber-on.png" />
+    <Resource Include="Resource\Image\livepage-icon-rubber.png" />
+    <Resource Include="Resource\Image\livepage-icon-shrinkleft.png" />
+    <Resource Include="Resource\Image\livepage-icon-shrinkright.png" />
+    <Resource Include="Resource\Image\livepage-icon-sxt-on.png" />
+    <Resource Include="Resource\Image\livepage-icon-sxt.png" />
+    <Resource Include="Resource\Image\livepage-icon-text-on.png" />
+    <Resource Include="Resource\Image\livepage-icon-text.png" />
+    <Resource Include="Resource\Image\livepage-icon-wite-on.png" />
+    <Resource Include="Resource\Image\livepage-icon-wite-pre.png" />
+    <Resource Include="Resource\Image\livepage-icon-wite.png" />
+    <Resource Include="Resource\Image\livepage-icon-world-on.png" />
+    <Resource Include="Resource\Image\livepage-icon-world.png" />
+    <Resource Include="Resource\Image\livepage-icon-yu-on.png" />
+    <Resource Include="Resource\Image\livepage-icon-yu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\magepage-icon-arrow-down-pre.png" />
+    <Resource Include="Resource\Image\magepage-icon-arrow-down.png" />
+    <Resource Include="Resource\Image\magepage-icon-arrow-left-on.png" />
+    <Resource Include="Resource\Image\magepage-icon-arrow-left.png" />
+    <Resource Include="Resource\Image\magepage-icon-arrow-right-on.png" />
+    <Resource Include="Resource\Image\magepage-icon-arrow-right.png" />
+    <Resource Include="Resource\Image\magepage-icon-arrow-up-on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\converpage-clos.png" />
+    <Resource Include="Resource\Image\converpage-face.png" />
+    <Resource Include="Resource\Image\converpage-wena.png" />
+    <Resource Include="Resource\Image\livepage-icon-add.png" />
+    <Resource Include="Resource\Image\livepage-icon-arrw-left.png" />
+    <Resource Include="Resource\Image\livepage-icon-arrw-right.png" />
+    <Resource Include="Resource\Image\livepage-icon-clos.png" />
+    <Resource Include="Resource\Image\livepage-icon-fas.png" />
+    <Resource Include="Resource\Image\livepage-icon-fix-pre.png" />
+    <Resource Include="Resource\Image\livepage-icon-ie-pre.png" />
+    <Resource Include="Resource\Image\livepage-icon-jiandao.png" />
+    <Resource Include="Resource\Image\livepage-icon-ope.png" />
+    <Resource Include="Resource\Image\livepage-icon-pace11.png" />
+    <Resource Include="Resource\Image\livepage-icon-sxt-pre.png" />
+    <Resource Include="Resource\Image\livepage-icon-userpic.png" />
+    <Resource Include="Resource\Image\livepage-icon-wenjian.png" />
+    <Resource Include="Resource\Image\livepage-icon-world-pre.png" />
+    <Resource Include="Resource\Image\livepage-icon-yu-pre.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\toolbar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\slider.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\radio-ico-pre.png" />
+    <Resource Include="Resource\Image\radio-ico.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\course-apply.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\classpage-close.png" />
+    <Resource Include="Resource\Image\classpage-logo.png" />
+    <Resource Include="Resource\Image\classpage-suoxa.png" />
+    <Resource Include="Resource\Image\livepage-icon-pdf-on.png" />
+    <Resource Include="Resource\Image\livepage-icon-ppt-on.png" />
+    <Resource Include="Resource\Image\icon-关闭-gye%402x.png" />
+    <Resource Include="Resource\Image\livepage-icon-penmin.png" />
+    <Resource Include="Resource\Image\livepage-icon-big-pen%402x.png" />
+    <Resource Include="Resource\Image\livepage-icon-cle-on%402x.png" />
+    <Resource Include="Resource\Image\livepage-icon-hua-on%402x.png" />
+    <Resource Include="Resource\Image\livepage-icon-mixpen%402x.png" />
+    <Resource Include="Resource\Image\livepage-icon-text-on%402x.png" />
+    <Resource Include="Resource\Image\livepage-icon-rubber%402x.png" />
+    <Resource Include="Resource\Image\mw-add.png" />
+    <Resource Include="Resource\Image\mw-head.png" />
+    <Resource Include="Resource\Image\login-btn.png" />
+    <Resource Include="Resource\Image\lg-logo-front.png" />
+    <Resource Include="Resource\Image\lg-logo.png" />
+    <Resource Include="Resource\Image\sysface\椭圆形%402x.png" />
+    <Resource Include="Resource\Image\livepage-icon-arrow-left-on.png" />
+    <Resource Include="Resource\Image\livepage-icon-arrow-left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Geckofx45.45.0.34\build\Geckofx45.targets" Condition="Exists('..\packages\Geckofx45.45.0.34\build\Geckofx45.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Geckofx45.45.0.34\build\Geckofx45.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Geckofx45.45.0.34\build\Geckofx45.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

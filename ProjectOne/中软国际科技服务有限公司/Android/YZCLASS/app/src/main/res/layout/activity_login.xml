@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.LoginActivity">
+
+    <ImageView
+        android:id="@+id/iv_bg_login_top"
+        android:layout_marginTop="-10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/bg_login_top"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_logo"
+        android:background="@drawable/shape_logo"
+        android:layout_marginBottom="-12dp"
+        android:layout_alignBottom="@id/iv_bg_login_top"
+        android:layout_centerInParent="true"
+        android:layout_width="80dp"
+        android:layout_height="80dp">
+        <ImageView
+            android:layout_centerInParent="true"
+            android:src="@mipmap/icon_chinasoft"
+            android:layout_width="65dp"
+            android:layout_height="28dp"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:layout_below="@id/rl_logo"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="38dp">
+            <ImageView
+                android:id="@+id/iv_username"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/icon_username"
+                android:layout_width="22dp"
+                android:layout_height="22dp"/>
+
+
+            <EditText
+                android:id="@+id/et_user_name"
+                android:layout_toRightOf="@id/iv_username"
+                android:hint="请输入用户名"
+                android:inputType="text"
+                android:background="@color/white"
+                android:textCursorDrawable="@null"
+                android:textColor="#282828"
+                android:textSize="14sp"
+                android:singleLine="true"
+                android:layout_centerVertical="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                />
+            <View
+                android:id="@+id/view_username"
+                android:background="@color/gray_btn_bg_color"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="38dp">
+            <ImageView
+                android:id="@+id/iv_password"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/icon_password"
+                android:layout_width="22dp"
+                android:layout_height="22dp"/>
+
+
+            <EditText
+                android:id="@+id/et_oassword"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/iv_password"
+                android:hint="请输入密码"
+                android:background="@color/white"
+                android:inputType="textPassword"
+                android:textCursorDrawable="@null"
+                android:textColor="#282828"
+                android:textSize="14sp"
+                android:singleLine="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                />
+            <View
+                android:id="@+id/view_psd"
+                android:background="@color/gray_btn_bg_color"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"/>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_marginTop="40dp"
+            android:text="登录"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:background="@drawable/shape_login"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+
+    </LinearLayout>
+</RelativeLayout>

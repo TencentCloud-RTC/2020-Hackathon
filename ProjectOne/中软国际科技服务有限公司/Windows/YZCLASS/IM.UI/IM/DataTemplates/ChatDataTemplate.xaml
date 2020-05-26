@@ -1,0 +1,218 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:control="clr-namespace:IM.Controls"
+                    xmlns:converter="clr-namespace:IM.DataTemplates">
+
+    <converter:TickTimeConverter x:Key="tickTimeConverter"/>
+    <!--聊天历史纪录窗体专用样式-->
+    <Style x:Key="ChatTimeStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Foreground" Value="Gray"/>
+    </Style>
+
+    <!--聊天文本模板-->
+    <DataTemplate x:Key="txtLeftDataTemplate">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="55"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!--<Image  Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Source="{Binding userHeaderImgUrl}" Margin="15,16,6,16" Height="32" Width="32"></Image>-->
+            <control:HeadPortRait Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="15,16,6,16" Height="32" Width="32"/>
+            <!--<TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding nickName}" VerticalAlignment="Bottom" Foreground="#CCCBCB" FontSize="12" />-->
+            <control:NikeNameControl Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom" Foreground="#CCCBCB" FontSize="12"/>
+            <Path Stroke="#F5F5F5" Grid.Column="1" Grid.Row="1" StrokeThickness="0.1" Fill="#F5F5F5" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Path.Data>
+                    <PathGeometry Figures="
+                                          M 0,8 
+                                          L 0,8 5,8
+                                          L 5,8 5,13
+                                          Z"/>
+                </Path.Data>
+            </Path>
+            <Border Grid.Column="1" Grid.Row="1" Background="#F5F5F5" Margin="5,5,0,0" CornerRadius="5">
+                <WrapPanel Orientation="Horizontal">
+                    <!--<TextBlock  Text="112233" TextWrapping="Wrap"  VerticalAlignment="Center" Foreground="#595757" Margin="11,10,7,10" FontSize="12" Width="269"/>-->
+                    <control:TextUserControl  VerticalAlignment="Center" Foreground="#595757" Margin="11,10,7,10" FontSize="12" Width="269"/>
+                </WrapPanel>
+            </Border>
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="txtRightDataTemplate">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="55"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image  Grid.Column="3" Grid.Row="2" Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,10,0,0" Height="32" Width="32"></Image>
+            <control:HeadPortRait Grid.Column="3" Grid.Row="2" Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,10,0,0" Height="32" Width="32"/>
+            <!--<TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding NickName}" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="#CCCBCB" FontSize="12" Margin="0,10,0,0" />-->
+            <control:NikeNameControl Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right"/>
+            <Path Stroke="#E9F6FC" Grid.Column="1" Grid.Row="3" StrokeThickness="0.1" Fill="#E9F6FC" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Path.Data>
+                    <PathGeometry Figures="
+                                              M 0,13 
+                                              L 0,13 5,8
+                                              L 5,8 0,8
+                                              Z"/>
+                </Path.Data>
+            </Path>
+            <Border Grid.Column="1" Grid.Row="3" Background="#E9F6FC" Margin="0,5,5,0" CornerRadius="5">
+                <!--<TextBlock  Text="332211" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="#595757" Margin="11,10,7,10" FontSize="12" />-->
+                <control:TextUserControl  VerticalAlignment="Center" Foreground="#595757" Margin="11,10,7,10" FontSize="12" Width="269"/>
+            </Border>
+        </Grid>
+        <!--<Grid Margin="20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="auto" MinHeight="40"/>
+                <RowDefinition Height="15"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="{Binding LocalName}" Margin="0,0,46,0" Style="{StaticResource ChatTimeStyle}" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+
+            <Border Grid.Row="1" Margin="0,0,40,0" Background="#ffffff" Width="30"  VerticalAlignment="Stretch" HorizontalAlignment="Right">
+            </Border>
+            <Border Grid.Row="1" Grid.RowSpan="2" CornerRadius="35,0,0,0" Width="72" VerticalAlignment="Stretch"  Background="#eaedf8" HorizontalAlignment="Right">
+                <Border Width="64" Height="64" Margin="0,4,0,0" Background="Yellow" HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <Border.Clip>
+                        <RectangleGeometry RadiusX="32" RadiusY="32" Rect="0,0,64,64"/>
+                    </Border.Clip>
+                    <Image  Source="{Binding LocalHeaderImgUrl}"/>
+                </Border>
+            </Border>
+            <Border Grid.Row="1" Margin="0,0,70,0" CornerRadius="5,0,5,5" Background="#ffffff"  HorizontalAlignment="Right"  VerticalAlignment="Top">
+                --><!--<TextBlock TextWrapping="Wrap" Text="{Binding Content}"  FontSize="14"  LineHeight="18"></TextBlock>--><!--
+                <control:TextUserControl DataContext="{Binding }" Margin="10,15,5,5" MaxWidth="500"/>
+            </Border>
+            <TextBlock Grid.Row="2" Text="{Binding CreateTime,Converter={StaticResource tickTimeConverter}}" Margin="0,0,72,0" Style="{StaticResource ChatTimeStyle}" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+        </Grid>-->
+    </DataTemplate>
+
+    <DataTemplate x:Key="fileLeftDataTemplate">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="55"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image  Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Source="{Binding userHeaderImgUrl}" Margin="15,16,6,16" Height="32" Width="32"></Image>
+            <control:HeadPortRait Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="15,16,6,16" Height="32" Width="32"/>
+            <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding nickName}" VerticalAlignment="Bottom" Foreground="#CCCBCB" FontSize="12" />
+            <control:NikeNameControl Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom" Foreground="#CCCBCB" FontSize="12"/>
+            <Path Stroke="#F5F5F5" Grid.Column="1" Grid.Row="1" StrokeThickness="0.1" Fill="#F5F5F5" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Path.Data>
+                    <PathGeometry Figures="
+                                          M 0,8 
+                                          L 0,8 5,8
+                                          L 5,8 5,13
+                                          Z"/>
+                </Path.Data>
+            </Path>
+            <Border Grid.Column="1" Grid.Row="1" Background="#F5F5F5" Margin="5,5,0,0" CornerRadius="5">
+                <WrapPanel Orientation="Horizontal">
+                    <control:FileUserControl Height="66" Width="290" DataContext="{Binding }"></control:FileUserControl>
+                </WrapPanel>
+            </Border>
+        </Grid>
+
+            <!--<Grid Margin="20,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="auto" MinHeight="40"/>
+                    <RowDefinition Height="15"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="{Binding LocalName}" Margin="46,0,0,0" Style="{StaticResource ChatTimeStyle}" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                <Border Grid.Row="1" Margin="40,0,0,0" Background="#0bacd3" Width="30" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left">
+                </Border>
+                <Border Grid.Row="1" CornerRadius="0,35,0,0" Width="72" VerticalAlignment="Stretch"  Background="#eaedf8" HorizontalAlignment="Left" >
+                    <Border Width="64" Height="64" Margin="0,4,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <Border.Clip>
+                            <RectangleGeometry RadiusX="32" RadiusY="32" Rect="0,0,64,64"/>
+                        </Border.Clip>
+                        <Image  Source="{Binding LocalHeaderImgUrl}"/>
+                    </Border>
+                </Border>
+                <Border Grid.Row="1" Margin="70,0,0,0" CornerRadius="0,5,5,5" Background="#0bacd3" VerticalAlignment="Top" HorizontalAlignment="Left" >
+                    <control:FileUserControl Height="115" Width="500" DataContext="{Binding }"  Margin="5,15,10,5" ></control:FileUserControl>
+                </Border>
+                <TextBlock Grid.Row="2" Text="{Binding CreateTime,Converter={StaticResource tickTimeConverter}}" Margin="72,0,0,0" Style="{StaticResource ChatTimeStyle}" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+            </Grid>-->
+    </DataTemplate>
+    <DataTemplate x:Key="fileRightDataTemplate">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="55"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image  Grid.Column="3" Grid.Row="2" Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,10,0,0" Height="32" Width="32"></Image>
+            <control:HeadPortRait Grid.Column="3" Grid.Row="2" Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,10,0,0" Height="32" Width="32"/>
+            <control:NikeNameControl Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right"/>
+            <Path Stroke="#E9F6FC" Grid.Column="1" Grid.Row="3" StrokeThickness="0.1" Fill="#E9F6FC" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Path.Data>
+                    <PathGeometry Figures="
+                                              M 0,13 
+                                              L 0,13 5,8
+                                              L 5,8 0,8
+                                              Z"/>
+                </Path.Data>
+            </Path>
+            <Border Grid.Column="1" Grid.Row="3" Background="#E9F6FC" Margin="0,5,5,0" CornerRadius="5">
+                <WrapPanel Orientation="Horizontal">
+                    <control:FileUserControl Height="66" Width="290" DataContext="{Binding }"></control:FileUserControl>
+                </WrapPanel>
+            </Border>
+        </Grid>
+        
+        <!--<Grid Margin="20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="auto" MinHeight="40"/>
+                <RowDefinition Height="15"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="{Binding LocalName}" Margin="0,0,46,0" Style="{StaticResource ChatTimeStyle}" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+            <Border Grid.Row="1" Margin="0,0,40,0" Background="#ffffff" Width="30"  VerticalAlignment="Stretch" HorizontalAlignment="Right">
+            </Border>
+            <Border Grid.Row="1" CornerRadius="35,0,0,0" Width="72" VerticalAlignment="Stretch"  Background="#eaedf8" HorizontalAlignment="Right">
+                <Border Width="64" Height="64" Margin="0,4,0,0" Background="Yellow" HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <Border.Clip>
+                        <RectangleGeometry RadiusX="32" RadiusY="32" Rect="0,0,64,64"/>
+                    </Border.Clip>
+                    <Image  Source="{Binding LocalHeaderImgUrl}"/>
+                </Border>
+            </Border>
+            <Border Grid.Row="1" Margin="0,0,70,0" CornerRadius="5,0,5,5" Background="#ffffff"  HorizontalAlignment="Right" >
+                <control:FileUserControl Height="115" Width="500" DataContext="{Binding }"  Margin="5,15,10,5" ></control:FileUserControl>
+            </Border>
+            <TextBlock Grid.Row="2" Text="{Binding CreateTime,Converter={StaticResource tickTimeConverter}}" Margin="0,0,72,0" Style="{StaticResource ChatTimeStyle}" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+        </Grid>-->
+    </DataTemplate>
+
+</ResourceDictionary>
