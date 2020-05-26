@@ -6,5 +6,5 @@
 
 ## 测试账号: 18613910510 密码:123456
 
-## 开发人员: 中软国际-付向阳  邮箱:付向阳@chinasoftinc.com
+## 开发人员: 中软国际-付向阳  邮箱:fuxiangyang@chinasoftinc.com
 
