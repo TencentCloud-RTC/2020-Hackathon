@@ -1,0 +1,2 @@
+rootProject.name='chinasoftliveedu'
+include ':app', ':tuikit', ':trtc', ':beauty', ':library'
