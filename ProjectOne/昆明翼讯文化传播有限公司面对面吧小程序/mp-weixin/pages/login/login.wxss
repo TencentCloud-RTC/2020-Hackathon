@@ -1,0 +1,97 @@
+.login-vue {
+  background: -webkit-gradient(linear, left top, left bottom, from(#ab83f6), to(#605ee5));
+  background: -webkit-linear-gradient(top, #ab83f6, #605ee5);
+  background: linear-gradient(to bottom, #ab83f6, #605ee5);
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+}
+.login-vue image {
+  width: 28%;
+  height: 230rpx;
+  padding-top: 90rpx;
+}
+.login-vue .button-large {
+  background: -webkit-gradient(linear, left top, right top, from(#feaf90), to(#ff6591));
+  background: -webkit-linear-gradient(left, #feaf90, #ff6591);
+  background: linear-gradient(to right, #feaf90, #ff6591);
+  width: 70%;
+  margin-top: 100rpx !important;
+}
+.login-vue .desc {
+  width: 90%;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 10vh;
+  left: 5%;
+  font-size: 24rpx;
+  color: #fff;
+  padding: 20rpx 20rpx;
+  line-height: 42rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20rpx;
+}
+.login-vue .bottom-tips {
+  position: absolute;
+  text-align: center;
+  bottom: 3vh;
+  display: block;
+  width: 100%;
+  color: #fff;
+  left: 0;
+}
+.login-vue bw-check-box {
+  display: inline-block;
+  width: 50rpx;
+}
+.login-vue .circle {
+  border-radius: 50%;
+  position: absolute;
+}
+.login-vue .circle1 {
+  background-color: #a991f2;
+  width: 150rpx;
+  height: 150rpx;
+  top: 10%;
+  left: -40rpx;
+}
+.login-vue .circle2 {
+  background-color: #978af0;
+  width: 150rpx;
+  height: 150rpx;
+  bottom: 30%;
+  right: -40rpx;
+}
+.login-vue .circle3 {
+  background-color: #767ae8;
+  width: 320rpx;
+  height: 320rpx;
+  bottom: -160rpx;
+  left: -160rpx;
+}
+.login-vue .box {
+  overflow: hidden;
+}
+.login-vue .slide-down {
+  position: relative;
+  width: 100%;
+  -webkit-transform: translateY(-300rpx);
+          transform: translateY(-300rpx);
+}
+.login-vue .w100 {
+  margin-top: 40rpx;
+  position: relative;
+  -webkit-transition: all 0.6s ease-out;
+  transition: all 0.6s ease-out;
+}
+.login-vue.fill-phone .slide-down {
+  -webkit-transform: translateY(0rpx);
+          transform: translateY(0rpx);
+}
+.login-vue.fill-phone .w100 {
+  margin-top: -80rpx;
+}
+

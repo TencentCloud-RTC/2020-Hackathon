@@ -1,0 +1,11 @@
+.toast .confirm-dialog {
+  width: 500rpx;
+}
+.toast .confirm-dialog .text {
+  margin-top: 70rpx;
+  text-align: center;
+}
+.toast .confirm-dialog .button {
+  margin: 80rpx 0 0 0;
+}
+

@@ -1,0 +1,95 @@
+.command-vue .list {
+  background-color: #fff;
+  border-radius: 12rpx;
+  padding: 40rpx;
+  width: 94%;
+  margin: 0 auto 30rpx auto;
+  position: relative;
+  top: 30rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.command-vue .list .title {
+  padding-bottom: 30rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+.command-vue .list .tags {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin-top: 40rpx;
+  -webkit-justify-content: space-around;
+          justify-content: space-around;
+}
+.command-vue .list .tags view {
+  width: 40%;
+  padding: 20rpx 0;
+  border-radius: 12rpx;
+  text-align: center;
+  background-color: #f5f5f5;
+  color: #888;
+}
+.command-vue .list .tags view.active {
+  background-color: #ba92f1;
+  color: #6254cc;
+}
+.command-vue .list .rate {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin-top: 40rpx;
+}
+.command-vue .list .rate > view:nth-child(1) {
+  margin: 0 40rpx;
+}
+.command-vue .list .rate .uni-rate__icon {
+  margin: 0 16rpx;
+}
+.command-vue .list slider {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+}
+.command-vue .list textarea {
+  padding: 20rpx 30rpx;
+  border: 1rpx solid #ccc;
+  margin-top: 40rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 300rpx;
+  width: 100%;
+}
+.command-vue .button-box {
+  width: 90%;
+  position: absolute;
+  left: 5%;
+  bottom: 4vh;
+}
+.command-vue .button-box button {
+  height: 100rpx;
+  line-height: 100rpx;
+  border-radius: 50rpx;
+}
+.command-vue .button-box button:nth-child(1) {
+  background: -webkit-gradient(linear, left top, right top, from(#b58af1), to(#8072e9));
+  background: -webkit-linear-gradient(left, #b58af1, #8072e9);
+  background: linear-gradient(to right, #b58af1, #8072e9);
+  width: 65%;
+}
+.command-vue .button-box button:nth-child(2) {
+  background: #fff;
+  color: #777;
+  width: 30%;
+  margin-left: 5%;
+  border: 1rpx solid #eee;
+}
+.command-vue .button-box button:nth-child(2):after {
+  border: 0;
+}
+

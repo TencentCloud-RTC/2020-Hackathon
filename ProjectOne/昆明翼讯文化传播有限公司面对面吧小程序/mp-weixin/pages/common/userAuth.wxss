@@ -1,0 +1,46 @@
+.user-auth {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9;
+  height: 100%;
+  left: 0;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-transform: translateY(100vh);
+          transform: translateY(100vh);
+  opacity: 0;
+}
+.user-auth > view {
+  height: 180rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  background-color: #fff;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  width: 56%;
+  padding: 30rpx;
+}
+.user-auth > view button {
+  width: 60%;
+  background: -webkit-gradient(linear, left top, right top, from(#b58af1), to(#8072e9));
+  background: -webkit-linear-gradient(left, #b58af1, #8072e9);
+  background: linear-gradient(to right, #b58af1, #8072e9);
+}
+.user-auth > view text {
+  margin-top: 20rpx;
+  color: #999;
+}
+.user-auth .con {
+  height: 30vh;
+}
+
