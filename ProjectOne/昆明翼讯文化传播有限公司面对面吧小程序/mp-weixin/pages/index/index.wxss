@@ -1,0 +1,241 @@
+.index-vue .make-score {
+  padding: 8rpx 20rpx;
+  border-radius: 10rpx;
+  color: #fff;
+  font-size: 22rpx;
+  background: -webkit-gradient(linear, left top, right top, from(#feaf90), to(#ff6591));
+  background: -webkit-linear-gradient(left, #feaf90, #ff6591);
+  background: linear-gradient(to right, #feaf90, #ff6591);
+}
+.index-vue .head {
+  height: 300rpx;
+  position: relative;
+}
+.index-vue .head .bg {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+.index-vue .head .msg {
+  padding: 15vw 0 0 8vw;
+  position: relative;
+  z-index: 1;
+}
+.index-vue .head .msg image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 30rpx;
+}
+.index-vue .head .msg text {
+  color: #fff;
+}
+.index-vue .no-result image {
+  width: 56vw;
+  height: 56vw;
+  margin: 10vw auto;
+}
+.index-vue .wuc-tab-box {
+  height: 100rpx;
+  border: 0;
+}
+.index-vue .wuc-tab {
+  position: relative;
+  width: 60%;
+  height: 100%;
+}
+.index-vue .wuc-tab ._div {
+  height: 100%;
+}
+.index-vue .wuc-tab ._span {
+  color: #aaa;
+  font-weight: bold;
+}
+.index-vue .wuc-tab .cur {
+  border-bottom: 0;
+  position: relative;
+}
+.index-vue .wuc-tab .cur:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 46rpx;
+  height: 12rpx;
+  border-radius: 12rpx;
+  background: #34c0fc;
+  margin-left: -23rpx;
+  left: 50%;
+}
+.index-vue .wuc-tab .cur ._span {
+  font-size: 36rpx;
+  color: #777;
+}
+.index-vue .tabs-2 .wuc-tab {
+  position: relative;
+  width: 40%;
+  height: 100%;
+  left: 60%;
+}
+.index-vue .tabs-2 .wuc-tab ._div {
+  height: 100%;
+}
+.index-vue .tabs-2 .wuc-tab ._span {
+  color: #777;
+  font-weight: normal;
+}
+.index-vue .tabs-2 .wuc-tab .cur {
+  border-bottom: 0;
+  position: relative;
+}
+.index-vue .tabs-2 .wuc-tab .cur:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+}
+.index-vue .tabs-2 .wuc-tab .cur ._span {
+  color: #fff;
+}
+.index-vue .panel-list {
+  width: 92%;
+  margin: 44rpx auto 0 auto;
+}
+.index-vue .panel-list .list {
+  position: relative;
+  border-radius: 10rpx;
+  overflow: hidden;
+  margin-top: 30rpx;
+  margin-bottom: 10rpx;
+}
+.index-vue .panel-list .shape {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.index-vue .panel-list .shape > view {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30rpx 40rpx;
+  border-radius: 10rpx;
+  width: 46%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.index-vue .panel-list .shape > view view {
+  text-align: left;
+}
+.index-vue .panel-list .shape .tip {
+  color: #999;
+  font-size: 24rpx;
+}
+.index-vue .panel-list .shape .score {
+  font-size: 28rpx;
+  color: #666;
+  margin-left: 12rpx;
+}
+.index-vue .panel-list .bottom {
+  padding: 20rpx 30rpx;
+  border: 1rpx solid #eee;
+  border-top: 0;
+  border-radius: 0 0 10rpx 10rpx;
+}
+.index-vue .panel-list .bottom > view:nth-child(1) {
+  margin-bottom: 14rpx;
+}
+.index-vue .panel-list .top {
+  height: 240rpx;
+  padding: 30rpx 36rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+}
+.index-vue .panel-list .top .title {
+  font-size: 36rpx;
+  margin-top: 26rpx;
+  color: #fff;
+  font-weight: normal;
+  letter-spacing: 1rpx;
+}
+.index-vue .panel-list .top .play {
+  color: #fff;
+  position: absolute;
+  bottom: 26rpx;
+  right: 40rpx;
+  font-size: 44rpx;
+}
+.index-vue .panel-list .top > view:nth-child(1) {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.index-vue .panel-list .top > view:nth-child(1) .white-plain {
+  padding: 0 20rpx;
+  border-radius: 20rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  border: 1rpx solid #fff;
+  color: #fff;
+  font-size: 28rpx;
+}
+.index-vue .panel-list .top > view:nth-child(1) .nums {
+  padding: 12rpx 12rpx 12rpx 24rpx;
+  border-radius: 38rpx;
+  background: rgba(0, 0, 0, 0.2);
+}
+.index-vue .panel-list .top > view:nth-child(1) .nums text {
+  color: #fff;
+  margin-right: 20rpx;
+}
+.index-vue .panel-list .top > view:nth-child(1) .nums view {
+  color: #fff;
+}
+.index-vue .c01 {
+  background: -webkit-gradient(linear, left top, right top, from(#885fd3), to(#cb80b5));
+  background: -webkit-linear-gradient(left, #885fd3, #cb80b5);
+  background: linear-gradient(to right, #885fd3, #cb80b5);
+}
+.index-vue .c02 {
+  background: -webkit-gradient(linear, left top, right top, from(#2eaaa8), to(#87d58d));
+  background: -webkit-linear-gradient(left, #2eaaa8, #87d58d);
+  background: linear-gradient(to right, #2eaaa8, #87d58d);
+}
+.index-vue .c03 {
+  background: -webkit-gradient(linear, left top, right top, from(#ff7983), to(#ffad8b));
+  background: -webkit-linear-gradient(left, #ff7983, #ffad8b);
+  background: linear-gradient(to right, #ff7983, #ffad8b);
+}
+.index-vue .c04 {
+  background: -webkit-gradient(linear, left top, right top, from(#6480ed), to(#86bff7));
+  background: -webkit-linear-gradient(left, #6480ed, #86bff7);
+  background: linear-gradient(to right, #6480ed, #86bff7);
+}
+

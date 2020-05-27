@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "评分",
+  "usingComponents": {
+    "range-slider": "/components/range-slider/range-slider"
+  }
+}

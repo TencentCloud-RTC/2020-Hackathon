@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/index/command",
+    "pages/index/command2",
+    "pages/common/items",
+    "pages/room/room"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "面对面吧",
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColor": "#fff"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "usingComponents": {
+    "user-auth": "/pages/common/userAuth",
+    "toast": "/pages/common/toast",
+    "popup": "/components/uni-popup/uni-popup",
+    "rate": "/components/uni-rate/uni-rate"
+  },
+  "sitemapLocation": "sitemap33.json"
+}

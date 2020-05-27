@@ -1,0 +1,1 @@
+<block wx:if="{{!test}}"><view class="{{['user-auth popup-custom',(show)?'show-page':'']}}"><view class="con"><button open-type="getUserInfo" type="primary" data-event-opts="{{[['getuserinfo',[['getuserinfo',['$event']]]]]}}" bindgetuserinfo="__e">授权登录</button><text class="mt">面对面吧需要获取您的微信信息</text></view></view></block>

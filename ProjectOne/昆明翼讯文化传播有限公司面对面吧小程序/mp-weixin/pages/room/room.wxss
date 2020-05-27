@@ -1,0 +1,217 @@
+.command-vue .list {
+  background-color: #fff;
+  border-radius: 12rpx;
+  padding: 40rpx;
+  width: 94%;
+  margin: 0 auto 30rpx auto;
+  position: relative;
+  top: 30rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.command-vue .list .title {
+  padding-bottom: 30rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+.command-vue .list .tags {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin-top: 40rpx;
+  -webkit-justify-content: space-around;
+          justify-content: space-around;
+}
+.command-vue .list .tags view {
+  width: 40%;
+  padding: 20rpx 0;
+  border-radius: 12rpx;
+  text-align: center;
+  background-color: #f5f5f5;
+  color: #888;
+}
+.command-vue .list .tags view.active {
+  background-color: #ba92f1;
+  color: #6254cc;
+}
+.command-vue .list .rate {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin-top: 40rpx;
+}
+.command-vue .list .rate > view:nth-child(1) {
+  margin: 0 40rpx;
+}
+.command-vue .list .rate .uni-rate__icon {
+  margin: 0 16rpx;
+}
+.command-vue .list slider {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+}
+.command-vue .list textarea {
+  padding: 20rpx 30rpx;
+  border: 1rpx solid #ccc;
+  margin-top: 40rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 300rpx;
+  width: 100%;
+}
+.command-vue .button-box {
+  width: 90%;
+  position: absolute;
+  left: 5%;
+  bottom: 4vh;
+}
+.command-vue .button-box button {
+  height: 100rpx;
+  line-height: 100rpx;
+  border-radius: 50rpx;
+}
+.command-vue .button-box button:nth-child(1) {
+  background: -webkit-gradient(linear, left top, right top, from(#b58af1), to(#8072e9));
+  background: -webkit-linear-gradient(left, #b58af1, #8072e9);
+  background: linear-gradient(to right, #b58af1, #8072e9);
+  width: 65%;
+}
+.command-vue .button-box button:nth-child(2) {
+  background: #fff;
+  color: #777;
+  width: 30%;
+  margin-left: 5%;
+  border: 1rpx solid #eee;
+}
+.command-vue .button-box button:nth-child(2):after {
+  border: 0;
+}
+
+
+/* miniprogram/pages/room/room.wxss */
+.page-room{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.tip-toast {
+  position: absolute;
+  top: 40vh;
+  width: 70vw;
+  left: 15vw;
+  border-radius: 12rpx;
+  height: 20vh;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  z-index: 99999;
+}
+.tip-toast view {
+  padding: 20rpx 0;
+  font-size: 32rpx;
+}
+.page-room .command-page {
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+  -webkit-transform: translateY(100vh);
+          transform: translateY(100vh);
+}
+.page-room .items-page {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-transform: translateY(100vh);
+          transform: translateY(100vh);
+  opacity: 0;
+}
+.clock {
+  width: 250rpx;
+  background: -webkit-gradient(linear, left top, right top, from(#feaf90), to(#ff6591));
+  background: -webkit-linear-gradient(left, #feaf90, #ff6591);
+  background: linear-gradient(to right, #feaf90, #ff6591);
+  color: #fff;
+  position: fixed;
+  top: 0;
+  border-radius: 0 0 10rpx 10rpx;
+  left: 50%;
+  margin-left: -125rpx;
+  z-index: 9;
+  padding: 4rpx 0;
+  text-align: center;
+}
+.button-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  position: absolute;
+  bottom: 0;
+  width: 90%;
+  left: 5%;
+}
+.button-box button:nth-child(1) {
+  background: -webkit-gradient(linear, left top, right top, from(#b58af1), to(#8072e9));
+  background: -webkit-linear-gradient(left, #b58af1, #8072e9);
+  background: linear-gradient(to right, #b58af1, #8072e9);
+  -webkit-box-shadow: 0 4rpx 12rpx 0rpx #b58af1;
+  box-shadow: 0 4rpx 12rpx 0rpx #b58af1;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-radius: 50rpx;
+  width: 60%;
+}
+.button-box button:nth-child(2) {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  background: -webkit-gradient(linear, left top, right top, from(#b58af1), to(#8072e9));
+  background: -webkit-linear-gradient(left, #b58af1, #8072e9);
+  background: linear-gradient(to right, #b58af1, #8072e9);
+  -webkit-box-shadow: 0 4rpx 12rpx 0rpx #b58af1;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-radius: 50rpx;
+  margin-left: 30rpx;
+}
+.page-student .button-box {
+  display: none;
+}
+.page-student .template-grid {
+  max-height: 100vh;
+}
+.page-student .pusher-container {
+  position: absolute !important;
+  top: 0;
+  width: 100%;
+  height: 40vh !important;
+  z-index: 2;
+}
+.page-student .pusher-container live-pusher {
+  height: 40vh;
+}
+.page-student .view-container {
+  height: 30vh;
+}
+.page-student .student-pos {
+  height: 40vh;
+}
+
