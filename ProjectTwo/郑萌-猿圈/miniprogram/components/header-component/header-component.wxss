@@ -1,0 +1,29 @@
+.inner {
+    width: 100%;
+    height: 233rpx;
+    color: #fff;
+    position: relative;
+    text-align: center;
+}
+.inner image{
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.inner .h1{
+    font-size: 40rpx;
+    font-weight: 500;
+    margin-bottom: 6rpx;
+}
+.inner .h2{
+    font-size: 34rpx;
+}
+.pt-30{
+    padding-top: 30rpx;
+}
+.pt-46{
+    padding-top: 46rpx;
+}

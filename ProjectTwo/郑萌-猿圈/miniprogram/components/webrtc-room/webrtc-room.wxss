@@ -1,0 +1,13 @@
+.conponent-box {
+  background-repeat:no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+@import "./template/1v1horizontal/1v1horizontal.wxss";
+@import "./template/1v1pushmain/layout.wxss";
+@import "./template/1v1playmain/layout.wxss";
+@import "./template/1v1playmainWer/layout.wxss";
+@import "./template/nv1template/layout.wxss";
+@import "./template/nv1templateWer/layout.wxss";

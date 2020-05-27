@@ -1,0 +1,85 @@
+/* pages/confirm/changeTime/index.wxss */
+view{
+    font-size: 30rpx;
+} 
+.fixed-bottom{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.cardh{
+    padding-bottom: 74rpx;
+}
+.cardh .h1{
+    font-size: 34rpx;
+    font-weight: 600;
+    color: rgba(0,0,0,0.65);
+    margin-bottom: 16rpx;
+}
+.cardh .h2{
+    font-size: 28rpx;
+    color: rgba(0,0,0,0.45);
+}
+.notice{
+    color: rgba(0,0,0,0.45);
+    margin: 40rpx 62rpx 0;
+}
+.notice .h1{
+    font-size: 28rpx;
+    font-weight: 600;
+    margin-bottom: 12rpx;
+}
+.notice .h2{
+    font-size: 26rpx;
+    line-height: 37rpx;
+}
+.btn-group{
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 88rpx;
+    left: 62rpx;
+    right: 62rpx;
+}
+.btn-group .btn{
+    width: 280rpx;
+}
+.date{
+  margin-top: 40rpx;
+  margin-bottom: 20rpx;
+}
+.select-date{
+    margin-top: 30rpx;
+    border: 1rpx solid #d9d9d9;
+    border-radius: 10rpx;
+    height: 70rpx;
+    padding: 0 20rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.select-date image{
+    width: 30rpx;
+    height: 30rpx;
+}
+.select-date input{
+    width: 80%;
+    font-size: 28rpx;
+}
+.placeholder{
+    color: rgba(0,0,0,0.25);
+    font-size: 28rpx;
+}
+.reason-input{
+    margin-top: 20rpx;
+    border: 1rpx solid #d9d9d9;
+    border-radius: 10rpx;
+    height: 70rpx;
+    padding: 0 20rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 28rpx;
+
+}

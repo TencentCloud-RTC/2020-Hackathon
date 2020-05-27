@@ -1,0 +1,41 @@
+.test-panel{
+  padding: 300rpx 60rpx 0;
+  font-size: 28rpx;
+}
+input{
+  border-bottom: 1rpx solid #56acfd;
+  margin-bottom: 80rpx;
+  height: 40rpx;
+}
+button{
+  margin-top: 400rpx;
+}
+view{
+  font-size: 30rpx;
+} 
+.radio{
+  display: flex;
+  justify-content: space-between;
+}
+.radio .item{
+  width: 50%;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+.circle{
+  width: 26rpx;
+  height: 26rpx;
+  border-radius: 30rpx;
+  border: 2rpx solid #1890ff;
+  margin-right: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.disc{
+  width: 22rpx;
+  height: 22rpx;
+  border-radius: 22rpx;
+  background: #1890ff;
+}

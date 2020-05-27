@@ -1,0 +1,5 @@
+<view class="title">{{interviewName}}</view>
+<view class="panel">
+    <image src="/resources/images/icon-end.png" />
+    <view class="h1">当前面试已关闭</view>
+</view>

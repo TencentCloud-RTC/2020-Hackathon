@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "header": "/components/header-component/header-component",
+    "footer": "/components/footer-component/footer-component",
+    "van-icon": "/components/dist/icon/index"
+  }
+}

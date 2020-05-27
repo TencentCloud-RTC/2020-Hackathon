@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "pages/test/index",
+    "pages/index/index",
+    "pages/end/end",
+    "pages/roomList/index",
+    "pages/unusual/unusual",
+    "pages/confirm/submit/index",
+    "pages/confirm/link/index",
+    "pages/confirm/index/index",
+    "pages/confirm/changeTime/index",
+    "pages/main/main",
+    "pages/tic/index/index",
+    "pages/tic/classroom/room"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "猿圈面试",
+    "navigationBarBackgroundColor": "#1890FF",
+    "backgroundColor": "#ffffff"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
+}

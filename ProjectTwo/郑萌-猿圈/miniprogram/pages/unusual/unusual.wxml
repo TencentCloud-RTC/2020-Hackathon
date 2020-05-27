@@ -1,0 +1,7 @@
+<view class="title">{{interviewName}}</view>
+<view class="panel">
+    <image src="/resources/images/icon-warn.png" />
+    <view class="h1">登录异常</view>
+    <view class="tip">当前链接可能被其他人使用或在其他设备上被打开，导致您的登录已失效，刷新当前页面，重新建立连接并登录。 </view>
+    <button class="btn btn2" bindtap="handleToRoom">刷新页面</button>
+</view>

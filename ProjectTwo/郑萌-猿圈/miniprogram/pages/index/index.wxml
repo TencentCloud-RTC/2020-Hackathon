@@ -1,0 +1,8 @@
+<view class="default" wx:if="{{status == 500}}">
+  <image src='../../resources/images/default.png'></image>
+  <view wx:if="{{tips}}">{{tips}}</view>
+  <view wx:else>
+    <view class='desc'>请查看您的邮件通知</view>
+    <view class='desc'>扫描小程序码进入面试房间</view>
+  </view>
+</view>

@@ -1,0 +1,48 @@
+<view>
+    <header title="{{interviewName}}" desc="" pt="pt-46"></header>
+    <view class="card cardh">
+        <view class="h1">期望更改面试日期段</view>
+        <view class="h2">您只能选择{{beginChangeTime}}至{{endChangeTime}}的日期</view>
+        <view class="date">
+            <view class="select-date" bindtap="showDatePicker" data-type="1">
+                <input type="text" placeholder-class="placeholder" value="{{startTime}}" disabled placeholder="请选择您有空的起始日期"></input>
+                <image src="/resources/images/icon-calender.png"></image>
+            </view>
+            <view class="select-date" bindtap="showDatePicker" data-type="2">
+                <input type="text" placeholder-class="placeholder" value="{{endTime}}" disabled placeholder="请选择您有空的截止日期"></input>
+                <image src="/resources/images/icon-calender.png"></image>
+            </view>
+        </view>
+        <view class="h1">申请补面的原因</view>
+        <input class="reason-input" value="{{reason}}" bindblur="onBlur" maxlength="10" type="text" placeholder-class="placeholder" placeholder="最多不超过10个字"></input>
+    </view>
+    <view class="notice">
+        <view class="h1">申请更改时间须知：</view>
+        <view class="h2">1. 您的在线申请一旦提交成功，现在的面试链接将失效，您将无法参加本次面试。 </view>
+        <view class="h2">2. 在线申请若通过，您将收到新的补面通知；若不通过，系统不会发送额外通知。 </view>
+        <view class="h2">3.请谨慎申请，另外建议尽量空出时间参加本次面试！ </view>
+    </view>
+    <view class="btn-group">
+        <button class="btn btn1" bindtap="handleGoBack">返回上一步</button>
+        <button class="btn btn2" bindtap="submit">确认并提交申请</button>
+    </view>
+    <!--  -->
+    <van-popup
+        show="{{ show }}"
+        position="bottom"
+        overlay="{{ false }}"
+        bind:close="onClose">
+        <van-datetime-picker
+            type="datetime"
+            value="{{ currentDate }}"
+            bind:input="onInput"
+            min-date="{{ minDate }}"
+            max-date="{{ maxDate }}"
+            bind:confirm="onConfirm"
+            bind:cancel="onClose"
+        />
+    </van-popup>
+    <view class="fixed-bottom">
+        <footer></footer>
+    </view>
+</view>

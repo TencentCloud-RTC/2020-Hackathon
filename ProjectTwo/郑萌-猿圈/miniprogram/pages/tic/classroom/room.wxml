@@ -1,0 +1,111 @@
+<view class="custom-navbar">
+  <view class="status" style="height: {{statusBarHeight}}px; background: #1890FF;"></view>
+  <view class="nav-bar"><image bindtap="goBack" src="/resources/images/icon-back.png" />猿圈面试</view>
+</view>
+<view class="container" style="height: calc(100vh - {{statusBarHeight}}px - 44px)">
+  <view class="camera-box" style="height: calc(100vh - {{statusBarHeight}}px - 44px)"  hidden="{{isShowChatPanel || isShowRatePanel}}">
+    <webrtc-room id="webrtcroom" wx:if="{{!!template}}" template="{{template}}" roomID="{{roomID}}" userID="{{userID}}" userName="{{userName}}" userSig="{{userSig}}" sdkAppID="{{sdkAppID}}" privateMapKey="{{privateMapKey}}" smallViewLeft="{{smallViewLeft}}" smallViewTop="{{smallViewTop}}" smallViewWidth="{{smallViewWidth}}" smallViewHeight="{{smallViewHeight}}" enableCamera="{{enableCamera}}" playerBackgroundImg="{{playerBackgroundImg}}" pusherBackgroundImg="{{playerBackgroundImg}}" enableIM="{{false}}" bindRoomEvent="onRoomEvent" beauty="{{beauty}}" muted="{{muted}}" muteStatus="{{muteStatus}}"></webrtc-room>
+    <cover-view class="time" wx:if="{{costTime > 0}}" style="top: {{statusBarHeight + 45}}px">
+      <cover-image class="icon" src="/resources/images/icon-time.png"></cover-image>
+      <cover-view style="display: inline-block;width: 120rpx;">{{timeSpan}}</cover-view>
+    </cover-view>
+  </view>
+  <cover-view hidden="{{true}}"  class="board_chat_tablist_container" style="padding-bottom: {{navBottom}}">
+    <!-- <cover-view bindtap="showBoardPanel" class="tab {{isShowBoardPanel ? 'active': ''}}">
+      <cover-view class="text">互动白板</cover-view>
+    </cover-view> -->
+    <cover-view bindtap="cameraCtrol" class="tab {{camera ? 'active' : ''}}">
+      <cover-image class="tab-img" src="{{ camera ? '../../../resources/images/icon-camera.png' : '../../../resources/images/icon-camera-o.png'}}"></cover-image>
+      <cover-view class="text">切换镜头</cover-view>
+    </cover-view>
+    <cover-view bindtap="beautyControl" class="tab {{beauty ? 'active' : ''}}">
+      <cover-image class="tab-img" src="{{ beauty ? '../../../resources/images/icon-beauty.png' : '../../../resources/images/icon-beauty-o.png'}}"></cover-image>
+      <cover-view class="text">美颜</cover-view>
+    </cover-view>
+    <cover-view bindtap="volumeControl" class="tab {{muted ? 'active' : ''}}">
+      <cover-image class="tab-img" src="{{ muted ? '../../../resources/images/icon-volume.png' : '../../../resources/images/icon-volume-o.png'}}"></cover-image>
+      <cover-view class="text">麦克风</cover-view>
+    </cover-view>
+    <cover-view bindtap="showChatPanel" class="tab {{isShowChatPanel ? 'active' : ''}}">
+      <cover-image class="tab-img" src="{{ isShowChatPanel ? '../../../resources/images/icon-chat.png' : '../../../resources/images/icon-chat-o.png'}}"></cover-image>
+      <cover-view class="text">对话框</cover-view>
+      <cover-view class="count" wx:if="{{unreadCount > 0}}">{{unreadCount}}</cover-view>
+    </cover-view>
+    <cover-view wx:if="{{roleType==2 && haveRate}}" bindtap="showRate" class="tab {{isShowRatePanel ? 'active' : ''}}">
+      <cover-image class="tab-img" src="{{ isShowRatePanel ? '../../../resources/images/icon-rate.png' : '../../../resources/images/icon-rate-o.png'}}"></cover-image>
+      <cover-view class="text">面试评价</cover-view>
+    </cover-view>
+  </cover-view>
+  <view class="board_chat_container {{boardShowFullScreen ? 'horizontal': ''}}" style="height: calc(100vh - {{statusBarHeight}}px - 44px - 100rpx - {{navBottom}})">
+    <!-- 聊天面板 -->
+    <view class="chat_container" hidden="{{isShowRatePanel}}">
+      <scroll-view scroll-y scroll-into-view="{{scrollToView}}" style="height: calc(100vh - {{statusBarHeight}}px - 44px - 202rpx - {{navBottom}})" class="chat_scroll_container">
+        <view class="chat_item" wx:for="{{msgList}}" wx:key="index" style="text-align: {{item.fromUserId == userID ? 'right' : 'left'}}">
+          <view class="send-name" >{{item.send}}</view>
+          <view class="bubble {{item.fromUserId == userID ? 'me' : 'others'}}">
+            <text decode="{{true}}">{{item.content}}</text>
+            <!-- <text wx:if="{{item.type == 'admin'}}">{{item.content}}</text> -->
+          </view>
+        </view>
+        <view id="scroll-bottom" wx:if="{{scrollToView}}"></view>
+      </scroll-view>
+      <view class="comment-input">
+        <input value="{{chatMsg}}" maxlength="50" bindinput="bindChatMsg" placeholder="输入文字内容" confirm-type="send" bindconfirm="sendComment" cursor-spacing="5" />
+      </view>
+    </view>
+    <view class="rate_container" hidden="{{isShowChatPanel}}">
+      <scroll-view scroll-y scroll-into-view="{{scrollToView}}" style="height: calc(100vh - {{statusBarHeight}}px - 44px - 55px - {{navBottom}})">
+        <view class="wee_list" hidden="{{!showWeeList}}">
+          <view class="wee_item" wx:for="{{weeList}}" bindtap="showRateDetail" data-id="{{item.intervieweeId}}" wx:for-item="item" wx:key="item">
+            <text>{{item.name}}</text><image src="/resources/images/icon-right.png"></image>
+          </view>
+        </view>
+        <view class="rate_panel" hidden="{{showWeeList}}">
+          <view class="rate_item" wx:if="{{rateTemplate.notice}}">
+            <view class="rate_title">注意事项</view>
+            <view class="rate_notice">{{rateTemplate.notice}}</view>
+          </view>
+          <view class="rate_item" wx:if="{{rateTemplate.dimensions.length > 0}}">
+            <view class="rate_title">评分<text class="desc">(带<text class="require">*</text>为必填项)</text><view class="rate_total">候选人总分：<text>0</text></view></view>
+            <view style="margin-bottom: 32rpx;" wx:for="{{rateTemplate.dimensions}}" wx:for-item="item" wx:for-index="index" wx:key="item">
+              <view class="rate_dimension">
+                <view class="require"><text wx:if="{{item.necessary == 0}}">*</text></view><text class="rate_dimension_name">{{item.name}}</text>
+                <image class="rate_explain" bindtap="showFactor" data-text="{{item.factor}}" src="/resources/images/icon-ask.png"></image>
+                <input type="number" class="rete_input" value="{{item.currentScore}}" data-name="{{item.name}}" bindinput="rateScoreChange" bindblur="rateScoreChange" placeholder="满分：{{item.score}}"></input>分
+              </view>
+              <view class="require" wx:if="{{item.scoreExplain}}">{{item.scoreExplain}}</view>
+            </view>
+          </view>
+          <view class="rate_item" wx:if="{{rateTemplate.commentNecessary != 2}}">
+            <!-- 评语设置0-必填 1-选填 2-不填 -->
+            <view class="rate_title">评语<text class="desc">({{rateTemplate.commentNecessary == 0 ? '必填' : rateTemplate.commentNecessary == 1 ? '选填' : ''}})</text></view>
+            <textarea class="rate_comment" value="{{comment}}" bindinput="commentChange" bindblur="commentChange"></textarea>
+            <view class="require" wx:if="{{commentExplain}}">{{commentExplain}}</view>
+          </view>
+          <view class="rate_item" wx:if="{{rateTemplate.judgeNecessary != 2}}">
+            <!-- 判定设置0-必填 1-选填 2-不填 -->
+            <view class="rate_title">判定</view>
+            <view class="judge">
+              <view bindtap="setJudge" data-judge="{{item}}" class="judge_item {{item == '通过' && activeJudge == '通过' ? 'green' : item == '待定' && activeJudge == '待定' ? 'blue' : item == '不通过' && activeJudge == '不通过' ? 'red' : ''}}" wx:for-item="item" wx:for-index="index" wx:for="{{rateTemplate.judgeOptions}}" wx:key="item">
+                {{item}}
+                <image wx:if="{{activeJudge == item}}" class="icon" src="/resources/images/icon-check-{{item == '通过' && activeJudge == '通过' ? 'green' : item == '待定' && activeJudge == '待定' ? 'blue' : item == '不通过' && activeJudge == '不通过' ? 'red' : ''}}.png"></image>
+              </view>
+            </view>
+            <view class="require" wx:if="{{judgeExplain}}">{{judgeExplain}}</view>
+          </view>
+          <view class="btns">
+            <button class="btn1" bindtap="save">保存记录</button>
+            <button class="btn2" bindtap="submit">{{roomType == 1 ? '提交并结束面试' : '提交评价'}}</button>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <!-- 互动白板面板 -->
+    <view class="board_container" hidden="{{true}}">
+      <tic-component id="tx_board" bindIMEvent="onIMEvent" bindBoardEvent="onBoardEvent">
+        <cover-image catchtap="togglerBoardFullScreen" class="tx_board_slot {{boardShowFullScreen ? 'horizontal': ''}}" src="{{boardShowFullScreen ? '/resources/images/smallscreen.png':'/resources/images/fullscreen.png' }}"></cover-image>
+      </tic-component>
+    </view>
+  </view>
+</view>

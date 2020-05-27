@@ -1,0 +1,56 @@
+<template name='nv1template'>
+  <view class="nv1template videoview">
+    <view class="type-title">面试官</view>
+    <view class="wer-box">
+      <view class="player-box sixHeight" wx:for="{{erMembers}}" wx:key="key" wx:for-item="item" wx:for-index="index">
+        <live-player id="{{item.userID}}" autoplay mode="RTC" min-cache="0.1" max-cache="0.3" src="{{item.accelerateURL}}" debug="{{debug}}" background-mute="{{true}}" bindstatechange="onPlay">
+          <cover-view class="loading" wx:if="{{item.loading}}">
+            <cover-image src="{{loadingImg}}"></cover-image>
+          </cover-view>
+          <cover-view class="poster" style="display: {{(!startPlay || !item.accelerateURL) ? 'flex' : 'none'}}">
+            <cover-image class="set" src="{{playerBackgroundImg}}"></cover-image>
+          </cover-view>
+          <cover-view class="realname">
+            <cover-view>
+              <cover-image class="main" wx:if="{{item.main}}" src="/resources/images/icon-user.png"></cover-image>
+              <cover-view style="display: inline-block;">{{item.userName}}</cover-view>
+            </cover-view>
+            <cover-image class="mute" src="{{ muteStatus[item.userID] ? '/resources/images/icon-volume.png' : '/resources/images/icon-mute.png'}}"></cover-image>
+              <!-- {{muteStatus[item.userID] ? '静音' : '未静音'}} -->
+          </cover-view>
+          <slot></slot>
+        </live-player>
+      </view>
+    </view>
+    <view class="type-title">候选人</view>
+    <view class="wee-box">
+      <view class="player-box {{eeMembers.length >= 1 && eeMembers.length <=3 ? 'fourHeight' : eeMembers.length > 3 ? 'sixHeight' : ''}}" 
+        wx:for="{{eeMembers}}" wx:key="index" wx:for-item="item" wx:for-index="index"
+        wx:if="{{item.userID !== userID}}">
+        <live-player id="{{item.userID}}" autoplay mode="RTC" min-cache="0.1" max-cache="0.3" src="{{item.accelerateURL}}" debug="{{debug}}" background-mute="{{true}}" bindstatechange="onPlay">
+          <cover-view class="loading" wx:if="{{item.loading}}">
+            <cover-image src="{{loadingImg}}"></cover-image>
+          </cover-view>
+          <cover-view class="poster"  style="display: {{(!startPlay || !item.accelerateURL) ? 'flex' : 'none'}}">
+            <cover-image class="set" src="{{playerBackgroundImg}}"></cover-image>
+          </cover-view>
+          <cover-view class="realname">
+            <cover-view>{{item.userName}}</cover-view>
+            <cover-image class="mute" src="{{ muteStatus[item.userID] ? '/resources/images/icon-volume.png' : '/resources/images/icon-mute.png'}}"></cover-image>
+          </cover-view>
+          <slot></slot>
+        </live-player>
+      </view>
+      <view class="pusher-box {{eeMembers.length ===  0 ? 'oneHeight' : eeMembers.length >= 1 && eeMembers.length <=3 ? 'fourHeight' : eeMembers.length > 3 ? 'sixHeight' : ''}}" >
+        <live-pusher wx:if="{{pushURL}}" id="rtcpusher" autopush mode="RTC" url="{{pushURL}}" aspect="{{aspect}}" min-bitrate="{{minBitrate}}" max-bitrate="{{maxBitrate}}" audio-quality="high" beauty="{{beauty}}" whiteness="{{whiteness}}" muted="{{muted}}" waiting-image="{{waitingImg}}" background-mute="{{true}}" debug="{{debug}}" bindstatechange="onPush" binderror="onError" enable-camera="{{enableCamera}}">
+          <!-- <cover-view class="realname">{{userName}}</cover-view> -->
+          <cover-view class="realname">
+            <cover-view>{{userName}}</cover-view>
+            <cover-image class="mute" src="{{ muteStatus[userID] ? '/resources/images/icon-volume.png' : '/resources/images/icon-mute.png'}}"></cover-image>
+          </cover-view>
+        </live-pusher>
+      </view>
+    </view>
+  </view>
+  <!-- <view>>}}</view> -->
+</template>

@@ -1,0 +1,155 @@
+/* pages/confirm/index/index.wxss */
+view{
+    font-size: 30rpx;
+} 
+.cardh{
+    padding-bottom: 80rpx;
+    min-height: 430rpx;
+}
+.cardh .row{
+    font-size: 30rpx;
+    color: rgba(0,0,0,0.85);
+    height: 50rpx;
+    line-height: 50rpx;
+}
+.row .label{
+    color: rgba(0,0,0,0.45);
+}
+.time{
+    margin-top: 90rpx;
+}
+.time .h1{
+    color: rgba(0,0,0,0.65);
+    margin-bottom: 17rpx;
+    text-align: center;
+}
+.time .h2{
+    font-size: 32rpx;
+    font-weight: 600;
+    color: rgba(0,0,0,0.65);
+    margin-bottom: 43rpx;
+    text-align: center;
+}
+.time text{
+    display: inline-block;
+}
+.time .clock{
+    width:96rpx;
+    height:106rpx;
+    text-align: center;
+    line-height: 106rpx;
+    background:linear-gradient(180deg,rgba(56,196,255,1) 0%,rgba(26,146,255,1) 100%);
+    border-radius:10rpx;
+    color: #fff;
+    font-size: 60rpx;
+}
+.time .disc{
+    color: #20C0F2;
+    font-size: 40rpx;
+    height: 106rpx;
+    line-height: 106rpx;
+    vertical-align: top;
+    margin: 0 10rpx;
+}
+.line{
+    width: 40rpx;
+    height: 1rpx;
+    background: rgba(0,0,0,0.15);
+    margin: 0 10rpx 20rpx;
+}
+.tc{
+    text-align: center;
+}
+.tip{
+    margin: 25rpx 62rpx 0;
+    color: rgba(0,0,0,0.45);
+    font-size: 24rpx;
+}
+.tip .icon{
+    color: #1890FF;
+    vertical-align: middle;
+}
+.btn-group{
+    position: fixed;
+    bottom: 88rpx;
+    left: 0;
+    right: 0;
+    margin: 0 62rpx;
+
+}
+/* .btn-group .dis{
+    display: flex;
+    justify-content: space-between;
+} */
+.btn-group .btn{
+    display: inline-block
+}
+.btn-group .btn1{
+    width: 290rpx;
+    margin-bottom: 30rpx;
+}
+/* .btn-gruop .btn2{
+    width:100%; 
+} */
+.big-btn{
+    width: 626rpx;
+}
+.small-btn{
+    width: 290rpx;
+    margin-bottom: 30rpx;
+}
+.fixed-bottom{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.fixed-top{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.giveup .title{
+    color: rgba(0,0,0,0.85);
+    font-size: 30rpx;
+    margin-bottom: 14rpx;
+}
+.giveup .title text,.giveup .desc text{
+    color: #1890FF;
+}
+.giveup .desc{
+    color: rgba(0,0,0,0.85);
+    font-size: 28rpx; 
+    line-height: 40rpx;
+}
+.row{
+    position: relative;
+}
+.row input{
+    width: 400rpx;
+    display: inline-block;
+    vertical-align: middle;
+}
+.edit{
+    width: 33rpx;
+    height: 34rpx;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.border-bottom{
+    border-bottom: 1px solid rgba(0,0,0,0.65);
+}
+.edit-btn{
+    width: 80rpx;
+    height: 44rpx;
+    text-align: center;
+    line-height: 44rpx;
+    border-radius: 7rpx;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 1px solid;
+    font-size: 26rpx;
+}

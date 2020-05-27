@@ -1,0 +1,11 @@
+<view class="test-panel">
+    <input type="text" bindblur="blurEventId" value="{{interviewId}}" placeholder="请输入面试场次号码"/>
+    <input type="text" bindblur="blurEventCode" value="{{code}}" placeholder="请输入面试进入凭证"/>
+    <view class="radio">
+        <view class="item" bindtap="changeA"><view class="circle"><view class="disc" wx:if="{{radio == 1}}"></view></view>候选人</view>
+        <view class="item" bindtap="changeB"><view class="circle"><view class="disc" wx:if="{{radio == 2}}"></view></view>面试官</view>
+
+    </view>
+    
+    <button class="btn btn2" bindtap="handleNext">下一步</button>
+</view>
