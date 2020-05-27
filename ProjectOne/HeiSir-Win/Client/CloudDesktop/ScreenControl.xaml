@@ -1,0 +1,49 @@
+﻿<Window x:Class="CloudDesktop.ScreenControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CloudDesktop"
+        mc:Ignorable="d"
+        x:Name="Screen"
+        Title="远程终端" Height="720" Width="1280" FontFamily="Segoe UI" Background="#FFF2F3F4"
+        WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Loaded="Screen_Loaded" Closing="Screen_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            
+        </Grid>
+        <Grid  x:Name="RenderMap" Grid.Row="1" Grid.RowSpan="1" ScrollViewer.VerticalScrollBarVisibility="Auto"  ScrollViewer.HorizontalScrollBarVisibility="Auto" Background="Black" >
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <local:TXLiteAVVideoView x:Name="RenderMapView" MouseDown="RenderMapView_MouseDown" MouseMove="RenderMapView_MouseMove" MouseUp="RenderMapView_MouseUp" MouseWheel="RenderMapView_MouseWheel" />
+            </ScrollViewer>
+        </Grid>
+        <Grid Grid.Row="0" MouseLeftButtonDown="WndTitle_MouseLeftButtonDown">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="42"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="32"/>
+                <ColumnDefinition Width="32"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Source="Resources/remote.png" Margin="10,0,0,0"></Image>
+            <TextBlock Grid.Column="1" Text="{Binding ElementName=Screen,Path=Title}" Margin="5,0" FontSize="16"  VerticalAlignment="Center" Foreground="Black" />
+            <Button x:Name="BtnMax" Grid.Column="2" VerticalAlignment="Center" BorderThickness="0" BorderBrush="Transparent" Width="18" Height="18" HorizontalAlignment="Center" Click="BtnMax_Click" >
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources/max.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="BtnClose" Grid.Column="3" VerticalAlignment="Center" BorderThickness="0" BorderBrush="Transparent" Width="18" Height="18" HorizontalAlignment="Center" Click="Button_Close" >
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources/u12389.png"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+
+        <Label x:Name="Loading"   Grid.Row="1"   Content="正在加载远程画面..." Foreground="#FFE77B35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="72" KeyDown="Loading_KeyDown" KeyUp="Loading_KeyUp"></Label>
+    </Grid>
+</Window>

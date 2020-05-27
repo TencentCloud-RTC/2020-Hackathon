@@ -1,0 +1,151 @@
+﻿<Window x:Class="CloudDesktop.AppWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CloudDesktop"
+        mc:Ignorable="d"
+        x:Name="app"
+        Title="云 桌 面 v1.0" Height="360" Width="640" FontFamily="Segoe UI" Background="#FFF2F3F4"
+        WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" 
+        Closed="app_Closed" Loaded="app_Loaded" BorderThickness="1" BorderBrush="#44D2D2D2" >
+    <Window.Resources>
+        <Style  x:Key="StatusLabelStyle" TargetType="Label">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Label}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                Background="{TemplateBinding Background}" 
+                                Padding="{TemplateBinding Padding}" 
+                                SnapsToDevicePixels="true" 
+                                CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="{x:Static ToolBar.ButtonStyleKey}" TargetType="{x:Type Button}">
+            <Setter Property="Foreground"
+           Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="Bd"
+                    SnapsToDevicePixels="true"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Padding="{TemplateBinding Padding}">
+                            <ContentPresenter
+                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="Orange"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" MouseLeftButtonDown="WndTitle_MouseLeftButtonDown">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="42"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="32"/>
+                <ColumnDefinition Width="32"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Source="Resources/remote.png" Margin="10,0,0,0"></Image>
+            <TextBlock Grid.Column="1" Text="{Binding ElementName=app,Path=Title}" Margin="5,0" FontSize="16" VerticalAlignment="Center" Foreground="Black" />
+            <Button x:Name="BtnClose" Grid.Column="3" VerticalAlignment="Center" BorderThickness="1" BorderBrush="Transparent" Width="18" Height="18" HorizontalAlignment="Center" Click="Button_Close" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" >
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources/u12389.png"/>
+                </Button.Background>
+            </Button>
+            <Label Grid.Row="1" Grid.ColumnSpan="4" BorderThickness="0,1,0,0" BorderBrush="#FFD2D2D2" Margin="0"></Label>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="6*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Margin="16,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="1" Content="您 的 信 息" VerticalContentAlignment="Center" Height="32" Margin="0" FontSize="14" Background="#FFE8A95F" Foreground="White" />
+                <Label Grid.Row="2" Content="终端 ID" VerticalContentAlignment="Center" Margin="8,0" FontSize="14" />
+                <TextBox x:Name="textBox_ComputerId" Grid.Row="3" Text="123456789" VerticalContentAlignment="Center" Margin="8,0" FontSize="16" FontWeight="UltraBold" BorderThickness="0" IsReadOnly="True" Background="{x:Null}" ></TextBox>
+                <Label Grid.Row="4" Content="临时密码" VerticalContentAlignment="Center" Margin="8,0" FontSize="14" />
+                <TextBox x:Name="textBox_ComputerPassword" Grid.Row="5" Text="123456" VerticalContentAlignment="Center" Margin="8,0,64,0" FontSize="16" FontWeight="UltraBold" BorderThickness="0" IsReadOnly="True" Background="{x:Null}" ></TextBox>
+                <Button x:Name="BtnNewPsw" Grid.Row="5" Content="刷新" Foreground="#FFE8A95F" Background="{x:Null}" Width="32" BorderThickness="1" BorderBrush="{x:Null}" Margin="0,0,16,0" HorizontalAlignment="Right" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="BtnNewPsw_Click"></Button>
+                <Label  Grid.Row="7" BorderThickness="0,1,0,0" BorderBrush="#FFD2D2D2" Margin="0"></Label>
+                <Label Grid.Row="9" Content="启动配置" VerticalContentAlignment="Center" Height="32" Margin="0" FontSize="14"  Background="#FFE8A95F" Foreground="White" />
+                <CheckBox x:Name="checkBox_AutoStart" Grid.Row="10" Content="随Window一同启动云桌面"  VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="16,0,0,0" FontSize="14" Click="checkBox_AutoStart_Click" />
+            </Grid>
+            <Label Grid.Column="2" BorderThickness="1,0,0,0" BorderBrush="#FFD2D2D2" Margin="0" ></Label>
+            <Grid Grid.Column="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="42"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="46"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Content="控制远程终端" VerticalContentAlignment="Center" Margin="20,0" FontSize="18" Foreground="#FFE8A95F" Background="{x:Null}" />
+                <Label Grid.Row="1" Content="远程终端ID" VerticalContentAlignment="Center" Margin="20,0" FontSize="12" />
+                <ComboBox x:Name="ConnId" Grid.Row="2" VerticalContentAlignment="Center" Margin="25,0" FontSize="18" SelectedIndex="0" HorizontalAlignment="Left" Width="180" Height="32" Padding="8,2" IsEditable="True" >
+                    
+                </ComboBox>
+                <Label Grid.Row="3" Content="密码" VerticalContentAlignment="Center" Margin="20,0" FontSize="12" />
+                <PasswordBox x:Name="ConnPassword" Grid.Row="4"  VerticalContentAlignment="Center" Margin="25,0" FontSize="18" HorizontalAlignment="Left" Width="180" Height="32" Padding="8,2"/>
+                <Button x:Name="StartConn" Grid.Row="5" VerticalContentAlignment="Center" Width="120" Margin="25,5" HorizontalAlignment="Left" Content="开 始 连 接" FontSize="16" Background="#FFE8A95F" BorderThickness="1" BorderBrush="{x:Null}" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Foreground="White" VerticalAlignment="Stretch" Click="StartConn_Click"  ></Button>
+            </Grid>
+        </Grid>
+        <Label Grid.Row="2" BorderThickness="0,1,0,0" BorderBrush="#FFD2D2D2" Margin="0"></Label>
+        <Grid Grid.Row="3" >
+            <Label x:Name="statuIcon" Style="{StaticResource StatusLabelStyle}" HorizontalAlignment="Left" VerticalContentAlignment="Center" Width="10" Height="10" Margin="16,0" Background="#FF27C940"></Label>
+            <Label x:Name="status" Content="连接服务器成功." VerticalContentAlignment="Center" Margin="26,0"></Label>
+        </Grid>
+    </Grid>
+</Window>
