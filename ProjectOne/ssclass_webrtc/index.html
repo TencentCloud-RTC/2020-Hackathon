@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <link rel="icon" href="static/favicon.ico" type="image/x-icon" />
+  <title>随身课堂-互动直播</title>
+  <!-- <title>知行讲堂</title> -->
+
+  <!-- Axios SDK -->
+  <script src="https://resources-tiw.qcloudtrtc.com/thirdpart/axios/axios.min.js"></script>
+  <!-- COS SDK -->
+  <script src="https://resources-tiw.qcloudtrtc.com/thirdpart/cos/5.1.0/cos.min.js"></script>
+  <!-- 播放器 -->
+  <link href="//imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.css" rel="stylesheet">
+  <!--如果需要在 Chrome 和 Firefox 等现代浏览器中通过 H5 播放 HLS 和 Dash 格式的视频，需要在 tcplayer.min.js 之前引入 hls.js 和 dash.js。-->
+  <script src="//imgcache.qq.com/open/qcloud/video/tcplayer/libs/hls.min.0.12.4.js"></script>
+  <script src="//imgcache.qq.com/open/qcloud/video/tcplayer/libs/dash.all.min.2.9.3.js"></script>
+  <!--播放器脚本文件-->
+  <script src="//imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.min.js"></script>
+  <!-- 播放器(TcPlyer) -->
+  <script src="https://imgcache.qq.com/open/qcloud/video/vcplayer/TcPlayer-2.3.2.js" charset="utf-8"></script>
+  <!-- TEduBoard SDK -->
+  <script src="https://resources-tiw.qcloudtrtc.com/board/2.4.6/TEduBoard.min.js"></script>
+
+  <!-- 微信分享认证 -->
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+
+  <!-- 获得IP地址, 设置为全部变量，然后在任何地方访问  -->
+  <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+  <script type="text/javascript">
+    const ipAddress = returnCitySN["cip"];
+  </script>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .content {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      top: 45%;
+    }
+
+    .el-options-form .el-button {
+      margin-left: 0 !important;
+      margin-right: 10px;
+      width: 40px;
+    }
+
+    .el-question-box /deep/ .el-form {
+      display: flex;
+      justify-content: center;
+      padding: 0 10px;
+      box-sizing: border-box;
+    }
+
+    .el-options-form {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" class="content">PC端请使用 <a id="appID" href="http://www.suishenketang.com/WebRTC/help.html"
+      style="color:#ff6666;text-decoration:none;">Chrome浏览器</a> 60版本或以上(如需使用屏幕分享功能，请使用73版本或以上)，
+    手机端请在微信中打开</div>
+</body>
+<script>
+  if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    if (document.getElementById('appID')) {
+      document.getElementById('appID').style.display = 'none'
+    }
+  }
+</script>
+
+
+</html>

@@ -1,0 +1,95 @@
+.el-mobile-login-box {
+  position: relative;
+}
+
+.login-bg {
+  background: url("../img/login/background.jpg") no-repeat;
+  /* background: #26b26d; */
+  height: 240px;
+  text-align: center;
+  padding: 20px 0 0 0;
+  box-sizing: border-box;
+}
+
+.login-bg img {
+  height: 30px;
+}
+
+.login-info {
+  line-height: 28px;
+}
+
+.login-info-box {
+  padding: 10px 20px;
+  box-sizing: border-box;
+  margin-top: 40px;
+}
+
+.login-info-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.login-info {
+  font-size: 16px;
+  border: 1px solid #dedede;
+  border-left: 0;
+  border-right: 0;
+  padding: 10px 0;
+}
+
+.login-float {
+  width: 100%;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.login-float /deep/ .el-main {
+  padding: 30px 20px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0px 0px 8px 0 #a9a9a9;
+}
+
+.login-float .el-login-input {
+  margin-bottom: 10px;
+}
+
+.login-float .el-button {
+  width: 100%;
+  margin-top: 20px;
+  background: #aaaaaa;
+}
+
+.el-mobile-login-box .el-mobile-login-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+}
+
+.el-mobile-login-box .el-mobile-login-modal img {
+  width: 100%;
+}
+
+.login-float .input-box {
+  font-size: 16px;
+}
+
+.login-float .input-box .el-input {
+  font-size: 16px;
+}
+
+.login-float .input-box .el-button {
+  width: 100%;
+  font-size: 16px;
+  background: #26b26d;
+}
