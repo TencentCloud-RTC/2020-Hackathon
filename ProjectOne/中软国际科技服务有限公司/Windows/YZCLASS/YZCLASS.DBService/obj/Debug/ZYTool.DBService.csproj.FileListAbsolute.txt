@@ -1,0 +1,5 @@
+D:\pjzhiyun\04.Source\ZYTool\bin\x64\Debug\ZYTool.DBService.dll
+D:\pjzhiyun\04.Source\ZYTool\bin\x64\Debug\ZYTool.DBService.pdb
+D:\pjzhiyun\04.Source\ZYTool\ZYTool.DBService\obj\Debug\ZYTool.DBService.csprojResolveAssemblyReference.cache
+D:\pjzhiyun\04.Source\ZYTool\ZYTool.DBService\obj\Debug\ZYTool.DBService.dll
+D:\pjzhiyun\04.Source\ZYTool\ZYTool.DBService\obj\Debug\ZYTool.DBService.pdb

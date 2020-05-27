@@ -1,0 +1,6 @@
+﻿[2020-05-26 13:38:42,708]  10 -- INFO  YZCLASS.UI.LogHelp.WriteLog-- 课程列表加载中...
+[2020-05-26 13:38:42,879]  10 -- INFO  YZCLASS.UI.LogHelp.WriteLog-- 课程列表加完成！
+[2020-05-26 13:38:42,882]  10 -- INFO  YZCLASS.UI.LogHelp.WriteLog-- Business operation is successful!
+[2020-05-26 13:40:05,445]  9 -- INFO  YZCLASS.UI.LogHelp.WriteLog-- 课程列表加载中...
+[2020-05-26 13:40:05,554]  9 -- INFO  YZCLASS.UI.LogHelp.WriteLog-- 课程列表加完成！
+[2020-05-26 13:40:05,554]  9 -- INFO  YZCLASS.UI.LogHelp.WriteLog-- Business operation is successful!

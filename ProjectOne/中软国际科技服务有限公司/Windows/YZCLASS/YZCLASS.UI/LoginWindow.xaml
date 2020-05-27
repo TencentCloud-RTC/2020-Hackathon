@@ -1,0 +1,14 @@
+﻿<local:BaseWindow x:Class="YZCLASS.UI.LoginWindow"
+        xmlns:custom="clr-namespace:YZCLASS.UI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YZCLASS.UI" 
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" Background="White"
+        Title="" Height="401" Width="301" WindowStyle="None">
+
+    <Grid x:Name="MainGrid">
+        <local:ucLoginByAccount x:Name="LoginByAccountUC" Visibility="Visible" Margin="0,0,0,0"/>
+    </Grid>
+</local:BaseWindow>

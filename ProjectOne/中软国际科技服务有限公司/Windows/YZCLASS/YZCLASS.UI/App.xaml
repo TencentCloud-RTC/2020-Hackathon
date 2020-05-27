@@ -1,0 +1,19 @@
+﻿<Application x:Class="YZCLASS.UI.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:YZCLASS.UI">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resource/UC/Button/ButtonStyle.xaml"/>
+                <ResourceDictionary Source="Resource/UC/CheckBox/CheckBoxStyle.xaml"/>
+                <ResourceDictionary Source="Resource/UC/RadioButton/RadioButtonStyle.xaml"/>
+                <ResourceDictionary Source="Resource/UC/ComboBox/ComboBoxStyle.xaml"/>
+                <ResourceDictionary Source="Resource/UC/ScrollViewerStyle.xaml"/>
+                <ResourceDictionary Source="Resource/UC/MySlider.xaml"/>
+                <ResourceDictionary Source="Resource/Style/ContextMenuStyle.xaml"/>
+                <ResourceDictionary Source="Resource/Style/ChatContextMenuTemplate.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

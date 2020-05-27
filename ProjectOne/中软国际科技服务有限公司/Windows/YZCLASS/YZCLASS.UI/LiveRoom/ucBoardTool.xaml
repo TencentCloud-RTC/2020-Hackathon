@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="YZCLASS.UI.LiveRoom.ucBoardTool"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:YZCLASS.UI.LiveRoom"
+             mc:Ignorable="d" 
+             d:DesignHeight="117" d:DesignWidth="150">
+    <Grid Width="150" Height="117" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="#F5F5F5">
+            <Grid Margin="12,10,10,9">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="29"/>
+                </Grid.RowDefinitions>
+
+                <Grid x:Name="cellGrid" Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="23*"/>
+                        <RowDefinition Height="23*"/>
+                        <RowDefinition Height="25*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="18*"/>
+                        <ColumnDefinition Width="18*"/>
+                        <ColumnDefinition Width="18*"/>
+                        <ColumnDefinition Width="18*"/>
+                        <ColumnDefinition Width="18*"/>
+                        <ColumnDefinition Width="17*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="imgEraser" Tag="0" Width="16" Height="16" Cursor="Hand" Source="/YZCLASS.UI;component/Resource/Image/livepage-icon-rubber@2x.png" MouseLeftButtonDown="imgEraser_MouseLeftButtonDown"/>
+                    <Border Grid.Row="0" Grid.Column="1" Cursor="Hand" Width="10" Height="10" Tag="1" MouseLeftButtonDown="ThicknessCellClick">
+                        <Border Width="3" Height="3" Background="#CCCBCB" CornerRadius="1.5"/>
+                    </Border>
+                    <Border Grid.Row="0" Grid.Column="2" Cursor="Hand" Width="10" Height="10" Tag="2" MouseLeftButtonDown="ThicknessCellClick">
+                        <Border Width="4" Height="4" Background="#CCCBCB" CornerRadius="2"/>
+                    </Border>
+                    <Border Grid.Row="0" Grid.Column="3" Cursor="Hand" Width="10" Height="10" Tag="3" MouseLeftButtonDown="ThicknessCellClick">
+                        <Border Width="5" Height="5" Background="#CCCBCB" CornerRadius="2.5"/>
+                    </Border>
+                    <Border Grid.Row="0" Grid.Column="4" Cursor="Hand" Width="10" Height="10" Tag="4" MouseLeftButtonDown="ThicknessCellClick">
+                        <Border Width="6" Height="6" Background="#CCCBCB" CornerRadius="3"/>
+                    </Border>
+                    <Border Grid.Row="0" Grid.Column="5" Cursor="Hand" Width="10" Height="10" Tag="5" MouseLeftButtonDown="ThicknessCellClick">
+                        <Border Width="8.5" Height="8.5" Background="#CCCBCB" CornerRadius="5"/>
+                    </Border>
+
+                    <Image x:Name="imgPen" Tag="1" Grid.Row="1" Grid.Column="0" Cursor="Hand" Width="13" Height="14" Source="/YZCLASS.UI;component/Resource/Image/livepage-icon-mixpen@2x.png" MouseLeftButtonDown="imgPen_MouseLeftButtonDown"/>
+                    <Border Grid.Row="1" Grid.Column="1" Cursor="Hand" Width="10" Height="10" Tag="#F8B62D" MouseLeftButtonDown="PenCellClick">
+                        <Border Width="8" Height="8" Background="#F8B62D"/>
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="2" Cursor="Hand" Width="10" Height="10" Tag="#8FC31F" MouseLeftButtonDown="PenCellClick">
+                        <Border Width="8" Height="8" Background="#8FC31F"/>
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="3" Cursor="Hand" Width="10" Height="10" Tag="#2CA6E0" MouseLeftButtonDown="PenCellClick">
+                        <Border Width="8" Height="8" Background="#2CA6E0"/>
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="4" Cursor="Hand" Width="10" Height="10" Tag="#920783" MouseLeftButtonDown="PenCellClick">
+                        <Border Width="8" Height="8" Background="#920783"/>
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="5" Cursor="Hand" Width="10" Height="10" Tag="#E60012" MouseLeftButtonDown="PenCellClick">
+                        <Border Width="8" Height="8" Background="#E60012"/>
+                    </Border>
+
+                    <Image x:Name="imgLightPen" Tag="0" Grid.Row="2" Grid.Column="0" Cursor="Hand" Width="16" Height="16" Source="/YZCLASS.UI;component/Resource/Image/livepage-icon-big-pen@2x.png" MouseLeftButtonDown="imgLightPen_MouseLeftButtonDown"/>
+                    <Border Grid.Row="2" Grid.Column="1" Cursor="Hand" Width="10" Height="10" Tag="#E60012" MouseLeftButtonDown="PenCellClick">
+                        <Border Width="8" Height="8" Background="#F8B62D"/>
+                    </Border>
+                    <Border Grid.Row="2" Grid.Column="2" Cursor="Hand" Width="10" Height="10" Tag="#8FC31F" MouseLeftButtonDown="PenCellClick">
+                        <Border Width="8" Height="8" Background="#8FC31F"/>
+                    </Border>
+                    <Border Grid.Row="2" Grid.Column="3" Cursor="Hand" Width="10" Height="10" Tag="#2CA6E0" MouseLeftButtonDown="PenCellClick">
+                        <Border Width="8" Height="8" Background="#2CA6E0"/>
+                    </Border>
+                    <Border Grid.Row="2" Grid.Column="4" Cursor="Hand" Width="10" Height="10" Tag="#920783" MouseLeftButtonDown="PenCellClick">
+                        <Border Width="8" Height="8" Background="#920783"/>
+                    </Border>
+                    <Border Grid.Row="2" Grid.Column="5" Cursor="Hand" Width="10" Height="10" Tag="#E60012" MouseLeftButtonDown="PenCellClick">
+                        <Border Width="8" Height="8" Background="#E60012"/>
+                    </Border>
+                </Grid>
+                <Grid x:Name="shapeGrid" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Tag="line" Text="直线" Cursor="Hand" VerticalAlignment="Center" MouseLeftButtonDown="ShapeCellClick"/>
+                    <TextBlock Grid.Column="1" Tag="triangle" Text="三角形" Cursor="Hand" VerticalAlignment="Center" MouseLeftButtonDown="ShapeCellClick"/>
+                    <TextBlock Grid.Column="2" Tag="circle" Text="椭圆形" Cursor="Hand" VerticalAlignment="Center" MouseLeftButtonDown="ShapeCellClick"/>
+                </Grid>
+
+                <Border Grid.Row="1" Cursor="Hand" BorderBrush="#CCCBCB" BorderThickness="0,0.5,0,0"/>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="imgText" Tag="0" Grid.Column="1" Cursor="Hand" Width="11.5" Height="12" VerticalAlignment="Bottom" Margin="0,0,0,3" Source="/YZCLASS.UI;component/Resource/Image/livepage-icon-text-on@2x.png" MouseLeftButtonDown="imgText_MouseLeftButtonDown"/>
+                    <Image x:Name="imgShape" Tag="0" Grid.Column="2" Cursor="Hand" Width="14" Height="14" VerticalAlignment="Bottom" Margin="0,0,0,3" Source="/YZCLASS.UI;component/Resource/Image/livepage-icon-hua-on@2x.png" MouseLeftButtonDown="imgShape_MouseLeftButtonDown"/>
+                    <Image x:Name="imgBrush" Tag="0" Grid.Column="3" Cursor="Hand" Width="14" Height="16" VerticalAlignment="Bottom" Margin="0,0,0,3" Source="/YZCLASS.UI;component/Resource/Image/livepage-icon-cle-on@2x.png" MouseLeftButtonDown="imgBrush_MouseLeftButtonDown"/>
+                </Grid>
+            </Grid>
+        </Border>
+        <Path Grid.Row="1" Stroke="#F5F5F5" StrokeThickness="0.1" Fill="#F5F5F5" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Path.Data>
+                <PathGeometry Figures="M 18,0 L 18,10 18,10 L 28,0 Z"/>
+            </Path.Data>
+        </Path>
+    </Grid>
+</UserControl>

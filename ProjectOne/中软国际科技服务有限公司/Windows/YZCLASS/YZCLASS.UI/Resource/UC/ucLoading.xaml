@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="ZYTool.UI.ucLoading"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ZYTool.UI"
+             mc:Ignorable="d" xmlns:gif="http://wpfanimatedgif.codeplex.com"
+             d:DesignHeight="300" d:DesignWidth="300" Visibility="Hidden">
+    <Grid>
+        <Image x:Name="loading" gif:ImageBehavior.AnimatedSource="/ZYTool.UI;component/Resource/Image/loading.gif" Stretch="None"/>
+    </Grid>
+</UserControl>
