@@ -1,7 +1,7 @@
 # 2020-Hackathon——译音——让聋哑人交流沟通无障碍
 ## 项目背景
 根据第六次全国人口普查抽样调查我国残疾人占全国总人口的比例和各类残疾人占残疾人总人数的比例如下：
-全国残疾人总数为8502万人。听力残疾2054万人。我国聋哑症的发病率约为2%！ 按年均人口出生率计算，连同出生后2~3岁婴幼儿，每年总的群体达5700万，听损
+全国残疾人总数为8502万人。听力残疾2054万人。我国聋哑症的发病率约为2%！ 按年均人口出生率计算，连同出生后2\~3岁婴幼儿，每年总的群体达5700万，听损
 伤的发病人数约为17万。 我国每年有2000万新生儿出生，约有3万听力损害的新生儿出现。
 
 ## 项目痛点分析
@@ -33,9 +33,11 @@ PS：为了符合联合国针对通用设计原则，我们在产品加入中文
 ## 主要功能1————让AI无障碍
 ### 目标：依托腾讯语音识别合成等AI技术解决聋哑人80%的交流沟通问题
 语音文字互译功能是聋哑人和普通人交流的重要功能，普通人按住按钮“按住说话”即可把语音转录成文字，这样聋哑人就能明白什么意思，然后聋哑人再最下面的输入框输入想要表达的文字，普通人就能看懂聋哑人表达的意思。从而实现双方交流。
-![](img/智能翻译主页.jpeg)
+
+![][image-1]
 
 语音文字互译功能是聋哑人和普通人交流的重要功能，普通人按住按钮“按住说话”即可把语音转录成文字，这样聋哑人就能明白什么意思，然后聋哑人再最下面的输入框输入想要表达的文字，普通人就能看懂聋哑人表达的意思。从而实现双方交流。
+![][image-2]
 
 ## 主要功能2————在线手语客服
 ### 目标：通过手语翻译远程客服，解决聋哑人20%的交流沟通问题
@@ -49,13 +51,30 @@ PS：为了符合联合国针对通用设计原则，我们在产品加入中文
 
 ## 用到产品技术使用SDK下载
 
-访问 Github 较慢的客户可以考虑使用国内下载地址： [DOWNLOAD](https://cloud.tencent.com/document/product/647/32689) 。
+访问 Github 较慢的客户可以考虑使用国内下载地址： [DOWNLOAD][1] 。
 
 | 所属平台   | Zip下载                                                      | Demo运行说明                                                | SDK集成指引                                                 | API 列表                                                    |
 | ---------- | ------------------------------------------------------------ | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
 
-| Android    | [下载](http://liteavsdk-1252463788.cosgz.myqcloud.com/TXLiteAVSDK_TRTC_Android_latest.zip) | [DOC](https://cloud.tencent.com/document/product/647/32166) | [DOC](https://cloud.tencent.com/document/product/647/32175) | [API](https://cloud.tencent.com/document/product/647/32267) |
-| Web        | [下载](https://liteavsdk-1252463788.cosgz.myqcloud.com/H5_latest.zip) | [DOC](https://cloud.tencent.com/document/product/647/32398) | [DOC](https://cloud.tencent.com/document/product/647/16863) | [API](https://cloud.tencent.com/document/product/647/17249) |
+| Android    | [下载][2] | [DOC][3] | [DOC][4] | [API][5] |
+| Web        | [下载][6] | [DOC][7] | [DOC][8] | [API][9] |
 
-| 微信小程序 | [下载](http://liteavsdk-1252463788.cosgz.myqcloud.com/TRTC_WXMini_latest.zip) | [DOC](https://cloud.tencent.com/document/product/647/32399) | [DOC](https://cloud.tencent.com/document/product/647/32183) | [API](https://cloud.tencent.com/document/product/647/17018) |
+| 微信小程序 | [下载][10] | [DOC][11] | [DOC][12] | [API][13] |
 
+
+[1]:	https://cloud.tencent.com/document/product/647/32689
+[2]:	http://liteavsdk-1252463788.cosgz.myqcloud.com/TXLiteAVSDK_TRTC_Android_latest.zip
+[3]:	https://cloud.tencent.com/document/product/647/32166
+[4]:	https://cloud.tencent.com/document/product/647/32175
+[5]:	https://cloud.tencent.com/document/product/647/32267
+[6]:	https://liteavsdk-1252463788.cosgz.myqcloud.com/H5_latest.zip
+[7]:	https://cloud.tencent.com/document/product/647/32398
+[8]:	https://cloud.tencent.com/document/product/647/16863
+[9]:	https://cloud.tencent.com/document/product/647/17249
+[10]:	http://liteavsdk-1252463788.cosgz.myqcloud.com/TRTC_WXMini_latest.zip
+[11]:	https://cloud.tencent.com/document/product/647/32399
+[12]:	https://cloud.tencent.com/document/product/647/32183
+[13]:	https://cloud.tencent.com/document/product/647/17018
+
+[image-1]:	img/%E6%99%BA%E8%83%BD%E7%BF%BB%E8%AF%91%E4%B8%BB%E9%A1%B5.jpeg
+[image-2]:	img/%E6%99%BA%E8%83%BD%E8%AF%86%E5%88%AB.png
