@@ -30,19 +30,67 @@
 硬件收入
 商业战略合作收入（地铁、公交车、盲人社区、盲校等）
 
+## 与你瞳行——瞳行模块
+启明出行APP
+瞳行小程序（我是你的眼助盲小程序）
+
+## 与你瞳行——瞳视模块
+启明瞳APP
+瞳视小程序（我是你的眼助盲小程序）
+
+
+## 与你瞳行——硬件
+启明瞳穿戴设备
+
+启明瞳智能眼镜
+
 
 ## SDK 下载
 
-访问 Github 较慢的客户可以考虑使用国内下载地址： [DOWNLOAD](https://cloud.tencent.com/document/product/647/32689) 。
+访问 Github 较慢的客户可以考虑使用国内下载地址： [DOWNLOAD][1] 。
 
 | 所属平台   | Zip下载                                                      | Demo运行说明                                                | SDK集成指引                                                 | API 列表                                                    |
 | ---------- | ------------------------------------------------------------ | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| iOS        | [下载](http://liteavsdk-1252463788.cosgz.myqcloud.com/TXLiteAVSDK_TRTC_iOS_latest.zip) | [DOC](https://cloud.tencent.com/document/product/647/32396) | [DOC](https://cloud.tencent.com/document/product/647/32173) | [API](https://cloud.tencent.com/document/product/647/32258) |
-| Android    | [下载](http://liteavsdk-1252463788.cosgz.myqcloud.com/TXLiteAVSDK_TRTC_Android_latest.zip) | [DOC](https://cloud.tencent.com/document/product/647/32166) | [DOC](https://cloud.tencent.com/document/product/647/32175) | [API](https://cloud.tencent.com/document/product/647/32267) |
-| Win(C++)   | [下载](http://liteavsdk-1252463788.cosgz.myqcloud.com/TXLiteAVSDK_TRTC_Win_latest.zip) | [DOC](https://cloud.tencent.com/document/product/647/32397) | [DOC](https://cloud.tencent.com/document/product/647/32178) | [API](https://cloud.tencent.com/document/product/647/32268) |
-| Win(C#)    | [下载](http://liteavsdk-1252463788.cosgz.myqcloud.com/TXLiteAVSDK_TRTC_Win_latest.zip) | [DOC](https://cloud.tencent.com/document/product/647/32397) | [DOC](https://cloud.tencent.com/document/product/647/32178) | [API](https://cloud.tencent.com/document/product/647/36776) |
-| Mac        | [下载](http://liteavsdk-1252463788.cosgz.myqcloud.com/TXLiteAVSDK_TRTC_Mac_latest.tar.bz2) | [DOC](https://cloud.tencent.com/document/product/647/32396) | [DOC](https://cloud.tencent.com/document/product/647/32176) | [API](https://cloud.tencent.com/document/product/647/32258) |
-| Web        | [下载](https://liteavsdk-1252463788.cosgz.myqcloud.com/H5_latest.zip) | [DOC](https://cloud.tencent.com/document/product/647/32398) | [DOC](https://cloud.tencent.com/document/product/647/16863) | [API](https://cloud.tencent.com/document/product/647/17249) |
-| Electron   | [下载](http://liteavsdk-1252463788.cosgz.myqcloud.com/TXLiteAVSDK_TRTC_Electron_latest.zip) | [DOC](https://cloud.tencent.com/document/product/647/38548) | [DOC](https://cloud.tencent.com/document/product/647/38549) | [API](https://cloud.tencent.com/document/product/647/38551) |
-| 微信小程序 | [下载](http://liteavsdk-1252463788.cosgz.myqcloud.com/TRTC_WXMini_latest.zip) | [DOC](https://cloud.tencent.com/document/product/647/32399) | [DOC](https://cloud.tencent.com/document/product/647/32183) | [API](https://cloud.tencent.com/document/product/647/17018) |
+| iOS        | [下载][2] | [DOC][3] | [DOC][4] | [API][5] |
+| Android    | [下载][6] | [DOC][7] | [DOC][8] | [API][9] |
+| Win(C++)   | [下载][10] | [DOC][11] | [DOC][12] | [API][13] |
+| Win(C#)    | [下载][14] | [DOC][15] | [DOC][16] | [API][17] |
+| Mac        | [下载][18] | [DOC][19] | [DOC][20] | [API][21] |
+| Web        | [下载][22] | [DOC][23] | [DOC][24] | [API][25] |
+| Electron   | [下载][26] | [DOC][27] | [DOC][28] | [API][29] |
+| 微信小程序 | [下载][30] | [DOC][31] | [DOC][32] | [API][33] |
 
+
+[1]:	https://cloud.tencent.com/document/product/647/32689
+[2]:	http://liteavsdk-1252463788.cosgz.myqcloud.com/TXLiteAVSDK_TRTC_iOS_latest.zip
+[3]:	https://cloud.tencent.com/document/product/647/32396
+[4]:	https://cloud.tencent.com/document/product/647/32173
+[5]:	https://cloud.tencent.com/document/product/647/32258
+[6]:	http://liteavsdk-1252463788.cosgz.myqcloud.com/TXLiteAVSDK_TRTC_Android_latest.zip
+[7]:	https://cloud.tencent.com/document/product/647/32166
+[8]:	https://cloud.tencent.com/document/product/647/32175
+[9]:	https://cloud.tencent.com/document/product/647/32267
+[10]:	http://liteavsdk-1252463788.cosgz.myqcloud.com/TXLiteAVSDK_TRTC_Win_latest.zip
+[11]:	https://cloud.tencent.com/document/product/647/32397
+[12]:	https://cloud.tencent.com/document/product/647/32178
+[13]:	https://cloud.tencent.com/document/product/647/32268
+[14]:	http://liteavsdk-1252463788.cosgz.myqcloud.com/TXLiteAVSDK_TRTC_Win_latest.zip
+[15]:	https://cloud.tencent.com/document/product/647/32397
+[16]:	https://cloud.tencent.com/document/product/647/32178
+[17]:	https://cloud.tencent.com/document/product/647/36776
+[18]:	http://liteavsdk-1252463788.cosgz.myqcloud.com/TXLiteAVSDK_TRTC_Mac_latest.tar.bz2
+[19]:	https://cloud.tencent.com/document/product/647/32396
+[20]:	https://cloud.tencent.com/document/product/647/32176
+[21]:	https://cloud.tencent.com/document/product/647/32258
+[22]:	https://liteavsdk-1252463788.cosgz.myqcloud.com/H5_latest.zip
+[23]:	https://cloud.tencent.com/document/product/647/32398
+[24]:	https://cloud.tencent.com/document/product/647/16863
+[25]:	https://cloud.tencent.com/document/product/647/17249
+[26]:	http://liteavsdk-1252463788.cosgz.myqcloud.com/TXLiteAVSDK_TRTC_Electron_latest.zip
+[27]:	https://cloud.tencent.com/document/product/647/38548
+[28]:	https://cloud.tencent.com/document/product/647/38549
+[29]:	https://cloud.tencent.com/document/product/647/38551
+[30]:	http://liteavsdk-1252463788.cosgz.myqcloud.com/TRTC_WXMini_latest.zip
+[31]:	https://cloud.tencent.com/document/product/647/32399
+[32]:	https://cloud.tencent.com/document/product/647/32183
+[33]:	https://cloud.tencent.com/document/product/647/17018
