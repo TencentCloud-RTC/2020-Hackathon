@@ -59,11 +59,9 @@
 
 如果您有另外一台主机，也安装了此软件，这时候就可以进行远程控制了。
 
-#### 软件视频演示
+#### 软件演示视频
 
-<video id="video" controls="" preload="none" poster="http://note.youdao.com/yws/res/4013/WEBRESOURCE73bee1e678359245e53356c7688a22b5">
-      <source id="mp4" src="https://note.youdao.com/yws/api/personal/file/F3E24D5DF9A3489396B5D48D931A437D?method=download&shareKey=52c1b7aeb39700eb10615448b7bc7fd7" type="video/mp4">
-</video>
+### [演示视频](https://heisir.djdeveloper.cn:3005/)
 
 ### 未来规划
 目前软件功能还不完善，在这里列举出几点未来有待实现的功能。
