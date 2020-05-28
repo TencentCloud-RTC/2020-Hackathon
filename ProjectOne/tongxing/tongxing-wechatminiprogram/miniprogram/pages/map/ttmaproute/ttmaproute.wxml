@@ -1,0 +1,8 @@
+<view class='head'>
+  <view class='label_container'>启明瞳
+    <label wx:if='{{!isReading}}'>未开启</label>
+    <label wx:if='{{isReading}}'>已开启</label>
+    <label wx:if='{{isReading}}'>{{distance}}米障碍</label>
+  </view>
+</view>
+<map-route class='map' route-info="{{routeInfo}}"></map-route>

@@ -1,0 +1,63 @@
+<!--index.wxml-->
+
+<!-- bindconfirm='bindConfirm' -->
+<!-- <input value='{{inputValue}}' focus='{{inputFocus}}' confirm-type='search' bindinput='bindInput' bindfocus='bindFocus' bindblur='bindBlur'></input> -->
+<view class="weui-search-bar">
+  <view class="weui-search-bar__form">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="bindInput" bindfocus='bindFocus' />
+      <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput" bindblur='bindBlur'>
+        <icon type="clear" size="14"></icon>
+      </view>
+    </view>
+    <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+      <icon class="weui-icon-search" type="search" size="14"></icon>
+      <view class="weui-search-bar__text">搜索</view>
+    </label>
+  </view>
+  <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+</view>
+<!-- 
+    markers="{{markers}}" 
+    polyline="{{polyline}}"
+    bindmarkertap="doMarkertap"
+   -->
+<map id="map" class='map' style='height: {{mapHeight}}' longitude="{{longitude}}" latitude="{{latitude}}" scale="15" markers="{{markers}}" polyline="{{polyline}}" show-location>
+  <cover-view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
+    <cover-view class="weui-cell" hover-class="weui-cell_active" wx:for='{{suggestionList}}' wx:key='{{item}}' bindtap='suggestionTap' data-title='{{item.title}}' data-address='{{item.address}}' data-location='{{item.location}}'>
+      <cover-view class="weui-cell__bd">
+        <cover-view>{{item.title}}</cover-view>
+      </cover-view>
+    </cover-view>
+  </cover-view>
+  <!-- <cover-view class='search_suggestion' wx:if='{{isSearching}}'>
+      <cover-view>输入提示：</cover-view>
+      <cover-view wx:for='{{suggestionList}}' wx:key='{{item}}' bindtap='suggestionTap' data-title='{{item.title}}' data-address='{{item.address}}' data-location='{{item.location}}'>
+        <cover-view>{{item.title}}</cover-view>
+      </cover-view>
+    </cover-view> -->
+</map>
+<!-- <view class='scrollview_container' wx:if='{{searchDone}}'>
+    <image class='locate_icon_' src='../image/position.svg' bindtap='moveToLocation'></image>
+    <scroll-view class='search_item_container' scroll-y>
+      <view class='search_item' wx:for='{{searchList}}' wx:key='{{item}}' bindtap='searchItemTap' data-location='{{item.location}}'>
+        <label>{{item.title}}</label>
+        <label>{{item.address}}</label>
+      </view>
+    </scroll-view>
+  </view> -->
+<view class='foot' wx:if='{{!searchDone}}'>
+  <view class='location_container'>
+    <view class='description_container'>
+      <view class='c_loc_desc'>{{cLocDesc}}</view>
+      <view class='c_address'>{{cAddress}}</view>
+    </view>
+    <rich-text nodes='<img src="https://lg-8d7pfbfk-1256074910.cos.ap-shanghai.myqcloud.com/ic_locate.png" class="locate_icon" alt="定位">' bindtap='getLoc'></rich-text>
+  </view>
+  <view class='button_container'>
+    <rich-text nodes='<img src="https://lg-8d7pfbfk-1256074910.cos.ap-shanghai.myqcloud.com/ic_compass.png" class="button_icon" alt="指南针">' bindtap='bindCompass'></rich-text>
+    <rich-text nodes='<img src="https://lg-8d7pfbfk-1256074910.cos.ap-shanghai.myqcloud.com/ic_bluetooth.png" class="button_icon" alt="蓝牙">' bindtap='bindBluetooth'></rich-text>
+    <rich-text nodes='<img src="https://lg-8d7pfbfk-1256074910.cos.ap-shanghai.myqcloud.com/ic_location_.png" class="button_icon" alt="选择位置">' bindtap='bindPosition'></rich-text>
+  </view>
+</view>

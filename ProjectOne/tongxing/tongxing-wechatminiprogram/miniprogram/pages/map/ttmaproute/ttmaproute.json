@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "导航路线",
+  "usingComponents": {
+    "map-route": "plugin://TTMapPlugin/mapRoute"
+  }
+}
