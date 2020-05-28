@@ -29,15 +29,15 @@
 #### 界面
 此产品有2个界面，分别是软件主页面和远程控制页面。
 
-![image.png](http://note.youdao.com/yws/res/4013/WEBRESOURCE73bee1e678359245e53356c7688a22b5)
+![image.png](https://github.com/HeiSir2014/2020-Hackathon/blob/master/ProjectOne/HeiSir-Win/Resource/1.png?raw=true)
 
-![image.png](http://note.youdao.com/yws/res/4015/WEBRESOURCEf7c9bb7d7744d116a8a2c0a988bbe5bf)
+![image.png](https://github.com/HeiSir2014/2020-Hackathon/blob/master/ProjectOne/HeiSir-Win/Resource/2.png?raw=true)
 
 #### 技术思路
 客户端启动之后通过长连接接入信令服务器，当用户需要远程某一台终端时，信令服务器下达指令使此终端通过TRTC sdk接入到指定房间并分享终端的桌面，然后用户那端可以通过TRTC sdk的消息传送当前的鼠标和键盘消息给欲被控制的终端，接着使用模拟控制输入达到远程控制的效果。
 #### 技术架构
 
-![image.png](http://note.youdao.com/yws/res/4018/WEBRESOURCEeab7863f3cdb38fd16746765bb75ae67)
+![image.png](https://github.com/HeiSir2014/2020-Hackathon/blob/master/ProjectOne/HeiSir-Win/Resource/image.png?raw=true)
 
 
 ### 软件说明书
@@ -53,7 +53,7 @@
 #### 使用说明
 可以官网下载软件安装包，安装成功后，双击启动云桌面，她会显示一个界面取下图
 
-![image.png](http://note.youdao.com/yws/res/4013/WEBRESOURCE73bee1e678359245e53356c7688a22b5)
+![image.png](https://github.com/HeiSir2014/2020-Hackathon/blob/master/ProjectOne/HeiSir-Win/Resource/1.png?raw=true)
 
 界面左侧显示终端硬件码ID和一个临时密码。右侧是输入其他终端ID和密码的地方，输入终端ID和密码后，点击开始连接按钮进行远程控制其他终端。
 
@@ -79,3 +79,14 @@
 
 ### 关于对TRTC的建议
 TRTC目前主要方向是在多人互动音视频上，建议可以增加一种远程桌面的高实时、高清晰度模式，那么云桌面在未来体验会更好。
+
+### 联系作者
+
+公司：上海岱嘉
+
+昵称：HeiSir
+
+QQ：1586462
+
+![微信扫一扫](https://github.com/HeiSir2014/2020-Hackathon/blob/master/ProjectOne/HeiSir-Win/Resource/mmqrcode.png?raw=true)
+扫一扫上面的二维码图案，加我微信
