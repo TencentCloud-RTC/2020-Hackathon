@@ -1,0 +1,51 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+    defaultConfig {
+        applicationId "com.baidu.track"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+        }
+    }
+
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'junit:junit:4.12'
+    implementation 'com.android.support.test:runner:0.5'
+
+    implementation 'com.tencent.liteav:LiteAVSDK_TRTC:latest.release'
+    implementation 'com.android.support:multidex:1.0.0'
+    implementation ('com.squareup.retrofit2:retrofit:2.3.0'){
+        exclude group: 'com.squareup.okhttp3' //by group
+    }
+    implementation ('com.squareup.retrofit2:converter-gson:2.3.0'){
+        exclude group: 'com.squareup.okio' //by group
+    }
+//    compile 'com.squareup.okhttp3:okhttp:3.1.2'
+//    compile 'com.caverock:androidsvg:1.3'
+
+}
