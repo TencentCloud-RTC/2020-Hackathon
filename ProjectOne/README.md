@@ -39,38 +39,38 @@
 
 瞳行小程序（我是你的眼助盲小程序）
 
-![](/tongxing/img/瞳行（我是你的眼助盲小程序）.jpg)
+![](./tongxing/img/瞳行（我是你的眼助盲小程序）.jpg)
 
-![](./img/自动导航.jpg)
+![](./tongxing/img/自动导航.jpg)
 
-![](./img/自动识别位置.jpg)
+![](./tongxing/img/自动识别位置.jpg)
 
 ## 与你瞳行——瞳视模块
 
 启明瞳APP[应用宝官网下载链接](https://sj.qq.com/myapp/detail.htm?apkName=cn.com.bemyeyes)
 启明瞳行
 
-![](./img/准备切入链接实时视频客服.jpg)
+![](./tongxing/img/准备切入链接实时视频客服.jpg)
 
-![](./img/实时视频客服选择.jpg)
+![](./tongxing/img/实时视频客服选择.jpg)
 
-![](./img/实时视频客服列表.jpg)
+![](./tongxing/img/实时视频客服列表.jpg)
 
-![](./img/实时视频客服画面.jpg)
+![](./tongxing/img/实时视频客服画面.jpg)
 
 ## 与你瞳行——硬件
 启明瞳穿戴设备
 
-![](./img/启明瞳导盲传到设备硬件.png)
+![](./tongxing/img/启明瞳导盲传到设备硬件.png)
 
 启明瞳智能眼镜
 
-![](./img/外接硬件设备实时视频客服页面.jpg)
+![](./tongxing/img/外接硬件设备实时视频客服页面.jpg)
 
 ## 展示视频
-[启明瞳智能眼镜视频](./video/启明瞳智能眼镜视频.mp4)
+[启明瞳智能眼镜视频](./tongxing/video/启明瞳智能眼镜视频.mp4)
 
-[与你瞳行——启明瞳穿戴设备](./与你瞳行——启明瞳穿戴设备.mp4)
+[与你瞳行——启明瞳穿戴设备](./tongxing/与你瞳行——启明瞳穿戴设备.mp4)
 
 ## 联系我们
 
