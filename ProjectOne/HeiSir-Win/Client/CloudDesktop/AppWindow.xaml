@@ -118,7 +118,7 @@
                 <TextBox x:Name="textBox_ComputerPassword" Grid.Row="5" Text="123456" VerticalContentAlignment="Center" Margin="8,0,64,0" FontSize="16" FontWeight="UltraBold" BorderThickness="0" IsReadOnly="True" Background="{x:Null}" ></TextBox>
                 <Button x:Name="BtnNewPsw" Grid.Row="5" Content="刷新" Foreground="#FFE8A95F" Background="{x:Null}" Width="32" BorderThickness="1" BorderBrush="{x:Null}" Margin="0,0,16,0" HorizontalAlignment="Right" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="BtnNewPsw_Click"></Button>
                 <Label  Grid.Row="7" BorderThickness="0,1,0,0" BorderBrush="#FFD2D2D2" Margin="0"></Label>
-                <Label Grid.Row="9" Content="启动配置" VerticalContentAlignment="Center" Height="32" Margin="0" FontSize="14"  Background="#FFE8A95F" Foreground="White" />
+                <Label Grid.Row="9" Content="启 动 配 置" VerticalContentAlignment="Center" Height="32" Margin="0" FontSize="14"  Background="#FFE8A95F" Foreground="White" />
                 <CheckBox x:Name="checkBox_AutoStart" Grid.Row="10" Content="随Window一同启动云桌面"  VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="16,0,0,0" FontSize="14" Click="checkBox_AutoStart_Click" />
             </Grid>
             <Label Grid.Column="2" BorderThickness="1,0,0,0" BorderBrush="#FFD2D2D2" Margin="0" ></Label>
@@ -138,7 +138,7 @@
                     
                 </ComboBox>
                 <Label Grid.Row="3" Content="密码" VerticalContentAlignment="Center" Margin="20,0" FontSize="12" />
-                <PasswordBox x:Name="ConnPassword" Grid.Row="4"  VerticalContentAlignment="Center" Margin="25,0" FontSize="18" HorizontalAlignment="Left" Width="180" Height="32" Padding="8,2"/>
+                <PasswordBox x:Name="ConnPassword" Password="trtcsdk" Grid.Row="4"  VerticalContentAlignment="Center" Margin="25,0" FontSize="18" HorizontalAlignment="Left" Width="180" Height="32" Padding="8,2"/>
                 <Button x:Name="StartConn" Grid.Row="5" VerticalContentAlignment="Center" Width="120" Margin="25,5" HorizontalAlignment="Left" Content="开 始 连 接" FontSize="16" Background="#FFE8A95F" BorderThickness="1" BorderBrush="{x:Null}" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Foreground="White" VerticalAlignment="Stretch" Click="StartConn_Click"  ></Button>
             </Grid>
         </Grid>

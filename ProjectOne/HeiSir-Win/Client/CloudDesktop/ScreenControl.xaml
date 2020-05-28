@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         x:Name="Screen"
         Title="远程终端" Height="720" Width="1280" FontFamily="Segoe UI" Background="#FFF2F3F4"
-        WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Loaded="Screen_Loaded" Closing="Screen_Closing">
+        WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Loaded="Screen_Loaded" Closing="Screen_Closing" GotFocus="Screen_GotFocus" LostFocus="Screen_LostFocus" Activated="Screen_Activated" Deactivated="Screen_Deactivated">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -44,6 +44,6 @@
             </Button>
         </Grid>
 
-        <Label x:Name="Loading"   Grid.Row="1"   Content="正在加载远程画面..." Foreground="#FFE77B35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="72" KeyDown="Loading_KeyDown" KeyUp="Loading_KeyUp"></Label>
+        <Label x:Name="Loading"   Grid.Row="1"   Content="正在加载远程画面..." Foreground="#FFE77B35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="72"/>
     </Grid>
 </Window>

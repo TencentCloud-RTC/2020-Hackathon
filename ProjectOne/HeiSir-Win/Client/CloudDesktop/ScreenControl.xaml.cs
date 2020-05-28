@@ -26,6 +26,7 @@ namespace CloudDesktop
         public int m_nMachineGUID = 0;
         public int m_nPeerMachineGUID = 0;
         private bool IsHaveStream =false;
+        private KeyboardListener keyboardListener = null;
 
         public ScreenControl()
         {
@@ -83,7 +84,6 @@ namespace CloudDesktop
 
         public void onWarning(TXLiteAVWarning warningCode, string warningMsg, IntPtr arg)
         {
-
             Log.I(warningMsg);
         }
 
@@ -91,11 +91,15 @@ namespace CloudDesktop
         {
             Log.I($"onEnterRoom result = {result}");
 
+            trtcCloud?.muteLocalAudio(true);
+            trtcCloud?.muteLocalVideo(true);
             //trtcCloud.muteAllRemoteVideoStreams(false);
         }
 
         public void onExitRoom(int reason)
         {
+            Log.I($"onExitRoom reason = {reason}");
+
             trtcCloud?.stopAllRemoteView();
             trtcCloud?.removeCallback(this);
             trtcCloud = null;
@@ -132,12 +136,12 @@ namespace CloudDesktop
 
         public void onUserVideoAvailable(string userId, bool available)
         {
-            Log.I($"onUserVideoAvailable userId:${userId} available:${available}");
+            Log.I($"onUserVideoAvailable userId:{userId} available:{available}");
         }
 
         public void onUserSubStreamAvailable(string userId, bool available)
         {
-            Log.I($"onUserSubStreamAvailable userId:${userId} available:${available}");
+            Log.I($"onUserSubStreamAvailable userId:{userId} available:{available}");
             if (userId == "source")
             {
                 this.Dispatcher.BeginInvoke(new Action(() => {
@@ -152,6 +156,13 @@ namespace CloudDesktop
                         videoView.Margin = new Thickness(0);
                         Loading.Visibility = Visibility.Hidden;
                         IsHaveStream = true;
+
+                        if (keyboardListener == null)
+                        {
+                            keyboardListener = new KeyboardListener();
+                        }
+                        keyboardListener.KeyEvent += KeyboardListener_KeyEvent;
+                        keyboardListener.IsBlockKeyboard = true;
                     }
                     else
                     {
@@ -160,44 +171,69 @@ namespace CloudDesktop
                         Loading.Content = "远程已断开";
                         Loading.Visibility = Visibility.Visible;
                         IsHaveStream = false;
+
+                        if (keyboardListener != null)
+                        {
+                            keyboardListener.KeyEvent -= KeyboardListener_KeyEvent;
+                            keyboardListener.IsBlockKeyboard = false;
+                            keyboardListener.Dispose();
+                            keyboardListener = null;
+                        }
                     }
                 }));
             }
         }
 
+        private void KeyboardListener_KeyEvent(object sender, RawKeyEventArgs args)
+        {
+            Console.WriteLine($"Type = {args.Type} Key = {args.Key}  VKCode= {args.VKCode}");
+            if (trtcCloud != null && IsHaveStream && (args.Type == InterceptKeys.WM_KEYDOWN 
+                || args.Type == InterceptKeys.WM_KEYUP
+                || args.Type == InterceptKeys.WM_SYSKEYDOWN
+                || args.Type == InterceptKeys.WM_SYSKEYUP ))
+            {
+                var o = new JObject();
+                o["cmd"] = args.Type == InterceptKeys .WM_KEYDOWN || args.Type == InterceptKeys.WM_SYSKEYDOWN ? "KeyDown":"KeyUp";
+                o["KeyCode"] = (uint)args.VKCode;
+
+                var data = Encoding.UTF8.GetBytes(o.ToString());
+                trtcCloud?.sendCustomCmdMsg(2, data, (uint)data.Length, true, true);
+            }
+        }
+
         public void onUserAudioAvailable(string userId, bool available)
         {
-            
+            Log.I($"onUserAudioAvailable userId:{userId} available:{available}");
         }
 
         public void onFirstVideoFrame(string userId, TRTCVideoStreamType streamType, int width, int height)
         {
-            
+            Log.I($"onFirstVideoFrame");
         }
 
         public void onFirstAudioFrame(string userId)
         {
-            
+            Log.I($"onFirstAudioFrame");
         }
 
         public void onSendFirstLocalVideoFrame(TRTCVideoStreamType streamType)
         {
-            
+            Log.I($"onSendFirstLocalVideoFrame");
         }
 
         public void onSendFirstLocalAudioFrame()
         {
-            
+            Log.I($"onSendFirstLocalAudioFrame ");
         }
 
         public void onUserEnter(string userId)
         {
-            
+            Log.I($"onUserEnter userId:{userId}");
         }
 
         public void onUserExit(string userId, int reason)
         {
-            
+            Log.I($"onUserExit userId:{userId} reason:{reason}");
         }
 
         public void onNetworkQuality(TRTCQualityInfo localQuality, TRTCQualityInfo[] remoteQuality, uint remoteQualityCount)
@@ -212,17 +248,17 @@ namespace CloudDesktop
 
         public void onConnectionLost()
         {
-            
+            Log.I($"onConnectionLost");
         }
 
         public void onTryToReconnect()
         {
-            
+            Log.I($"onTryToReconnect");
         }
 
         public void onConnectionRecovery()
         {
-            
+            Log.I($"onConnectionRecovery");
         }
 
         public void onSpeedTest(TRTCSpeedTestResult currentResult, uint finishedCount, uint totalCount)
@@ -247,7 +283,8 @@ namespace CloudDesktop
 
         public void onDeviceChange(string deviceId, TRTCDeviceType type, TRTCDeviceState state)
         {
-            
+
+            Log.I($"onDeviceChange {deviceId} {type.ToString()} {state.ToString()}");
         }
 
         public void onTestMicVolume(uint volume)
@@ -307,27 +344,28 @@ namespace CloudDesktop
 
         public void onScreenCaptureCovered()
         {
-            
+            Log.I($"onScreenCaptureCovered");
         }
 
         public void onScreenCaptureStarted()
         {
-            
+            Log.I($"onScreenCaptureStarted");
         }
 
         public void onScreenCapturePaused(int reason)
         {
-            
+            Log.I($"onScreenCapturePaused");
         }
 
         public void onScreenCaptureResumed(int reason)
         {
-            
+
+            Log.I($"onScreenCaptureResumed");
         }
 
         public void onScreenCaptureStoped(int reason)
         {
-            
+            Log.I($"onScreenCaptureStoped");
         }
 
         public void onPlayBGMBegin(TXLiteAVError errCode)
@@ -351,6 +389,14 @@ namespace CloudDesktop
 
         private void Screen_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            if (keyboardListener != null)
+            {
+                keyboardListener.KeyEvent -= KeyboardListener_KeyEvent;
+                keyboardListener.IsBlockKeyboard = false;
+                keyboardListener.Dispose();
+                keyboardListener = null;
+            }
+
             if (trtcCloud != null)
             {
 
@@ -397,12 +443,11 @@ namespace CloudDesktop
                 trtcCloud?.sendCustomCmdMsg(1, data, (uint)data.Length, true, true);
             }   
         }
-
+        private int MouseMoveCalc = 0;
         private void RenderMapView_MouseMove(object sender, MouseEventArgs e)
         {
-            if (trtcCloud != null && IsHaveStream)
+            if (trtcCloud != null && IsHaveStream && MouseMoveCalc++ % 3 == 0)
             {
-
                 var point = e.GetPosition(RenderMapView);
                 var o = new JObject();
                 o["cmd"] = "MouseMove";
@@ -410,7 +455,7 @@ namespace CloudDesktop
                 o["Clicks"] = 0;
                 o["X"] = point.X;
                 o["Y"] = point.Y;
-                o["Operate"] = (int)(e.LeftButton == MouseButtonState.Pressed ? ENUM_MouseOperate.LeftDown : (e.RightButton == MouseButtonState.Pressed ? ENUM_MouseOperate.RightDown : (e.MiddleButton == MouseButtonState.Pressed ? ENUM_MouseOperate.MiddleDown : ENUM_MouseOperate.LeftDown))); ;
+                o["Operate"] = (int)(e.LeftButton == MouseButtonState.Pressed ? ENUM_MouseOperate.LeftDown : (e.RightButton == MouseButtonState.Pressed ? ENUM_MouseOperate.RightDown : (e.MiddleButton == MouseButtonState.Pressed ? ENUM_MouseOperate.MiddleDown : ENUM_MouseOperate.Move))); ;
                 o["Delta"] = 0;
                 var data = Encoding.UTF8.GetBytes(o.ToString());
                 trtcCloud?.sendCustomCmdMsg(1, data, (uint)data.Length, true, true);
@@ -421,7 +466,6 @@ namespace CloudDesktop
         {
             if (trtcCloud != null && IsHaveStream)
             {
-
                 var point = e.GetPosition(RenderMapView);
                 var o = new JObject();
                 o["cmd"] = "MouseUp";
@@ -429,7 +473,7 @@ namespace CloudDesktop
                 o["Clicks"] = e.ClickCount;
                 o["X"] = point.X;
                 o["Y"] = point.Y;
-                o["Operate"] = (int)(e.ChangedButton == MouseButton.Left ? ENUM_MouseOperate.LeftDown : (e.ChangedButton == MouseButton.Right ? ENUM_MouseOperate.RightDown : (e.ChangedButton == MouseButton.Middle ? ENUM_MouseOperate.MiddleDown : ENUM_MouseOperate.LeftDown))); ;
+                o["Operate"] = (int)(e.ChangedButton == MouseButton.Left ? ENUM_MouseOperate.LeftUp : (e.ChangedButton == MouseButton.Right ? ENUM_MouseOperate.RightUp : (e.ChangedButton == MouseButton.Middle ? ENUM_MouseOperate.MiddleUp : ENUM_MouseOperate.LeftUp))); ;
                 o["Delta"] = 0;
                 var data = Encoding.UTF8.GetBytes(o.ToString());
                 trtcCloud?.sendCustomCmdMsg(1, data, (uint)data.Length, true, true);
@@ -440,7 +484,6 @@ namespace CloudDesktop
         {
             if (trtcCloud != null && IsHaveStream)
             {
-
                 var point = e.GetPosition(RenderMapView);
                 var o = new JObject();
                 o["cmd"] = "MouseWheel";
@@ -466,21 +509,42 @@ namespace CloudDesktop
                 o["KeyCode"] = (uint)e.Key;
 
                 var data = Encoding.UTF8.GetBytes(o.ToString());
-                trtcCloud?.sendCustomCmdMsg(1, data, (uint)data.Length, true, true);
+                trtcCloud?.sendCustomCmdMsg(2, data, (uint)data.Length, true, true);
             }
         }
 
-        private void Loading_KeyUp(object sender, KeyEventArgs e)
+
+        private void Screen_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (trtcCloud != null && IsHaveStream)
+            if (keyboardListener != null)
             {
+                keyboardListener.IsBlockKeyboard = true;
+            }
+        }
 
-                var o = new JObject();
-                o["cmd"] = "KeyUp";
-                o["KeyCode"] = (uint)e.Key;
+        private void Screen_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (keyboardListener != null)
+            {
+                keyboardListener.IsBlockKeyboard = false;
+            }
+        }
 
-                var data = Encoding.UTF8.GetBytes(o.ToString());
-                trtcCloud?.sendCustomCmdMsg(1, data, (uint)data.Length, true, true);
+        private void Screen_Activated(object sender, EventArgs e)
+        {
+
+            if (keyboardListener != null)
+            {
+                keyboardListener.IsBlockKeyboard = true;
+            }
+        }
+
+        private void Screen_Deactivated(object sender, EventArgs e)
+        {
+
+            if (keyboardListener != null)
+            {
+                keyboardListener.IsBlockKeyboard = false;
             }
         }
     }

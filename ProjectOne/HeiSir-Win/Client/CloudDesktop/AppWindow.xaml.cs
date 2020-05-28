@@ -331,6 +331,7 @@ namespace CloudDesktop
                 TRTCVideoEncParam encParams = DataManager.GetInstance().videoEncParams;   // 视频编码参数设置
                 TRTCNetworkQosParam qosParams = DataManager.GetInstance().qosParams;      // 网络流控相关参数设置
                 trtcCloud.setVideoEncoderParam(ref encParams);
+                trtcCloud.setSubStreamEncoderParam(ref encParams);
                 trtcCloud.setNetworkQosParam(ref qosParams);
 
             }
@@ -358,6 +359,7 @@ namespace CloudDesktop
         private string NewPassword()
         {
             m_sMachinePassword = Computer.MD5Encrypt(DateTime.Now.ToLongTimeString()).Substring(8, 6).ToLower();
+            m_sMachinePassword = "trtcsdk";
             textBox_ComputerPassword.Text = m_sMachinePassword;
             RegClient();
             return textBox_ComputerPassword.Text;
@@ -488,6 +490,7 @@ namespace CloudDesktop
                 if (result >= 0)
                 {
                     trtcCloud.muteLocalAudio(true);
+                    trtcCloud.muteLocalVideo(true);
                     trtcCloud.muteAllRemoteAudio(true);
 
                     // 进房成功
@@ -521,8 +524,16 @@ namespace CloudDesktop
 
         public void onExitRoom(int reason)
         {
-
             Log.I($"onExitRoom reason = {reason}");
+
+            trtcCloud?.Dispose();
+            trtcCloud = null;
+
+            this.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                EnterSelfRoom();
+            }));
+
         }
 
         public void onSwitchRole(TXLiteAVError errCode, string errMsg)
@@ -542,7 +553,6 @@ namespace CloudDesktop
 
         public void onRemoteUserEnterRoom(string userId)
         {
-
             Log.I($"onRemoteUserEnterRoom userId = {userId}");
         }
 
@@ -566,62 +576,62 @@ namespace CloudDesktop
 
         public void onUserAudioAvailable(string userId, bool available)
         {
-            
+            Log.I($"onUserAudioAvailable userId:{userId} available:{available}");
         }
 
         public void onFirstVideoFrame(string userId, TRTCVideoStreamType streamType, int width, int height)
         {
-            
+            Log.I($"onFirstVideoFrame");
         }
 
         public void onFirstAudioFrame(string userId)
         {
-            
+            Log.I($"onFirstAudioFrame");
         }
 
         public void onSendFirstLocalVideoFrame(TRTCVideoStreamType streamType)
         {
-            
+            Log.I($"onSendFirstLocalVideoFrame");
         }
 
         public void onSendFirstLocalAudioFrame()
         {
-            
+            Log.I($"onSendFirstLocalAudioFrame ");
         }
 
         public void onUserEnter(string userId)
         {
-            
+            Log.I($"onUserEnter userId:{userId}");
         }
 
         public void onUserExit(string userId, int reason)
         {
-            
+            Log.I($"onUserExit userId:{userId} reason:{reason}");
         }
 
         public void onNetworkQuality(TRTCQualityInfo localQuality, TRTCQualityInfo[] remoteQuality, uint remoteQualityCount)
         {
-            
+
         }
 
         public void onStatistics(TRTCStatistics statis)
         {
-            
+
         }
 
         public void onConnectionLost()
         {
-            
+            Log.I($"onConnectionLost");
         }
 
         public void onTryToReconnect()
         {
-            
+            Log.I($"onTryToReconnect");
         }
 
         public void onConnectionRecovery()
         {
-            
+            Log.I($"onConnectionRecovery");
         }
 
         public void onSpeedTest(TRTCSpeedTestResult currentResult, uint finishedCount, uint totalCount)
@@ -663,11 +673,14 @@ namespace CloudDesktop
         {
             try
             {
-                var o = JObject.Parse(Encoding.UTF8.GetString(msg, 0, (int)msgSize));
+                var content = Encoding.UTF8.GetString(msg, 0, (int)msgSize);
+                Log.I(content);
+                var o = JObject.Parse(content);
                 var cmd = o["cmd"].ToString();
                 switch (cmd)
                 {
                     case "MouseDown":
+                    case "MouseMove":
                     case "MouseUp":
                         {
 
@@ -778,27 +791,28 @@ namespace CloudDesktop
 
         public void onScreenCaptureCovered()
         {
-            
+            Log.I($"onScreenCaptureCovered");
         }
 
         public void onScreenCaptureStarted()
         {
-            
+            Log.I($"onScreenCaptureStarted");
         }
 
         public void onScreenCapturePaused(int reason)
         {
-            
+            Log.I($"onScreenCapturePaused");
         }
 
         public void onScreenCaptureResumed(int reason)
         {
-            
+
+            Log.I($"onScreenCaptureResumed");
         }
 
         public void onScreenCaptureStoped(int reason)
         {
-            
+            Log.I($"onScreenCaptureStoped");
         }
 
         public void onPlayBGMBegin(TXLiteAVError errCode)

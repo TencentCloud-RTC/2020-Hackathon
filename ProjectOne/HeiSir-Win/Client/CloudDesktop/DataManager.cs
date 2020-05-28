@@ -117,7 +117,7 @@ namespace CloudDesktop
             string param;
             param = storage.GetValue(INI_ROOT_KEY, INI_KEY_VIDEO_BITRATE);
             if (string.IsNullOrEmpty(param))
-                this.videoEncParams.videoBitrate = 2000;
+                this.videoEncParams.videoBitrate = 1000;
             else
                 this.videoEncParams.videoBitrate = uint.Parse(param);
             param = storage.GetValue(INI_ROOT_KEY, INI_KEY_VIDEO_FPS);
@@ -137,7 +137,7 @@ namespace CloudDesktop
                 this.videoEncParams.resMode = (TRTCVideoResolutionMode)int.Parse(param);
             param = storage.GetValue(INI_ROOT_KEY, INI_KEY_VIDEO_QUALITY);
             if (string.IsNullOrEmpty(param))
-                this.qosParams.preference = TRTCVideoQosPreference.TRTCVideoQosPreferenceClear;
+                this.qosParams.preference = TRTCVideoQosPreference.TRTCVideoQosPreferenceSmooth;
             else 
                 this.qosParams.preference = (TRTCVideoQosPreference)int.Parse(param);
             param = storage.GetValue(INI_ROOT_KEY, INI_KEY_VIDEO_QUALITY_CONTROL);
