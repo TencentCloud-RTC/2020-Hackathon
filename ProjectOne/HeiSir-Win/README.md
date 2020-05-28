@@ -88,5 +88,5 @@ TRTC目前主要方向是在多人互动音视频上，建议可以增加一种�
 
 QQ：1586462
 
-![微信扫一扫](https://github.com/HeiSir2014/2020-Hackathon/blob/master/ProjectOne/HeiSir-Win/Resource/mmqrcode.png?raw=true)
-扫一扫上面的二维码图案，加我微信
+微信：
+<img src="https://github.com/HeiSir2014/2020-Hackathon/blob/master/ProjectOne/HeiSir-Win/Resource/mmqrcode.png?raw=true" width="240px" />
