@@ -1,4 +1,4 @@
-# 2020-Hackathon
+# 2020-Hackathon——译音——聋哑人交流沟通无障碍
 
 ## SDK 下载
 
