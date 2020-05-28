@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>魔方会议</title>
+    <link rel="stylesheet" type="text/css" href="styles/index.css">
+</head>
+<body>
+    <header>
+        <div class="inner">
+            <div class="logo">魔方会议</div>
+            <nav>
+                <a>首页</a>
+                <a target="shixincube" href="https://www.shixincube.com/">产品介绍</a>
+                <a target="shixincube" href="https://www.shixincube.com/about">关于我们</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="join-form">
+            <div class="input-wrap"><input id="conference_number" placeholder="会议号码"/></div>
+            <div class="submit-btn disabled" id="join_btn" onclick="joinConference()">加入</div>
+        </div>
+
+        <div class="menu-container">
+            <div class="menu">
+                <div class="bar initiate" onclick="openInitiate()"><i></i></div>
+                <div class="label">发起会议</div>
+            </div>
+            <div class="menu">
+                <div class="bar subscribe" onclick="UI.alert('暂不支持预约会议，您可以直接发起会议')"><i></i></div>
+                <div class="label">预约会议</div>
+            </div>
+            <div class="menu">
+                <div class="bar live" onclick="UI.alert('暂不支持发起直播，您可以直接发起会议')"><i></i></div>
+                <div class="label">发起直播</div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="left">
+            <a target="shixinyun" href="https://www.shixinyun.com">时信互联</a>
+            <a target="spap" href="https://www.spap.com">司派</a>
+            <a target="seehey" href="https://www.seehey.com">言见</a>
+        </div>
+        <div class="right">
+            <a class="ls">北京时信互联网络科技有限公司</a>
+            <a class="ls">魔方智能</a>
+            <a>时信研究院</a>
+        </div>
+    </footer>
+
+    <div id="initiate_modal" class="ui-modal">
+        <div class="header">
+            <div class="title">发起会议</div>
+            <div class="close"></div>
+        </div>
+
+        <div class="main">
+            <div class="row">
+                <div class="label">会议主题</div>
+                <div class="block">
+                    <input id="c_name" type="text" placeholder="请输入会议主题"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="label">用户昵称</div>
+                <div class="block">
+                    <input id="c_username" type="text" placeholder="请输入用户昵称"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="label">会议密码</div>
+                <div class="block">
+                    <div class="ui-radio active" id="set_password_radio">不设置密码</div>
+                    <div class="ui-radio" id="not_set_password_radio">设置密码</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="label"></div>
+                <div class="block">
+                    <input id="c_password" disabled placeholder="请输入用户密码" type="password"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="label">会议模式</div>
+                <div class="block">
+                    <div class="ui-radio" id="enable_live_radio">开启直播</div>
+                    <div class="ui-radio active" id="disable_live_radio">不开启直播</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="label">邀请码</div>
+                <div class="block">
+                    <input id="c_code" type="text" placeholder="请输入会议邀请码，没有可不填"/>
+                </div>
+            </div>
+
+            <div class="operate">
+                <div class="btn cancel" onclick="closeInitiate()">取消</div>
+                <div class="btn save" onclick="createConference()">确定</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading">
+        <div class="bar"></div>
+    </div>
+
+    <script src="lib/api.js"></script>
+    <script>
+        const UI = {
+            showModal(content, showcancel, callback) {
+                let mask = document.createElement('div');
+                mask.id = 'mask';
+
+                let modal = document.createElement('div');
+                modal.className = 'model';
+
+                let body = document.createElement('div');
+                body.className = 'content';
+                body.textContent = content;
+
+                let menus = document.createElement('div');
+                menus.className = 'menus';
+
+                if (showcancel) {
+                    let cancel = document.createElement('div');
+                    cancel.className = 'btn cancel';
+                    cancel.textContent = '取消';
+                    cancel.onclick = function () {
+                        mask.remove();
+                        if (typeof callback === 'function') callback(false);
+                    };
+                    menus.appendChild(cancel);
+                }
+
+                let confirm = document.createElement('div');
+                confirm.className = 'btn confirm';
+                confirm.textContent = '确定';
+                confirm.onclick = function () {
+                    mask.remove();
+                    if (typeof callback === 'function') callback(true);
+                };
+
+                menus.appendChild(confirm);
+                modal.appendChild(body);
+                modal.appendChild(menus);
+                mask.appendChild(modal);
+                document.body.appendChild(mask);
+            },
+
+            alert(message) {
+                this.showModal(message, false);
+            },
+
+            confirm(message, callback) {
+                this.showModal(message, true, callback);
+            },
+
+            showLoading() {
+                document.getElementById('loading').style.display = 'flex';
+            },
+
+            hideLoading() {
+                document.getElementById('loading').style.display = 'none';
+            }
+        };
+
+        function createConference() {
+            UI.showLoading();
+            let subject = document.getElementById('c_name').value, password = document.getElementById('c_password').value;
+            let setPassword = document.getElementById('not_set_password_radio').classList.contains('active');
+            let enableLive = document.getElementById('enable_live_radio').classList.contains('active');
+            if (subject.length < 1) {
+                UI.hideLoading();
+                return UI.alert('请输入会议主题!');
+            }
+            let username = document.getElementById('c_username').value;
+            if (username.length < 1) {
+                UI.hideLoading();
+                return UI.alert('请输入用户昵称!');
+            }
+            if (username.indexOf('&') !== -1) {
+                UI.hideLoading();
+                return UI.alert('用户昵称不能包含特殊字符!');
+            }
+            if (setPassword && password.length < 1) {
+                UI.hideLoading();
+                return UI.alert('密码长度必须大于1!');
+            }
+            let code = document.getElementById('c_code').value;
+
+
+            // 创建会议
+            $put(Action.Conference, {subject, username, password, live: enableLive, code}, function (error, data) {
+                UI.hideLoading();
+                if (error) {
+                    UI.alert('创建会议失败，' + error.msg);
+                } else {
+                    localStorage.setItem('CONFERENCE_NICKNAME_' + data.id, username);
+                    // 进入会议
+                    location.href = './conference.html?cid=' + data.id;
+                }
+            });
+        }
+
+        function joinConference() {
+            let cid = document.getElementById('conference_number').value;
+            if (cid.length > 0) {
+                // 进入会议
+                location.href = './conference.html?cid=' + cid;
+            }
+        }
+
+        function closeInitiate() {
+            let model = document.getElementById('initiate_modal');
+            model.classList.remove('on');
+        }
+
+        function openInitiate() {
+            let model = document.getElementById('initiate_modal');
+            model.classList.add('on');
+        }
+
+        (function () {
+            let setPassword = document.getElementById('set_password_radio');
+            let notSetPassword = document.getElementById('not_set_password_radio');
+            let enableLive = document.getElementById('enable_live_radio');
+            let disableLive = document.getElementById('disable_live_radio');
+            setPassword.onclick = () => {
+                setPassword.classList.add('active');
+                notSetPassword.classList.remove('active');
+                document.getElementById('c_password').disabled = true;
+            };
+            notSetPassword.onclick = () => {
+                notSetPassword.classList.add('active');
+                setPassword.classList.remove('active');
+                document.getElementById('c_password').disabled = false;
+            };
+            enableLive.onclick = () => {
+                enableLive.classList.add('active');
+                disableLive.classList.remove('active');
+            };
+            disableLive.onclick = () => {
+                disableLive.classList.add('active');
+                enableLive.classList.remove('active');
+            };
+
+            document.querySelector('#initiate_modal .close').onclick = closeInitiate;
+
+            document.getElementById('conference_number').onkeyup = (e) => {
+                let value = e.currentTarget.value;
+                if (value.length > 0) {
+                    document.getElementById('join_btn').classList.remove('disabled');
+                } else {
+                    document.getElementById('join_btn').classList.add('disabled');
+                }
+            };
+        })();
+    </script>
+</body>
+</html>
