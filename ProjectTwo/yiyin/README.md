@@ -36,27 +36,29 @@ PS：为了符合联合国针对通用设计原则，我们在产品加入中文
 ![](img/智能语音识别合成.png)
 
 语音文字互译功能是聋哑人和普通人交流的重要功能，普通人按住按钮“按住说话”即可把语音转录成文字，这样聋哑人就能明白什么意思，然后聋哑人再最下面的输入框输入想要表达的文字，普通人就能看懂聋哑人表达的意思。从而实现双方交流。
-![](img/智能识别.jpeg)
+![](img/智能识别.png)
+
 
 ## 主要功能2————在线手语客服
 ### 目标：通过手语翻译远程客服，解决聋哑人20%的交流沟通问题
  人工翻译（实时视频手语客服服务）的功能主要是提供远程视频实时手语翻译，如果聋哑人使用此功能时，相当于随身携带者一个手语翻译，这样聋哑人可以把想要表达的意思用手语给手语客服表达出来，然后手语客服把聋哑人表达的意思转述给相关人员，同时相关人员同样把想要表达的意思描述给手语客服，手语客服用手语把相关内容表达给聋哑人。比通过文字交流更加方便快捷，而且能够表达的意思更加准确，更加快速。通过这种形式真正的实现聋哑人和普通人的沟通无障碍！
-
+![](img/远程手语翻译人员客服.png)
+![](img/客服列表.png)
+![](img/手语客服服务1.png)
+![](img/手语客服服务2.png)
+![](img/手语客服服务3.png)
 ## 主要功能3————让AI无障碍，通过腾讯翻译、语音识别合成集合人工 ，轻量级解决去国外交流沟通的难题
 ### 目标：用AI技术翻译解决80%的问题，用同声传译客服解决20%的问题。
-
+![](img/汉英智能翻译1.jpeg)
+![](img/汉英智能翻译2.jpeg)
 
 ## 小程序体验二维码
-
+![](img/译音小程序二维码.jpg)
 ## 用到产品技术使用SDK下载
 
 访问 Github 较慢的客户可以考虑使用国内下载地址： [DOWNLOAD](https://cloud.tencent.com/document/product/647/32689) 。
 
-| 所属平台   | Zip下载                                                      | Demo运行说明                                                | SDK集成指引                                                 | API 列表                                                    |
-| ---------- | ------------------------------------------------------------ | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-
-| Android    | [下载](http://liteavsdk-1252463788.cosgz.myqcloud.com/TXLiteAVSDK_TRTC_Android_latest.zip) | [DOC](https://cloud.tencent.com/document/product/647/32166) | [DOC](https://cloud.tencent.com/document/product/647/32175) | [API](https://cloud.tencent.com/document/product/647/32267) |
-| Web        | [下载](https://liteavsdk-1252463788.cosgz.myqcloud.com/H5_latest.zip) | [DOC](https://cloud.tencent.com/document/product/647/32398) | [DOC](https://cloud.tencent.com/document/product/647/16863) | [API](https://cloud.tencent.com/document/product/647/17249) |
-
-| 微信小程序 | [下载](http://liteavsdk-1252463788.cosgz.myqcloud.com/TRTC_WXMini_latest.zip) | [DOC](https://cloud.tencent.com/document/product/647/32399) | [DOC](https://cloud.tencent.com/document/product/647/32183) | [API](https://cloud.tencent.com/document/product/647/17018) |
+## 关于我们
+译音是武汉网明无障碍科技有限公司开发，
+邮箱：1244581626@qq.com
 
