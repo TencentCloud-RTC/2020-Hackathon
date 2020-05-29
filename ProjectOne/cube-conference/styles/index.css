@@ -1,0 +1,508 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.inner {
+    width: 960px;
+    height: 100%;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+header {
+    height: 30px;
+    border-bottom: 1px solid #dddddd;
+    padding: 15px 0;
+    line-height: 30px;
+}
+
+header .logo {
+    width: 100px;
+    height: 100%;
+    margin-left: 10px;
+    float: left;
+    line-height: 30px;
+    font-size: 16px;
+    padding-left: 35px;
+    background-position: left 2px center;
+    background-repeat: no-repeat;
+    background-image: url(../images/cube.png);
+    background-size: 28px;
+    color: #0d71fe;
+}
+
+header nav {
+    margin-left: 160px;
+    text-align: right;
+}
+
+header nav a {
+    display: inline-block;
+    padding: 0 10px;
+    color: #0d71fe;
+    font-size: 14px;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 61px;
+    bottom: 50px;
+    width: 100%;
+}
+
+
+
+main .join-form {
+    width: 480px;
+    margin: 0 auto;
+    background: rgb(237, 239, 239);
+    border-radius: 25px;
+    display: flex;
+    height: 46px;
+    max-width: 90%;
+}
+main .join-form .input-wrap {
+    flex: 1;
+    padding: 0 20px;
+}
+main .join-form .input-wrap input {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+}
+main .join-form .submit-btn {
+    width: 68px;
+    background-color: rgba(30, 144, 255, 1);
+    margin: 5px 10px;
+    border-radius: 25px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #ffffff;
+    cursor: default;
+    user-select: none;
+}
+main .join-form .submit-btn:hover {
+    background-color: rgba(50, 160, 255, 1);
+}
+main .join-form .submit-btn:active {
+    background-color: rgba(20, 120, 255, 1);
+}
+main .join-form .submit-btn.disabled {
+    background-color: rgba(30, 144, 255, 0.5) !important;
+}
+
+main .menu-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 480px;
+    margin: 0 auto;
+    padding-top: 60px;
+    user-select: none;
+    max-width: 90%;
+}
+main .menu-container .menu {
+    width: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+main .menu-container .menu .bar {
+    width: 52px;
+    height: 60px;
+    border-radius: 50% / 20%;
+}
+main .menu-container .menu .bar i {
+    display: block;
+    width: 60px;
+    height: 52px;
+    border-radius: 20% / 50%;
+    position: relative;
+    left: -4px;
+    top: 4px;
+    background-position: center;
+    background-size: 24px;
+    background-repeat: no-repeat;
+}
+main .menu-container .menu .bar:hover {
+    opacity: 0.8;
+}
+main .menu-container .menu .bar:active {
+    opacity: 0.6;
+}
+main .menu-container .menu .label {
+    font-size: 14px;
+    color: #999999;
+    text-align: center;
+    padding-top: 10px;
+}
+
+main .menu-container .menu .bar.initiate {
+    background-color: rgba(23, 173, 66, 1);
+}
+main .menu-container .menu .bar.initiate i {
+    background-color: rgba(23, 173, 66, 1);
+    background-image: url("../images/initiate.png");
+}
+
+main .menu-container .menu .bar.subscribe {
+    background-color: rgba(13, 113, 254, 1);
+}
+main .menu-container .menu .bar.subscribe i {
+    background-color: rgba(13, 113, 254, 1);
+    background-image: url("../images/subscribe.png");
+}
+
+main .menu-container .menu .bar.live {
+    background-color: rgba(253, 102, 8, 1);
+}
+main .menu-container .menu .bar.live i {
+    background-color: rgba(253, 102, 8, 1);
+    background-image: url("../images/live.png");
+}
+
+
+footer {
+    position: absolute;
+    border: 0;
+    height: 50px;
+    bottom: 0;
+    font-size: 12px;
+    background-color: #fafafa;
+    width: 100%;
+    color: #9195a3;
+}
+
+footer .left {
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding-left: 50px;
+}
+
+footer .left a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #9195a3;
+}
+footer .left a:hover {
+    text-decoration: underline;
+    color: #0d71fe;
+}
+
+
+footer .right {
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding-right: 50px;
+    color: #bbb;
+}
+
+footer .right a {
+    margin-left: 20px;
+}
+
+@media screen and (max-width: 592px) {
+    .ls {
+        display: none;
+    }
+
+    .ui-modal {
+        max-width: 100% !important;
+        left: 0 !important;
+        top: auto !important;
+        bottom: 0 !important;
+        margin-top: 0 !important;
+        margin-left: 0 !important;
+        border-radius: 15px 15px 0 0 !important;
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.1) !important;
+        animation: footIn .3s forwards !important;
+    }
+}
+
+
+
+#initiate_modal {
+    position: absolute;
+    width: 420px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 10px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    animation: fadeout .5s forwards;
+    height: 520px;
+    left: 50%;
+    z-index: 999;
+    top: 50%;
+    box-sizing: border-box;
+    margin-left: -210px;
+    margin-top: -266px;
+    flex-direction: column;
+}
+#initiate_modal.on {
+    animation: fadein .5s forwards;
+    display: flex;
+}
+#initiate_modal .header {
+    height: 36px;
+    line-height: 36px;
+    font-size: 16px;
+    display: flex;
+    color: #333333;
+    padding: 0 0 0 8px;
+}
+#initiate_modal .header .title {
+    flex: 1;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-image: url(../images/ii.png);
+    background-size: 24px;
+    padding-left: 30px;
+    font-size: 16px;
+}
+#initiate_modal .header .close {
+    width: 36px;
+    height: 36px;
+    background-image: url("../images/close.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+
+#initiate_modal .main {
+    flex: 1;
+    width: 100%;
+    padding-top: 24px;
+}
+#initiate_modal .main .row {
+    padding: 0 14px 25px 10px;
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    color: #333333;
+}
+#initiate_modal .main .row .label {
+    width: 68px;
+    height: 36px;
+    line-height: 36px;
+}
+#initiate_modal .main .row .block {
+    flex: 1;
+}
+#initiate_modal .main .row .block select, #initiate_modal .main .row .block input {
+    height: 36px;
+    border: 1px solid #dddddd;
+    margin: 0;
+    padding: 10px 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    width: 100%;
+    font-size: 14px;
+}
+#initiate_modal .main .row .block input[disabled] {
+    opacity: 0.5;
+}
+
+#initiate_modal .main .operate {
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#initiate_modal .main .operate .btn {
+    width: 86px;
+    height: 30px;
+    line-height: 30px;
+    background: #aaaaaa;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: default;
+    user-select: none;
+}
+#initiate_modal .main .operate .btn.cancel:hover {
+    background-color: #cccccc;
+}
+#initiate_modal .main .operate .btn.cancel:active {
+    background-color: #dddddd;
+}
+#initiate_modal .main .operate .btn.save {
+    background: dodgerblue;
+    margin-left: 30px;
+    cursor: default;
+    user-select: none;
+}
+#initiate_modal .main .operate .btn.save:hover {
+    background-color: rgba(50, 160, 255, 1);
+}
+#initiate_modal .main .operate .btn.save:active {
+    background-color: rgba(20, 120, 255, 1);
+}
+
+
+@keyframes fadein
+{
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@keyframes fadeout
+{
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+@keyframes footIn
+{
+    from {
+        bottom: -100%;
+        opacity: 0;
+    }
+    to {
+        bottom: 0;
+        opacity: 1;
+    }
+}
+
+#mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#mask .model {
+    width: 280px;
+    height: 160px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+}
+
+#mask .model .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    font-size: 16px;
+    color: #333333;
+    padding: 0 20px;
+    text-align: center;
+}
+#mask .model .menus {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 16px;
+}
+#mask .model .menus .btn {
+    width: 86px;
+    height: 30px;
+    line-height: 30px;
+    background: #aaaaaa;
+    color: #ffffff;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: default;
+    user-select: none;
+}
+#mask .model .menus .btn.cancel {
+    background: #aaaaaa;
+    margin-right: 30px;
+}
+#mask .model .menus .btn.cancel:hover {
+    background-color: #cccccc;
+}
+#mask .model .menus .btn.cancel:active {
+    background-color: #dddddd;
+}
+#mask .model .menus .btn.confirm {
+    background: dodgerblue;
+}
+#mask .model .menus .btn.confirm:hover {
+    background-color: rgba(50, 160, 255, 1);
+}
+#mask .model .menus .btn.confirm:active {
+    background-color: rgba(20, 120, 255, 1);
+}
+
+.ui-radio {
+    height: 24px;
+    margin: 6px;
+    display: inline-block;
+    padding-left: 24px;
+    line-height: 24px;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: left center;
+    background-image: url("../images/radio.png");
+    cursor: default;
+    user-select: none;
+}
+.ui-radio:hover {
+    opacity: 0.8;
+}
+.ui-radio.active {
+    background-image: url("../images/radioc.png");
+}
+
+#loading {
+    position: absolute;
+    z-index: 999999;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+#loading .bar {
+    width: 86px;
+    height: 86px;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-image: url("../images/loading.gif");
+    background-repeat: no-repeat;
+    background-size: 48px;
+    background-position: center;
+    border-radius: 8px;
+}

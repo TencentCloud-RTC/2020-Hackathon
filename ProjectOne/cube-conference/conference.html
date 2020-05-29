@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>魔方会议平台</title>
+    <link rel="stylesheet" type="text/css" href="styles/conference.css?v01">
+    <script>
+        window.roomId = (new URL(location.href)).searchParams.get('cid');
+
+        function IsPC() {
+            let userAgentInfo = navigator.userAgent;
+            let Agents = ["Android", "iPhone",
+                "SymbianOS", "Windows Phone",
+                "iPad", "iPod"];
+            for (let v = 0; v < Agents.length; v++) {
+                if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <header id="header">
+        <div class="logo">魔方会议室 <span>v1.0.0</span></div>
+        <nav>
+            <a class="profile" onclick="ProfileModel.open()"><span class="ls">游客</span></a>
+            <a class="chat" onclick="ChatModel.open()"><span class="ls">消息</span><i></i></a>
+            <a class="members" onclick="MembersModel.open()"><span class="ls">成员</span></a>
+        </nav>
+        <div class="prompt ls">
+            <div class="text"></div>
+        </div>
+    </header>
+
+    <main id="main" class="loading">
+        <div id="sfu_view">
+            <div id="master" class="empty">
+                <div class="tips">主持人正在赶来的路上...</div>
+                <div id="wb_view">
+                    <div id="graphic_tools">
+                        <div class="wb-menu" id="pen" title="铅笔"></div>
+                        <div class="wb-menu" id="rect" title="矩形"></div>
+                        <div class="wb-menu" id="ellipse" title="椭圆"></div>
+                        <div class="wb-menu" id="arrow" title="箭头"></div>
+                        <div class="wb-menu" id="image" title="图片"></div>
+                        <div class="wb-menu" id="mosaic" title="马赛克"></div>
+                        <div class="wb-menu" id="text" title="文本"></div>
+                        <div class="wb-menu" id="undo" title="撤回"></div>
+                        <div class="wb-menu" id="enlarge" title="放大"></div>
+                        <div class="wb-menu" id="reduction" title="缩小"></div>
+                        <div class="wb-menu" id="deselect" title="取消选中"></div>
+                        <div class="wb-menu" id="clear_btn" title="清除"></div>
+                        <div class="wb-menu" id="save" title="保存"></div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="members" class="empty custom-scroll">
+                <div class="tips">当前会议没有互动人员</div>
+            </div>
+        </div>
+        <div id="mcu_view"></div>
+        <div id="live_view">
+            <div class="tips">正在连接直播服务，请稍后...</div>
+        </div>
+        <div class="tips"></div>
+    </main>
+
+    <footer id="footer">
+        <div class="logo ls">司派会议</div>
+
+        <div class="configure ls">
+            <div class="layout disabled">
+                <div class="menu lecture active">
+                    <div class="bar"></div>
+                    <div class="label">演讲</div>
+                </div>
+                <div class="menu fluid">
+                    <div class="bar"></div>
+                    <div class="label">平铺</div>
+                </div>
+            </div>
+
+            <div class="setting ls" onclick="SettingModel.open()">
+                <div class="bar"></div>
+                <div class="label">设置</div>
+            </div>
+        </div>
+
+        <div class="console">
+            <div class="menu sound disabled simple">
+                <div class="bar"></div>
+                <div class="label">关闭扬声器</div>
+            </div>
+            <div class="menu voice disabled simple">
+                <div class="bar"></div>
+                <div class="label">静音</div>
+            </div>
+            <div class="menu hangup sm" onclick="leaveConference()">
+                <div class="bar"></div>
+                <div class="label">挂断</div>
+            </div>
+            <div class="menu camera disabled simple">
+                <div class="bar"></div>
+                <div class="label">关闭摄像头</div>
+            </div>
+            <div class="menu screen disabled ls simple">
+                <div class="bar"></div>
+                <div class="label">共享窗口</div>
+            </div>
+            <div class="menu hangup ls" onclick="leaveConference()">
+                <div class="bar"></div>
+                <div class="label">挂断</div>
+            </div>
+            <div class="menu invite disabled ls">
+                <div class="bar"></div>
+                <div class="label">加人</div>
+            </div>
+            <div class="menu mute-all disabled ls simple">
+                <div class="bar"></div>
+                <div class="label">全员静音</div>
+            </div>
+            <div class="menu wb disabled ls simple" id="enable_wb_btn">
+                <div class="bar"></div>
+                <div class="label">白板演示</div>
+            </div>
+            <div class="menu raise disabled" onclick="window.conference.raiseHand()">
+                <div class="bar"></div>
+                <div class="label">举手</div>
+            </div>
+        </div>
+    </footer>
+
+    <audio id="conference_audio" autoplay></audio>
+
+    <div id="invite_panel" class="contextmenu-panel">
+        <div class="item link">复制会议链接</div>
+        <div class="splitter"></div>
+        <div class="item keychain">复制会议号码</div>
+        <div class="splitter"></div>
+        <div class="item scan">通过二维码分享</div>
+        <div class="tail"></div>
+    </div>
+
+    <div id="mute_all_panel" class="contextmenu-panel">
+        <div class="item link">对所有人生效</div>
+        <div class="splitter"></div>
+        <div class="item keychain">仅对于我生效</div>
+        <div class="tail"></div>
+    </div>
+
+    <div id="user_control_panel" class="contextmenu-panel" data-align="right-bottom" data-y="10">
+        <div class="item sticky">置顶在第一位</div>
+        <div class="splitter"></div>
+        <div class="item upper" onclick="window.conference.setSpeaker(this.parentElement.dataset.uid)">全员看TA</div>
+    </div>
+
+    <div id="notice_panel" class="contextmenu-panel" data-align="center-bottom" data-y="15">
+        <div class="tips">暂无通知</div>
+        <div class="tail"></div>
+    </div>
+
+    <div id="setting_modal" class="ui-modal">
+        <div class="header">
+            <div class="title">设置</div>
+            <div class="close"></div>
+        </div>
+
+        <div class="main">
+            <div class="row">
+                <div class="label">摄像头</div>
+                <div class="block">
+                    <select id="video_input_select"></select>
+
+                    <div class="preview">
+                        <video autoplay></video>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="label">麦克风</div>
+                <div class="block">
+                    <select id="audio_input_select"></select>
+                    <div class="status">
+                        <div class="bar"></div>
+                    </div>
+                    <div class="info">对着麦克风说话，以便进行检测</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="label">扬声器</div>
+                <div class="block">
+                    <select id="audio_output_select"></select>
+                </div>
+            </div>
+
+            <div class="operate">
+                <div class="btn cancel">取消</div>
+                <div class="btn save">确定</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="chat_modal" class="ui-modal">
+        <div class="header">
+            <div class="title">消息</div>
+            <div class="close"></div>
+        </div>
+
+        <div class="main">
+            <div class="chat-body custom-scroll empty"></div>
+            <div class="chat-console">
+                <div class="form" >
+                    <input id="chat_input">
+                    <div class="btn confirm">发送</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="user_modal" class="ui-modal">
+        <div class="header">
+            <div class="title">我的资料</div>
+            <div class="close"></div>
+        </div>
+
+        <div class="main">
+            <div class="synopsis">
+                <div class="avatar"></div>
+                <div class="info">
+                    <div class="nickname"></div>
+                    <div class="role"></div>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <div class="logo">司派会议 · 时信研究院</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="enter_modal">
+        <div class="cell" onclick="startup('presenter')">
+            <div class="title">
+                <div class="bar"><i></i></div>
+            </div>
+            <div class="label">互动参会</div>
+            <div class="tips">需开启摄像头和麦克风</div>
+        </div>
+        <div class="cell live" onclick="startup('viewer')">
+            <div class="title">
+                <div class="bar"><i></i></div>
+            </div>
+            <div class="label">观看直播</div>
+            <div class="tips">仅观看、需要发言时可举手</div>
+        </div>
+    </div>
+
+    <div id="members_modal" class="ui-modal">
+        <div class="header">
+            <div class="title">参会成员</div>
+            <div class="close"></div>
+        </div>
+
+        <div class="main">
+
+        </div>
+
+        <div class="btn-container">
+            <div id="all_member_mute">全员禁麦</div>
+        </div>
+    </div>
+
+    <div id="scan_modal" class="ui-modal">
+        <div class="header">
+            <div class="title">分享二维码</div>
+            <div class="close"></div>
+        </div>
+
+        <div class="main">
+            <div class="info">
+                <div class="explain">请右键复制图片通过司派或言见发送给好友</div>
+                <div id="scan_canvas"></div>
+                <div class="tips">建议使用微信扫一扫</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="vote_modal" class="ui-modal">
+        <div class="header">
+            <div class="title">发起投票</div>
+            <div class="close"></div>
+        </div>
+
+        <div class="main">
+            <div class="row">
+                <div class="label">标题</div>
+                <div class="block">
+                    <textarea id="vote_title"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="block">
+                    <input class="vote-item" type="text" value="选项一"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="block">
+                    <input class="vote-item" type="text" value="选项二"/>
+                </div>
+            </div>
+
+            <div class="operate">
+                <div class="btn cancel">取消</div>
+                <div class="btn save">确定</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="voters_modal" class="ui-modal">
+        <div class="header">
+            <div class="title">发起投票</div>
+            <div class="close"></div>
+        </div>
+
+        <div class="main">
+            <div class="row">
+                <div class="block">
+                    <div class="content">魔方会议你觉得怎么样？</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="block">
+                    <div class="vote-item">
+                        <div class="text">选项一</div>
+                        <div class="bar"></div>
+                        <div class="num">20%</div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="block">
+                    <div class="vote-item">
+                        <div class="text">还算凑合</div>
+                        <div class="bar"></div>
+                        <div class="num">20%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="vote_popup">
+        <div class="title">投票</div>
+        <div class="content">你觉得魔方会议怎么样？</div>
+        <div class="btn">结束</div>
+    </div>
+
+    <div id="copy_control_panel" class="contextmenu-panel" data-y="10" style="z-index: 999999">
+        <div class="item copy">复制图片</div>
+        <div class="splitter"></div>
+        <div class="item save">保存图片</div>
+    </div>
+
+    <div id="live_interact">
+        <div class="label">你正在与主持人互动</div>
+        <div id="close_interact_btn" class="btn" onclick="conference.closeInteract()">退出互动</div>
+    </div>
+
+    <div id="live_bar">
+        <div class="label">直播中</div>
+        <div class="time">00:00:00</div>
+    </div>
+
+    <div id="watch_live_bar">
+        <div class="label">直播</div>
+    </div>
+
+    <script src="lib/qrcode.js"></script>
+    <script src="lib/api.js"></script>
+    <script src="lib/trtc.js"></script>
+    <script src="lib/socket.io.js"></script>
+    <script src="lib/sp-graphic.js"></script>
+    <script src="dist/cube-conference.js?v1"></script>
+    <script>
+        function leaveConference() {
+            if (window.conference) {
+                UI.confirm('确定要退出会议？', function (confirm) {
+                    if (confirm) {
+                        conference.leave();
+                        setTimeout(() => {
+                            location.replace('./index.html');
+                        }, 800);
+                    }
+                });
+            }
+        }
+
+        window.onbeforeunload = function () {
+            if (window.conference) conference.leave();
+        };
+
+        (function() {
+            $get(Action.Conference, {id: roomId}, function (error, info) {
+                if (error) {
+                    UI.alert('进入会议失败，' + error.msg);
+                } else {
+                    Helper.init(info);
+                    if (info.live) {
+                        $.get('enter_modal').style.display = 'flex';
+                    } else {
+                        startup('presenter');
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

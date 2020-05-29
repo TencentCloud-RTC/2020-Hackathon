@@ -1,0 +1,20 @@
+{
+  "name": "cube-conference",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "build": "cubepack ./"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cubepack": "^1.0.3"
+  },
+  "cubepack": {
+    "main": "src/index.js",
+    "namespace": "app",
+    "compatible": false,
+    "minify": false
+  }
+}
