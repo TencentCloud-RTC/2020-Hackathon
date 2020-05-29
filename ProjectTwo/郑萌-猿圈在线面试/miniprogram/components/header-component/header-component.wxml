@@ -1,0 +1,8 @@
+<view class="inner">
+  <image src="/resources/images/banner.png" />
+  <view>
+    <view class="h1 {{pt}}">{{title}}</view>
+    <view class="h2">{{desc}}</view>
+  </view>
+</view>
+<slot></slot>

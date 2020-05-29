@@ -1,0 +1,87 @@
+{
+	"miniprogramRoot": "miniprogram/",
+	"cloudfunctionRoot": "cloudfunctions/",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": true,
+		"checkInvalidKey": true,
+		"coverView": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"appid": "wx921d824aa8a22503",
+	"projectname": "TIC2.0",
+	"libVersion": "2.7.2",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "面试间列表",
+					"pathName": "pages/roomList/index",
+					"query": "interviewId=1393",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "面试官进入",
+					"pathName": "pages/index/index",
+					"query": "interviewId=1393&code=02a56f1fabad4635bc7822dac76e988c&roleType=2",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "候选人进入1v1",
+					"pathName": "pages/index/index",
+					"query": "interviewId=1437&code=be79635be1e24a6e8689797695d3d2fc&roleType=1",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "候选人2v2",
+					"pathName": "pages/index/index",
+					"query": "interviewId=1393&code=2a017b8a794643dc849b583ebf935e1d&roleType=1",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "面试官无评价表",
+					"pathName": "pages/index/index",
+					"query": "interviewId=1437&code=0badf377f72d4d42824fd644b07ff165&roleType=2",
+					"scene": null
+				}
+			]
+		}
+	}
+}

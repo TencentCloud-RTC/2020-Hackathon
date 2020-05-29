@@ -1,0 +1,5 @@
+<view class="container-box">
+
+  <view class="tips">登录中，请稍候...</view>
+  <!-- <button type="primary" bindtap="onClick">进入课堂</button> -->
+</view>

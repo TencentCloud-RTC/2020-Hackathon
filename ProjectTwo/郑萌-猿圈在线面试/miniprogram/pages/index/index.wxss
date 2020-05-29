@@ -1,0 +1,19 @@
+/* pages/index/index.wxss */
+.default{
+  text-align: center;
+  font-size: 28rpx;
+  color: #000;
+  padding-top: 180rpx;
+}
+.default image{
+  width: 280rpx;
+  height: 260rpx;
+  display: block;
+  margin: 0 auto 30rpx;
+}
+.default .desc{
+  line-height: 50rpx;
+}
+view{
+  font-size: 30rpx;
+} 

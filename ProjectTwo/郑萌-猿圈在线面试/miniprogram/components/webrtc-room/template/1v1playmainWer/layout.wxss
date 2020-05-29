@@ -1,0 +1,105 @@
+.t1v1playmain.videoview {
+  position: relative;
+  background-repeat:no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.t1v1playmain .pusher-box {
+  width: 400rpx;
+  /* height: 480rpx; */
+  margin: 40rpx auto 0;
+  min-height: 480rpx;
+}
+
+.t1v1playmain live-pusher {
+  width: 400rpx;
+	height: 400rpx; 
+  border:3rpx solid #56ACFD;
+  font-size: 28rpx;
+}
+
+.t1v1playmain .player-box {
+	width: 400rpx;
+  /* height: 480rpx; */
+  position: relative;
+  margin: 60rpx auto 0;
+}
+.t1v1playmain .type{
+  background: #2A2A2A;
+  width:400rpx;
+  height:58rpx;
+  line-height: 58rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 600;
+  margin-top: 14rpx;
+  color:rgba(255,255,255,0.45);
+}
+
+.t1v1playmain .player-box .poster {
+  width: 400rpx;
+	height: 400rpx;
+	background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* position: absolute;
+  top: 0;
+  left: 0; */
+}
+
+.t1v1playmain .set {
+  position: absolute;
+  width: 20%;
+	height: auto; 
+  opacity: 0.4;
+}
+
+.t1v1playmain live-player {
+  width: 400rpx;
+	height: 400rpx; 
+  display: block;
+  font-size: 28rpx;
+}
+
+.t1v1playmain .loading {
+  position: absolute;
+  width: 100%;  
+  height: 100%; 
+}
+
+.t1v1playmain .loading cover-image {
+  position: absolute;
+  top: calc(50% - 15px);
+  left: calc(50% - 15px);
+  width: 30px;
+  height: 30px;
+}
+
+.t1v1playmain .realname{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  color: #fff;
+  font-size: 24rpx;
+  padding: 10rpx 22rpx;
+  /* background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); */
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: space-between;
+}
+.t1v1playmain .realname .mute{
+  width: 24rpx;
+  height: 24rpx;
+}
+.t1v1playmain .realname .main{
+  width: 20rpx;
+  height: 20rpx;
+  margin-right: 10rpx;
+  display: inline-block;
+  vertical-align:top;
+  padding-top:4rpx;
+}

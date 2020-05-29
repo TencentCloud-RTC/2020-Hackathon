@@ -1,0 +1,31 @@
+<view class="container">
+    <view class="title flex"><text>{{date}}面试安排-共{{roomList.length}}场</text><image bindtap="openCale" src="/resources/images/icon-cale.png" /></view>
+    <view class="list" wx:if="{{roomList.length}}">
+        <view class="item" bindtap="handleToRoom" data-id="{{room.roomId}}" wx:for="{{roomList}}" wx:for-item="room" wx:for-index="index" wx:key="index">
+            <view class="status {{ room.status == 2 || currentTime > room.endTime ? 'status-complete' : room.status == 1 ? 'status-going' : 'status-waiting' }}"><b></b>{{room.status == 2 || currentTime > room.endTime ? '已完成' : room.status == 1 ? '面试中' : '待面试' }}</view>
+            <view class="clock"><b>{{room.start}}</b><view class="bg"><image class="icon" src="/resources/images/icon-title-bg.png" />{{room.during}}h</view><b>{{room.end}}</b></view>
+            <view class="line"><image src="/resources/images/icon-right-1.png" /></view>
+            <view class="flex mrl-36 mb-20">
+                <view class="text">完成评价：<text>{{room.rateNum}}/{{room.interviewees.length}}</text></view>
+                <view class="text">确认参加人数：<text>{{room.confirmNum}}/{{room.interviewees.length}}</text></view>
+            </view>
+            <!-- <view class="text mrl-36 inline">候选人：<text class="mr-20">张小虎</text><view class="non"><image src="/resources/images/icon-non.png" />窦文涛</view></view> -->
+            <view class="text mrl-36 inline">候选人：
+                <view class="{{wee.confirmStatus == 1 ? 'confirm' : 'non'}} mr-20" wx:for="{{room.interviewees}}" wx:key="j" wx:for-index="j" wx:for-item="wee"><image wx:if="{{ wee.confirmStatus != 1 }}" src="/resources/images/icon-non.png" />{{wee.name}}</view>
+            </view>
+
+        </view>
+    </view>
+    <view wx:else class="no-data">您今天没有面试安排</view>
+
+    <view class="cale" wx:if="{{showCale}}">
+        <calendar
+            id="calendar"
+            calendarConfig="{{calendarConfig}}"
+            bind:afterTapDay="afterTapDay"
+            bind:whenChangeMonth="whenChangeMonth"
+            bind:onTapDay="onTapDay"
+            bind:afterCalendarRender="afterCalendarRender"
+        ></calendar>
+    </view>
+</view>

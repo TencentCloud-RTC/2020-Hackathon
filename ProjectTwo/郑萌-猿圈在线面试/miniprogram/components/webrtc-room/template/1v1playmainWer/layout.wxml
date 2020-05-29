@@ -1,0 +1,34 @@
+<template name="1v1playmainWer">
+  <view class="t1v1playmain videoview">
+    
+    <view class="pusher-box">
+      <live-pusher wx:if="{{pushURL}}" id="rtcpusher" autopush mode="RTC" url="{{pushURL}}" aspect="{{aspect}}" min-bitrate="{{minBitrate}}" max-bitrate="{{maxBitrate}}" audio-quality="high" beauty="{{beauty}}" whiteness="{{whiteness}}" muted="{{muted}}" waiting-image="{{waitingImg}}" background-mute="{{true}}" debug="{{debug}}" bindstatechange="onPush" binderror="onError" enable-camera="{{enableCamera}}">
+        <cover-view class="realname">
+          <cover-view>
+            <cover-image wx:if="{{erMembers[0].main}}" class="main" src="/resources/images/icon-user.png"></cover-image>
+            <cover-view style="display:inline-block;">{{userName}}</cover-view>
+          </cover-view>
+          <cover-image class="mute" src="{{ muteStatus[userID] ? '/resources/images/icon-volume.png' : '/resources/images/icon-mute.png'}}"></cover-image>
+        </cover-view>
+      </live-pusher>
+      <view wx:if="{{pushURL}}" class="type">面试官{{userID}}</view>
+    </view>
+
+    <view class="player-box">
+      <live-player id="{{fixPlayId || eeMembers[0].userID}}" autoplay mode="RTC" min-cache="0.1" max-cache="0.3" src="{{eeMembers[0].accelerateURL}}" debug="{{debug}}" background-mute="{{true}}" bindstatechange="onPlay">
+        <cover-view class="loading" wx:if="{{eeMembers[0].loading}}">
+          <cover-image src="{{loadingImg}}"></cover-image>
+        </cover-view>
+        <cover-view class="poster" wx:if="{{!startPlay && !eeMembers[0].accelerateURL}}">
+          <cover-image class="set" src="{{playerBackgroundImg}}"></cover-image>
+        </cover-view>
+        <cover-view class="realname">
+          <cover-view>{{eeMembers[0].userName}}</cover-view>
+          <cover-image class="mute" src="{{ muteStatus[eeMembers[0].userID] ? '/resources/images/icon-volume.png' : '/resources/images/icon-mute.png'}}"></cover-image>          
+        </cover-view>
+        <slot></slot>
+      </live-player>
+      <view class="type">候选人</view>
+    </view>
+  </view>
+</template>

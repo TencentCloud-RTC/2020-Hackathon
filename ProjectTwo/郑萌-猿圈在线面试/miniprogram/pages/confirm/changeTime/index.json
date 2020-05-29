@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "header": "/components/header-component/header-component",
+    "footer": "/components/footer-component/footer-component",
+    "van-datetime-picker": "/components/dist/datetime-picker/index",
+    "van-popup": "/components/dist/popup/index"
+  },
+  "navigationBarTitleText": "在线申请更改时间"
+}

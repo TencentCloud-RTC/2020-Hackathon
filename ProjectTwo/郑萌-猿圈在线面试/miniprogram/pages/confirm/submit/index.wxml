@@ -1,0 +1,51 @@
+<view class="submit">
+    <header title="{{interviewName}}" desc="" pt="pt-46"></header>
+    <view class="curtain">
+        <view class="bar"></view>
+        <view class="panel panel1">
+            <view class="bg"></view>
+            <view class="content">
+                <image src="../../../resources/images/icon-succ.png"></image>
+                <view class="h1">亲爱的<text>{{intervieweeName}}</text></view>
+                <view class="h1">您的时间更改申请已提交成功!</view>
+                <view class="h2">应聘公司：<text>{{companyName}}</text></view>
+                <view class="times">
+                    <view class="before">
+                        <van-icon class="icon" name="clock" />
+                        <view class="box">
+                            <view class="line"></view>
+                            <view class="title">原预约面试时间</view>
+                            <view class="desc">{{oldTime}}</view>
+                        </view>
+                    </view>
+                    <view class="after">
+                        <van-icon class="icon" name="clock" />
+                        <view class="box">
+                            <view class="title">您期望更改面试日期段</view>
+                            <view class="desc">{{expectStartTime}}-{{expectEndTime}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- <image class="dotted" mode="aspectFill" src="../../../resources/images/icon-discs.png"></image>
+        <view class="panel panel2">
+            <view class="inner">
+                <view wx:if="{{!makeUp}}" class="h1">您的补面时间：暂未安排，请耐心等待</view>
+                <view wx:elif="{{makeUp}}" class="con">
+                    <view class="txt1">您的补面时间：</view>
+                    <view class="txt1">2019年9月23日 23:00-23:30</view>
+                    <view class="txt2">补面电脑端链接(请使用电脑打开链接)：</view>
+                    <view class="txt3">
+                        <text class="url">{{url}}</text>
+                        <button class="copy" catchtap="copyUrl">复制链接</button>
+                    </view>
+                </view>
+            </view>
+        </view> -->
+    </view>
+    <view class="tip">如长时间无消息，可能您应聘的公司将不会再安排补面。</view>
+    <view class="fixed-bottom">
+        <footer></footer>
+    </view>
+</view>

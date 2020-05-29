@@ -1,0 +1,43 @@
+<view class="submit">
+    <header title="{{interviewName}}" desc="" pt="pt-46"></header>
+    <view class="curtain">
+        <view class="bar"></view>
+        <view class="panel">
+            <view class="bg"></view>
+            <view class="content">
+                <image src="../../../resources/images/icon-succ.png"></image>
+                <view class="h1">您已确认参加，状态已反馈给您</view>
+                <view class="h1">应聘的<text>{{companyName}}</text></view>
+                <view class="h2">亲爱的<text>{{intervieweeName}}</text>,</view>
+                <view wx:if="{{device == 2}}">
+                    <view class="h3">您可以点击下方按钮进入面试</view>
+                    <view class='qr' wx:if="{{buttonText}}">
+                        <button class="btn btn2 {{disable?'disable':''}}" disabled="{{disable}}" bindtap="handleToRoom">
+                            {{buttonText}}
+                        </button>
+                    </view>
+                    <view class="h3">也可以使用电脑端登录进行面试，面试链接(请使用电脑打开) </view>
+                    <view class="txt3">
+                        <text class="url">{{url}}</text>
+                        <button class="copy" catchtap="copyUrl">复制链接</button>
+                    </view>
+                </view>
+                <view wx:elif="{{device == 1}}">
+                    <view class="h3">您的面试可能包含代码考核或者文件传输等需求，需要您使用电脑端登录进行面试，面试链接（请使用电脑打开）</view>
+                    <view class="txt3">
+                        <text class="url">{{url}}</text>
+                        <button class="copy" catchtap="copyUrl">复制链接</button>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="tip">
+        <van-icon class="icon" name="info"></van-icon>
+        提示：请务必在面试前一天检测设备，做好准备，防止意外情况发生。 
+    </view>
+    <view class="fixed-bottom">
+        <footer></footer>
+    </view>
+    
+</view>

@@ -1,0 +1,53 @@
+<view class="fixed-top">
+    <header title="{{title}}" desc="{{interviewName}}" pt="pt-30"></header>
+    <view class="card cardh">
+        <view wx:if="{{status == 0}}">
+            <view class="row">
+                <text class="label">姓名：</text>
+                <input type="text" class="{{border}}" bindinput="nameChange" disabled="{{disabled}}" value='{{intervieweeName}}'></input>
+                <image wx:if="{{disabled}}" src="/resources/images/icon-edit.png" class="edit" bindtap="edit"/>
+                <text wx:if="{{!disabled}}" class="edit-btn btn1" bindtap="saveEdit">保存</text>
+            </view>
+            <view class="row">
+                <text class="label">邮箱：</text>
+                <input type="text" class="{{border}}" bindinput="emailChange" disabled="{{disabled}}" value='{{email}}'></input>
+            </view>
+            <view class="time">
+                <view class="h1">{{companyName}}为您预约的面试时间为</view>
+                <view class="h2">{{date}}</view>
+                <view class="tc">
+                    <text class="clock">{{startHH}}</text>
+                    <text class="disc">:</text>
+                    <text class="clock">{{startMM}}</text>
+                    <text class="line"></text>
+                    <text class="clock">{{endHH}}</text>
+                    <text class="disc">:</text>
+                    <text class="clock">{{endMM}}</text>
+                </view>
+            </view>
+        </view>
+        <view wx:elif="{{status == '-1'}}">
+            <view class="giveup">
+                <view class="title">
+                    亲爱的<text>{{intervieweeName}}</text>:
+                </view>
+                <view class="desc">
+                    您已主动放弃<text>{{companyName}}</text>为您安排的{{date}}的在线面试，状态已反馈给企业方，感谢您对<text>{{companyName}}</text>的关注！
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="tip" wx:if="{{status == 0}}">
+        <van-icon class="icon" name="info"></van-icon>
+        请至少提前10分钟候场 
+    </view>
+    <view class="btn-group" wx:if="{{status == 0}}">
+        <button class="btn btn1" style="margin-right: 46rpx;" bindtap="handleGiveUp">放弃面试</button>
+        <button class="btn btn1" wx:if="{{allowChangeTime}}" bindtap="handleChangeTime">申请更换时间</button>  
+        <button class="btn btn2 {{ allowChangeTime ? 'big-btn' : 'small-btn'}}" bindtap="handleConfirm">确认参加</button>
+    </view>
+    <view class="fixed-bottom">
+        <footer></footer>
+    </view>
+    <van-toast id="van-toast" />
+</view>

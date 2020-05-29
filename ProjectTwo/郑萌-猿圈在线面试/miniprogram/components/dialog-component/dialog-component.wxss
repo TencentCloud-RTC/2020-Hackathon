@@ -1,0 +1,78 @@
+/* components/dialog-component/dialog-component.wxss */
+view{
+  font-size: 30rpx;
+} 
+.dialog-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.dialog-wrap {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  padding: 20rpx 20rpx 0;
+  min-width: 60vw;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: #fff;
+  border-radius: 8rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+}
+
+.dialog-head {
+  display: flex;
+  text-align: left;
+}
+
+.dialog-head .dialog-icon {
+  width: 60rpx;
+  height: 60rpx;
+  background: url(https://main.qcloudimg.com/raw/12030d2b1c88c098ba29f90c75cd10c3.png) no-repeat;
+  background-size: cover;
+}
+
+.dialog-head .dialog-title {
+  flex: 1;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.dialog-body {
+  margin: 30rpx 10rpx;
+}
+
+.dialog-body .dialog-content {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.dialog-foot {
+  text-align: right;
+}
+
+.dialog-button {
+  display: inline-block;
+  padding: 10rpx 40rpx;
+  font-size: 26rpx;
+  color: #666;
+  background: transparent;
+}
+
+.dialog-button.sure {
+  color: #00c200;
+}
+
+button::after {
+  border: none;
+}

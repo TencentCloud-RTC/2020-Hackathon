@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "猿圈面试",
+  "usingComponents": {
+    "webrtc-room": "/components/webrtc-room/webrtc-room",
+    "tic-component": "/components/tic-component/tic-component"
+  },
+  "navigationStyle": "custom"
+}

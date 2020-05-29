@@ -1,0 +1,16 @@
+<view class="dialog-box" wx:if="{{isShow}}">
+  <view class="dialog-wrap">
+    <view class="dialog-head">
+      <view class="dialog-icon"></view>
+      <view class="dialog-title">{{title}}</view>
+    </view>
+    <view class="dialog-body">
+      <view class="dialog-content">{{content}}</view>
+    </view>
+    <view class="dialog-foot">
+      <button class="dialog-button" wx:if="{{cancelText}}" bindtap="dialogCancel">{{cancelText}}</button>
+      <button class="dialog-button sure" wx:if="{{sureText}}" bindtap="dialogOk">{{sureText}}</button>
+      <slot></slot>
+    </view>
+  </view>
+</view>
