@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.baidu.track">
+
+
+    <!-- 声明使用权限 -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <application
+        android:name=".TrackApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_app"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <!--应用信息：步行导航Demo-->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="xxxxxxxx" />
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.1" />
+
+        <activity
+            android:name=".activity.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppSplash">
+
+        </activity>
+        <activity
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.TracingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.TrackQueryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.FenceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BosActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CacheManageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.FAQActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.TracingOptionsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseTheme" />
+        <activity
+            android:name=".activity.TrackQueryOptionsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBaseTheme" />
+
+        <service
+            android:name="com.baidu.trace.LBSTraceService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":remote" />
+
+
+        <activity
+            android:name="com.baidu.mapapi.clusterutil.trtc.TRTCNewActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name="com.baidu.mapapi.clusterutil.trtc.TRTCMainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name="com.baidu.mapapi.clusterutil.ui.WelcomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.baidu.mapapi.clusterutil.ui.QMMainActivity" />
+
+
+    </application>
+
+</manifest>

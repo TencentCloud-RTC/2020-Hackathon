@@ -1,0 +1,69 @@
+{
+  "pages": [
+    "pages/map/map",
+    "pages/map/ttmaproute/ttmaproute",
+    "pages/my/my",
+    "pages/text/text",
+    "pages/setting/setting",
+    "pages/webview/webview",
+    "pages/eye/eye" ,
+    "pages/eye/room/room"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#09BB07",
+    "navigationBarTitleText": "与你瞳行",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#09BB07",
+    "list": [
+      {
+        "selectedIconPath": "images/ic_compass_show.png",
+        "iconPath": "images/ic_compass.png",
+        "pagePath": "pages/map/map",
+        "text": "瞳行"
+      },
+      {
+        "selectedIconPath": "images/ic_visible_show.png",
+        "iconPath": "images/ic_visible.png",
+        "pagePath": "pages/eye/eye",
+        "text": "瞳视"
+      },
+      {
+        "selectedIconPath": "images/ic_my_show.png",
+        "iconPath": "images/ic_my.png",
+        "pagePath": "pages/my/my",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 60000,
+    "connectSocket": 60000,
+    "uploadFile": 60000,
+    "downloadFile": 60000
+  },
+  "plugins": {
+    "WechatSI": {
+      "version": "0.3.4",
+      "provider": "wx069ba97219f66d99"
+    },
+    "TTMapPlugin": {
+      "version": "1.0.7",
+      "provider": "wx5bc2ac602a747594"
+    },
+    "tencentvideo": {
+      "version": "1.3.13",
+      "provider": "wxa75efa648b60994b"
+    }
+  },
+  "useExtendedLib": {
+    "kbone": true,
+    "weui": true
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "瞳视",
+  "usingComponents": {
+    "mp-cell": "weui-miniprogram/cell/cell",
+    "mp-cells": "weui-miniprogram/cells/cells"
+  }
+}

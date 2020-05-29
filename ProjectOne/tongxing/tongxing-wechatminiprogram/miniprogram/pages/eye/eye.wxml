@@ -1,0 +1,23 @@
+<!--index.wxml-->
+	<scroll-view scroll-y="true">
+		<mp-cells title="专业客服推荐">
+			<mp-cell link hover url="/pages/eye/room/room?roomID=321&template=1v1&debugMode=false&cloudenv=PRO" value="专业客服（女性客服）：樊老师" footer="在线">
+			</mp-cell>
+			<mp-cell link hover value="专业客服（肢残人士）：王老师" footer="离线">
+			</mp-cell>
+			<mp-cell link hover value="专业客服（女性客服）：周老师" footer="忙碌">
+			</mp-cell>
+				<mp-cell link hover value="专业客服（粤语方言）：樊老师" footer="忙碌">
+			</mp-cell>
+		</mp-cells>
+
+		<mp-cells title="绑定亲友">
+			<mp-cell link hover value="绑定亲友1：妈妈" footer="离线" bindchange="showToast">
+			</mp-cell>
+			<mp-cell link hover url="/pages/eye/room/room?roomID=322&template=1v1&debugMode=false&cloudenv=PRO" value="绑定亲友2：姐姐" footer="在线">
+			</mp-cell>
+			<mp-cell link hover value="绑定亲友3：周勤" footer="离线" bindchange="showToast">
+			</mp-cell>
+		</mp-cells>
+
+	</scroll-view>

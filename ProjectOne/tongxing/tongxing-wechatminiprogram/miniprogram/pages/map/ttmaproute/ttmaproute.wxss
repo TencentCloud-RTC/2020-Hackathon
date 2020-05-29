@@ -1,0 +1,19 @@
+/* pages/map/ttmaproute/ttmaproute.wxss */
+.head{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.label_container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: green;
+  color: white;
+  width: 100%;
+  min-height: 40px;
+  margin: 4px;
+  font-size: 16px;
+  border-radius: 4px;
+}

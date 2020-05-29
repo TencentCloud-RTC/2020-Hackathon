@@ -1,0 +1,78 @@
+/**index.wxss**/
+.map {
+  width: 100%;
+}
+.search_suggestion{
+  background-color: white;
+}
+.foot{
+  position: fixed;
+  bottom: 0px;
+  height: 112px;
+  width: 100%;
+  z-index: 12;
+  background-color: white;
+}
+.locate_icon{
+  position: absolute;
+  right: 8px;
+  width: 48px;
+  height: 48px;
+}
+.location_container{
+  display: flex;
+  top: 0px;
+  width: 100%;
+}
+.description_container{
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.search_item{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 8px;
+}
+.search_item_container{
+  height: 200px;
+  background-color: white;
+}
+.scrollview_container{
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+}
+.locate_icon_{
+  width: 48px;
+  height: 48px;
+}
+.button_container{
+  display: flex;
+  justify-content: space-around;
+}
+.button_icon{
+  width: 64px;
+  height: 64px;
+}
+.c_loc_desc{
+  font-size: 18px;
+}
+.c_address{
+  color: grey;
+   font-size: 14px;
+}
+.searchbar-result{
+    margin-top: 0;
+    font-size: 14px;
+}
+.searchbar-result:before{
+    display: none;
+}
+.weui-cell{
+    padding: 12px 15px 12px 35px;
+}
