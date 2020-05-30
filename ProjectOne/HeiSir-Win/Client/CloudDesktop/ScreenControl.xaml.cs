@@ -1,10 +1,13 @@
 ﻿using CloudDesktop.Common;
 using ManageLiteAV;
+using Microsoft.Win32.SafeHandles;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,6 +30,7 @@ namespace CloudDesktop
         public int m_nPeerMachineGUID = 0;
         private bool IsHaveStream =false;
         private KeyboardListener keyboardListener = null;
+        public event EventHandler OnExitEvent;
 
         public ScreenControl()
         {
@@ -47,12 +51,13 @@ namespace CloudDesktop
             trtcParams.businessInfo = "";
             trtcParams.role = TRTCRoleType.TRTCRoleAnchor;
 
-            // 用户进房
-            trtcCloud.enterRoom(ref trtcParams, TRTCAppScene.TRTCAppSceneVideoCall);
             TRTCVideoEncParam encParams = DataManager.GetInstance().videoEncParams;   // 视频编码参数设置
             TRTCNetworkQosParam qosParams = DataManager.GetInstance().qosParams;      // 网络流控相关参数设置
             trtcCloud.setVideoEncoderParam(ref encParams);
             trtcCloud.setNetworkQosParam(ref qosParams);
+
+            // 用户进房
+            trtcCloud.enterRoom(ref trtcParams, TRTCAppScene.TRTCAppSceneVideoCall);
 
         }
 
@@ -163,6 +168,13 @@ namespace CloudDesktop
                         }
                         keyboardListener.KeyEvent += KeyboardListener_KeyEvent;
                         keyboardListener.IsBlockKeyboard = true;
+
+                        var o = new JObject
+                        {
+                            ["cmd"] = "GetScreenCount"
+                        };
+                        var data = Encoding.UTF8.GetBytes(o.ToString());
+                        trtcCloud?.sendCustomCmdMsg(3, data, (uint)data.Length, true, true);
                     }
                     else
                     {
@@ -299,7 +311,49 @@ namespace CloudDesktop
 
         public void onRecvCustomCmdMsg(string userId, int cmdID, uint seq, byte[] msg, uint msgSize)
         {
-            
+            try
+            {
+                var content = Encoding.UTF8.GetString(msg, 0, (int)msgSize);
+                Log.I(content);
+                var o = JObject.Parse(content);
+                var cmd = o["cmd"].ToString();
+                switch (cmd)
+                {
+                    case "SetScreenCount":
+                        {
+                            var count = (int)o["sc"];
+                            this.Dispatcher.BeginInvoke(new Action(() =>
+                            {
+                                for (int i = 1; i <= count; i++)
+                                {
+                                    var obj = this.FindName($"BtnScreen{i}");
+                                    if (obj is Button btn)
+                                    {
+                                        btn.Visibility = Visibility.Visible;
+                                    }
+                                    obj = this.FindName($"BtnScreen_{i}");
+                                    if (obj is Button btn2)
+                                    {
+                                        btn2.Visibility = Visibility.Visible;
+                                    }
+                                }
+                            }));
+                        }
+                        break;
+                    case "SetCursor":
+                        {
+                            //SafeFileHandle Cursor = new SafeFileHandle((IntPtr)(int)o["cursor"], false);
+                            //RenderMapView.Cursor = System.Windows.Interop.CursorInteropHelper.Create(Cursor);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+            catch (Exception)
+            {
+            }
         }
 
         public void onMissCustomCmdMsg(string userId, int cmdId, int errCode, int missed)
@@ -406,30 +460,30 @@ namespace CloudDesktop
 
                 e.Cancel = true;
             }
+            OnExitEvent?.Invoke(this, null);
         }
 
         private void BtnMax_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowState = this.WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+            this.WindowState = this.WindowState == WindowState.Maximized ?
+                WindowState.Normal : WindowState.Maximized;
+
+            if (this.WindowState == WindowState.Normal)
+            {
+                ToolSystem.Visibility = Visibility.Visible;
+                TopTool.Visibility = Visibility.Hidden;
+            }
+            else if (this.WindowState == WindowState.Maximized)
+            {
+                ToolSystem.Visibility = Visibility.Collapsed;
+                TopTool.Visibility = Visibility.Visible;
+            }
         }
 
         private void RenderMapView_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (trtcCloud != null && IsHaveStream)
+            if (trtcCloud != null && IsHaveStream && IsAllowControl)
             {
-
-                /*
-                uint flag = 0;
-                MouseControlImpl.POINT p = new MouseControlImpl.POINT(0, 0);
-                if (MouseControlImpl.GetCursorPos(ref p) && (p.X != MouseEvent.X || p.Y != MouseEvent.Y))
-                {
-                    flag |= (uint)ENUM_MouseOperate.Move;
-                }
-                flag |= (uint)MouseEvent.Operate;
-                                   
-                SafeNetClientSdk.mouse_event_ex(flag, MouseEvent.X, MouseEvent.Y, (uint)MouseEvent.Delta);
-                 */
-
                 var point = e.GetPosition(RenderMapView);
                 var o = new JObject();
                 o["cmd"] = "MouseDown";
@@ -446,7 +500,7 @@ namespace CloudDesktop
         private int MouseMoveCalc = 0;
         private void RenderMapView_MouseMove(object sender, MouseEventArgs e)
         {
-            if (trtcCloud != null && IsHaveStream && MouseMoveCalc++ % 3 == 0)
+            if (trtcCloud != null && IsHaveStream && MouseMoveCalc++ % 3 == 0 && IsAllowControl)
             {
                 var point = e.GetPosition(RenderMapView);
                 var o = new JObject();
@@ -455,7 +509,7 @@ namespace CloudDesktop
                 o["Clicks"] = 0;
                 o["X"] = point.X;
                 o["Y"] = point.Y;
-                o["Operate"] = (int)(e.LeftButton == MouseButtonState.Pressed ? ENUM_MouseOperate.LeftDown : (e.RightButton == MouseButtonState.Pressed ? ENUM_MouseOperate.RightDown : (e.MiddleButton == MouseButtonState.Pressed ? ENUM_MouseOperate.MiddleDown : ENUM_MouseOperate.Move))); ;
+                o["Operate"] = (int)ENUM_MouseOperate.Move;
                 o["Delta"] = 0;
                 var data = Encoding.UTF8.GetBytes(o.ToString());
                 trtcCloud?.sendCustomCmdMsg(1, data, (uint)data.Length, true, true);
@@ -464,7 +518,7 @@ namespace CloudDesktop
 
         private void RenderMapView_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (trtcCloud != null && IsHaveStream)
+            if (trtcCloud != null && IsHaveStream && IsAllowControl)
             {
                 var point = e.GetPosition(RenderMapView);
                 var o = new JObject();
@@ -480,9 +534,9 @@ namespace CloudDesktop
             }
         }
 
-        private void RenderMapView_MouseWheel(object sender, MouseWheelEventArgs e)
+        protected void OnMouseWheel(object sender,MouseWheelEventArgs e)
         {
-            if (trtcCloud != null && IsHaveStream)
+            if (trtcCloud != null && IsHaveStream && IsAllowControl)
             {
                 var point = e.GetPosition(RenderMapView);
                 var o = new JObject();
@@ -495,24 +549,11 @@ namespace CloudDesktop
                 o["Delta"] = e.Delta;
                 var data = Encoding.UTF8.GetBytes(o.ToString());
                 trtcCloud?.sendCustomCmdMsg(1, data, (uint)data.Length, true, true);
+                e.Handled = true;
+                return;
             }
+            base.OnMouseWheel(e);
         }
-
-        private void Loading_KeyDown(object sender, KeyEventArgs e)
-        {
-
-            if (trtcCloud != null && IsHaveStream)
-            {
-
-                var o = new JObject();
-                o["cmd"] = "KeyDown";
-                o["KeyCode"] = (uint)e.Key;
-
-                var data = Encoding.UTF8.GetBytes(o.ToString());
-                trtcCloud?.sendCustomCmdMsg(2, data, (uint)data.Length, true, true);
-            }
-        }
-
 
         private void Screen_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -541,11 +582,67 @@ namespace CloudDesktop
 
         private void Screen_Deactivated(object sender, EventArgs e)
         {
-
             if (keyboardListener != null)
             {
                 keyboardListener.IsBlockKeyboard = false;
             }
+        }
+
+        private void BtnHideShow_Click(object sender, RoutedEventArgs e)
+        {
+
+            var bkg = new BitmapImage(new Uri($"pack://application:,,/Resources/{ (TopToolButtons.Visibility ==Visibility.Visible ? "right.png" : "left.png")}"));
+            BtnHideShow.Background = new ImageBrush(bkg);
+            if (TopToolButtons.Visibility == Visibility.Visible)
+            {
+                TopToolButtons.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                TopToolButtons.Visibility = Visibility.Visible;
+            }
+        }
+
+        private int CurScreen = 1;
+
+        private void BtnScreenSwitch_Click(object sender, RoutedEventArgs e)
+        {
+            if (trtcCloud != null && IsHaveStream)
+            {
+                var name = (sender as Button).Name;
+                var DstScreen = int.Parse(name.Substring(name.Length - 1));
+
+                if (CurScreen == DstScreen)
+                {
+                    return;
+                }
+                CurScreen = DstScreen;
+                var o = new JObject();
+                o["cmd"] = "SwitchScreen";
+                o["screen"] = DstScreen;
+                var data = Encoding.UTF8.GetBytes(o.ToString());
+                trtcCloud?.sendCustomCmdMsg(3, data, (uint)data.Length, true, true);
+            }
+        }
+        private bool IsAllowControl = true;
+
+
+        private void BtnMouseSwitch_Click(object sender, RoutedEventArgs e)
+        {
+            IsAllowControl = !IsAllowControl;
+            var bkg = new BitmapImage(new Uri($"pack://application:,,/Resources/{ (IsAllowControl? "mouse.png" : "mouse_disable.png")}"));
+            BtnMouseSwitch.Background = new ImageBrush(bkg);
+            BtnMouseSwitch_.Background = new ImageBrush(bkg);
+            if (keyboardListener != null)
+            {
+                keyboardListener.IsBlockKeyboard = IsAllowControl;
+            }
+        }
+
+
+        private void BtnMin_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
     }
 }

@@ -331,6 +331,27 @@ namespace CloudDesktop
     }
 
 
+    [StructLayout(LayoutKind.Sequential)]
+    public struct POINT
+    {
+        public int X;
+        public int Y;
+
+        public POINT(int x, int y)
+        {
+            this.X = x;
+            this.Y = y;
+        }
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct CURSORINFO
+    {
+        public Int32 cbSize;
+        public Int32 flags;
+        public IntPtr hCursor;
+        public System.Drawing.Point ptScreenPos;
+    }
     public enum ENUM_MouseOperate
     {
         NoneOperate = 0,
@@ -373,16 +394,13 @@ namespace CloudDesktop
         {
             if (nCode >= 0)
             {
-                if (wParam == (IntPtr)InterceptKeys.WM_KEYDOWN)
+                int vkCode = Marshal.ReadInt32(lParam);
+
+                KeyEvent?.Invoke(this, new RawKeyEventArgs(vkCode, false) { Type = (int)wParam });
+
+                if (IsBlockKeyboard)
                 {
-                    int vkCode = Marshal.ReadInt32(lParam);
-
-                    KeyEvent?.Invoke(this, new RawKeyEventArgs(vkCode, false) { Type = (int)wParam });
-
-                    if (IsBlockKeyboard)
-                    {
-                        return (IntPtr)1;
-                    }
+                    return (IntPtr)1;
                 }
             }
             return InterceptKeys.CallNextHookEx(hookId, nCode, wParam, lParam);

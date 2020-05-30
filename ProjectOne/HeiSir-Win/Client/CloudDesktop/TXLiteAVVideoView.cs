@@ -55,7 +55,7 @@ namespace CloudDesktop
         private volatile FrameBufferInfo mArgbFrame = new FrameBufferInfo();  // 帧缓存
 
         // 位图缓存，防止GC频繁
-        private WriteableBitmap mWriteableBitmap;  
+        private WriteableBitmap mWriteableBitmap;
         private Int32Rect mInt32Rect;
         private Pen mPen;
 
@@ -141,7 +141,7 @@ namespace CloudDesktop
             catch (Exception)
             {
             }
-            
+
         }
 
         /// <summary>
@@ -193,16 +193,18 @@ namespace CloudDesktop
         {
             TXLiteAVVideoViewManager.GetInstance().RemoveAllView();
         }
+        private int _width = -1;
+        private int _height = -1;
 
         public bool AppendVideoFrame(byte[] data, int width, int height, TRTCVideoPixelFormat videoFormat, TRTCVideoRotation rotation)
         {
-            if (!mFirstFrame)
+            if (!mFirstFrame || _width != width || _height != height)
             {
                 mFirstFrame = true;
                 this.Dispatcher.Invoke(new Action(() =>
                 {
-                    this.Width = width;
-                    this.Height = height;
+                    this.Width = _width = width;
+                    this.Height = _height = height;
                 }));
             }
             if (mPause)

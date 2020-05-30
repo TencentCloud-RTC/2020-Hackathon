@@ -92,10 +92,10 @@ namespace CloudDesktop
             }
         }
 
-        private const int SW_SHOWNOMAL = 1;
+        public const int SW_SHOWNOMAL = 1;
         [DllImport("User32.dll")]
-        private static extern bool ShowWindowAsync(IntPtr hWnd, int cmdShow);
+        public static extern bool ShowWindowAsync(IntPtr hWnd, int cmdShow);
         [DllImport("User32.dll")]
-        private static extern bool SetForegroundWindow(IntPtr hWnd);
+        public static extern bool SetForegroundWindow(IntPtr hWnd);
     }
 }

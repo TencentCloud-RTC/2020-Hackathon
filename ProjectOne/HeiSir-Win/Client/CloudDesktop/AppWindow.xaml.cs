@@ -48,6 +48,10 @@ namespace CloudDesktop
 
         private IpcServerChannel m_IpcServerChannel = null;
         private bool mIsEnterSuccess;
+        private RECT m_CurCaptureRect = new RECT();
+
+        Dictionary<int, uint> m_lLoadCursor = new Dictionary<int, uint>();
+
 
         public AppWindow()
         {
@@ -96,6 +100,7 @@ namespace CloudDesktop
                 _socket.On("control_connect", message => OnControlConnect((JObject)message));
                 _socket.On("control_connect_result", message => OnControlConnectResult((JObject)message));
                 _socket.On("control_connect_result_ack", message => OnControlConnectResultAck((JObject)message));
+                _socket.On("control_connect_close", message => OnControlConnectClose((JObject)message));
 
                 _manager = _socket.Io();
             }
@@ -116,6 +121,18 @@ namespace CloudDesktop
 
         private void app_Loaded(object sender, RoutedEventArgs e)
         {
+            uint[] lAllCursor = { 32512U, 32513U, 32514U, 32515U, 32516U, 32640U, 32641U, 32642U, 32643U, 32644U, 32645U, 32646U, 32648U, 32649U, 32650U, 32651U };
+
+            for (int i = 0; i < lAllCursor.Length; i++)
+            {
+                int Cursor = LoadCursor(0, lAllCursor[i]);
+                if (Cursor != 0)
+                {
+                    m_lLoadCursor[Cursor] = lAllCursor[i];
+                }
+            }
+
+
             //检查启动项
             RegistryKey HKLM = Registry.LocalMachine;
             try
@@ -187,6 +204,14 @@ namespace CloudDesktop
             }
         }
 
+        public void EmitSignal(string cmd, params object[] args)
+        {
+            if (IsConnected && _socket != null)
+            {
+                _socket.Emit(cmd, args);
+            }
+        }
+
         private void RegClient()
         {
             if (IsConnected && _socket != null)
@@ -194,7 +219,8 @@ namespace CloudDesktop
                 JObject jObject = new JObject
                 {
                     ["id"] = m_sMachineGUID,
-                    ["password"] = m_sMachinePassword
+                    ["password"] = m_sMachinePassword,
+                    ["version"] = Application.ResourceAssembly.GetName().Version.ToString()
                 };
                 _socket.Emit("reg client", jObject);
             }
@@ -285,7 +311,7 @@ namespace CloudDesktop
                     var screenControl = new ScreenControl();
                     screenControl.m_nMachineGUID = m_nMachineGUID;
                     screenControl.m_nPeerMachineGUID = int.Parse(message["src_id"].ToString());
-
+                    screenControl.OnExitEvent += ScreenControl_OnExitEvent;
                     screenControl.Show();
                 }));
 
@@ -296,14 +322,62 @@ namespace CloudDesktop
             }
         }
 
+        private void ScreenControl_OnExitEvent(object sender, EventArgs e)
+        {
+            var screenControl = (ScreenControl)sender;
+            var jobject = new JObject();
 
+            jobject["src_id"] = screenControl.m_nMachineGUID.ToString();
+            jobject["dest_id"] = screenControl.m_nPeerMachineGUID.ToString();
+
+            EmitSignal("control_connect_close", jobject);
+        }
+
+        private List<string> m_ALLPeerIds = new List<string>();
+        private int nUseTrtcNumber = 0;
         private void OnControlConnectResultAck(JObject message)
         {
-
+            nUseTrtcNumber++;
+            var src_id = message["src_id"].ToString();
+            if (!string.IsNullOrEmpty(src_id))
+            {
+                if (!m_ALLPeerIds.Contains(src_id))
+                {
+                    m_ALLPeerIds.Add(src_id);
+                }
+            }
             this.Dispatcher.BeginInvoke(new Action(() =>
             {
                 EnterSelfRoom();
             }));
+
+        }
+        private void OnControlConnectClose(JObject message)
+        {
+            var src_id = message["src_id"].ToString();
+            if (!m_ALLPeerIds.Contains(src_id))
+            {
+                return;
+            }
+            m_ALLPeerIds.Remove(src_id);
+
+            nUseTrtcNumber--;
+            if (nUseTrtcNumber < 0)
+            {
+                nUseTrtcNumber = 0;
+            }
+
+            if (nUseTrtcNumber <= 0 )
+            {
+                this.Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    if (trtcCloud != null)
+                    {
+                        trtcCloud?.stopScreenCapture();
+                        trtcCloud?.exitRoom();
+                    }
+                }));
+            }
 
         }
 
@@ -327,12 +401,13 @@ namespace CloudDesktop
                 //trtcCloud.setVideoEncoderParam();
 
                 // 用户进房
-                trtcCloud.enterRoom(ref trtcParams, TRTCAppScene.TRTCAppSceneVideoCall);
                 TRTCVideoEncParam encParams = DataManager.GetInstance().videoEncParams;   // 视频编码参数设置
                 TRTCNetworkQosParam qosParams = DataManager.GetInstance().qosParams;      // 网络流控相关参数设置
                 trtcCloud.setVideoEncoderParam(ref encParams);
                 trtcCloud.setSubStreamEncoderParam(ref encParams);
                 trtcCloud.setNetworkQosParam(ref qosParams);
+
+                trtcCloud.enterRoom(ref trtcParams, TRTCAppScene.TRTCAppSceneVideoCall);
 
             }
         }
@@ -343,7 +418,7 @@ namespace CloudDesktop
 
         private void Button_Close(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
 
         private void WndTitle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -504,14 +579,22 @@ namespace CloudDesktop
                         var si = list.getSourceInfo(i);
                         if (si.type == TRTCScreenCaptureSourceType.TRTCScreenCaptureSourceTypeScreen)
                         {
-                            RECT captureRect = new RECT();
-                            trtcCloud.selectScreenCaptureTarget(ref si,ref captureRect, false, false);
+                            trtcCloud.selectScreenCaptureTarget(ref si,ref m_CurCaptureRect, false, false);
+
+                            if (System.Windows.Forms.Screen.AllScreens.Length >= 1)
+                            {
+                                m_CurCaptureRect.left = System.Windows.Forms.Screen.AllScreens[0].Bounds.X;
+                                m_CurCaptureRect.top = System.Windows.Forms.Screen.AllScreens[0].Bounds.Y;
+                            }
+                            Log.I($"{si.sourceName} CaptureRect {m_CurCaptureRect.left} { m_CurCaptureRect.top} { m_CurCaptureRect.right} {m_CurCaptureRect.bottom}");
+
+
                             break;
                         }
                     }
 
                     trtcCloud.startScreenCapture(IntPtr.Zero);
-                    trtcCloud.showDebugView(2);
+                    //trtcCloud.showDebugView(2);
                 }
                 else
                 {
@@ -525,14 +608,17 @@ namespace CloudDesktop
         public void onExitRoom(int reason)
         {
             Log.I($"onExitRoom reason = {reason}");
-
-            trtcCloud?.Dispose();
+            trtcCloud?.removeCallback(this);
             trtcCloud = null;
 
-            this.Dispatcher.BeginInvoke(new Action(() =>
+            if (nUseTrtcNumber > 0) //当前还有人观看，重新加入房间。
             {
-                EnterSelfRoom();
-            }));
+                this.Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    EnterSelfRoom();
+                }));
+            }
+
 
         }
 
@@ -683,44 +769,43 @@ namespace CloudDesktop
                     case "MouseMove":
                     case "MouseUp":
                         {
+                            var x = m_CurCaptureRect.left + (int)o["X"];
+                            var y = m_CurCaptureRect.top + (int)o["Y"];
+                            var Delta = (int)o["Delta"];
 
-                        var x = (int)o["X"];
-                        var y = (int)o["Y"];
-                        var Delta = (uint)o["Delta"];
+                            uint flag = 0;
+                            POINT p = new POINT(0, 0);
+                            if (GetCursorPos(ref p) && (p.X != x || p.Y != y))
+                            {
+                                flag |= (uint)ENUM_MouseOperate.Move;
+                            }
+                            flag |= (uint)o["Operate"];
 
-                        uint flag = 0;
-                        POINT p = new POINT(0, 0);
-                        if (GetCursorPos(ref p) && (p.X != x || p.Y != y))
-                        {
-                            flag |= (uint)ENUM_MouseOperate.Move;
-                        }
-                        flag |= (uint)o["Operate"];
+                            var cx = GetSystemMetrics(0);
+                            var cy = GetSystemMetrics(1);
 
-                        var cx = GetSystemMetrics(0);
-                        var cy = GetSystemMetrics(1);
-
-                        INPUT mouseDownInput = new INPUT();
-                        mouseDownInput.type = SendInputEventType.InputMouse;
-                        mouseDownInput.mkhi.mi.dwFlags = (MouseEventFlags)((uint)MouseEventFlags.MOUSEEVENTF_ABSOLUTE | flag);
-                        mouseDownInput.mkhi.mi.dx = x * 65535 / (cx-1);
-                        mouseDownInput.mkhi.mi.dy = y * 65535 / (cy - 1);
-                        mouseDownInput.mkhi.mi.mouseData = Delta;
-                        SendInput(1, ref mouseDownInput, Marshal.SizeOf(mouseDownInput));
-
+                            INPUT mouseDownInput = new INPUT();
+                            mouseDownInput.type = SendInputEventType.InputMouse;
+                            mouseDownInput.mkhi.mi.dwFlags = (MouseEventFlags)((uint)MouseEventFlags.MOUSEEVENTF_ABSOLUTE | flag);
+                            mouseDownInput.mkhi.mi.dx = x * 65535 / (cx-1);
+                            mouseDownInput.mkhi.mi.dy = y * 65535 / (cy - 1);
+                            mouseDownInput.mkhi.mi.mouseData = Delta;
+                            SendInput(1, ref mouseDownInput, Marshal.SizeOf(mouseDownInput));
+                            NotifyCursorChange();
                         }
                         break;
                     case "MouseWheel":
                         {
                             var x = (int)o["X"];
                             var y = (int)o["Y"];
-                            var Delta = (uint)o["Delta"];
+                            var Delta = (int)o["Delta"];
 
                             uint flag = 0;
                             flag |= (uint)o["Operate"];
 
                             INPUT mouseDownInput = new INPUT();
                             mouseDownInput.type = SendInputEventType.InputMouse;
-                            mouseDownInput.mkhi.mi.dwFlags = (MouseEventFlags)flag;
+                            mouseDownInput.mkhi.mi.dwFlags = (MouseEventFlags)((uint)MouseEventFlags.MOUSEEVENTF_ABSOLUTE | flag);
                             mouseDownInput.mkhi.mi.dx = 0;
                             mouseDownInput.mkhi.mi.dy = 0;
                             mouseDownInput.mkhi.mi.mouseData = Delta;
@@ -737,6 +822,56 @@ namespace CloudDesktop
                         {
                             var key = (int)o["KeyCode"];
                             _Keyboard.KeyUp((VirtualKeyCode)key);
+                        }
+                        break;
+                    case "GetScreenCount":
+                        { 
+                            SIZE a = new SIZE() { cx = 0, cy = 0 }, b = new SIZE() { cx = 0, cy = 0 };
+                            var list = trtcCloud.getScreenCaptureSources(ref a, ref b);
+                            var ii = 0;
+                            for (uint i = 0; i < list.getCount(); i++)
+                            {
+                                var si = list.getSourceInfo(i);
+                                if (si.type == TRTCScreenCaptureSourceType.TRTCScreenCaptureSourceTypeScreen)
+                                {
+                                    ii++;
+                                }
+                            }
+
+                            var oo = new JObject();
+                            oo["cmd"] = "SetScreenCount";
+                            oo["sc"] = ii;
+                            var data = Encoding.UTF8.GetBytes(oo.ToString());
+                            trtcCloud?.sendCustomCmdMsg(3, data, (uint)data.Length, true, true);
+                        }
+                        break;
+                    case "SwitchScreen":
+                        {
+                            var screen = (int)o["screen"];
+                            SIZE a = new SIZE() { cx = 0, cy = 0 }, b = new SIZE() { cx = 0, cy = 0 };
+                            var list = trtcCloud.getScreenCaptureSources(ref a, ref b);
+                            var ii = 0;
+                            for (uint i = 0; i < list.getCount(); i++)
+                            {
+                                var si = list.getSourceInfo(i);
+                                if (si.type == TRTCScreenCaptureSourceType.TRTCScreenCaptureSourceTypeScreen)
+                                {
+                                    ii++;
+                                    if (ii == screen)
+                                    {
+                                        m_CurCaptureRect = new RECT();
+                                        trtcCloud.selectScreenCaptureTarget(ref si, ref m_CurCaptureRect, false, false);
+
+                                        if (System.Windows.Forms.Screen.AllScreens.Length >= screen)
+                                        {
+                                            m_CurCaptureRect.left = System.Windows.Forms.Screen.AllScreens[screen - 1].Bounds.X;
+                                            m_CurCaptureRect.top = System.Windows.Forms.Screen.AllScreens[screen - 1].Bounds.Y;
+                                        }
+                                        Log.I($"{si.sourceName} CaptureRect {m_CurCaptureRect.left} { m_CurCaptureRect.top} { m_CurCaptureRect.right} {m_CurCaptureRect.bottom}");
+                                        break;
+                                    }
+                                }
+                            }
                         }
                         break;
                     default:
@@ -873,7 +1008,7 @@ namespace CloudDesktop
         {
             public int dx;
             public int dy;
-            public uint mouseData;
+            public int mouseData;
             public MouseEventFlags dwFlags;
             public uint time;
             public IntPtr dwExtraInfo;
@@ -901,23 +1036,75 @@ namespace CloudDesktop
             InputHardware
         }
 
-        [StructLayout(LayoutKind.Sequential)]
-        public struct POINT
-        {
-            public int X;
-            public int Y;
+        [DllImport("user32.dll")]
+        public static extern bool GetCursorInfo(out CURSORINFO pci);
 
-            public POINT(int x, int y)
-            {
-                this.X = x;
-                this.Y = y;
-            }
-        }
+        [DllImport("User32.dll", CharSet = CharSet.Auto)]
+        public static extern int LoadCursor(int hInstance, uint cursor);
+
+        [DllImport("user32.dll", EntryPoint = "SetCursor")]
+        public static extern IntPtr SetCursor(int hCursor);
 
         [DllImport("user32.dll")]
         public static extern bool GetCursorPos(ref POINT lpPoint);
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern int GetSystemMetrics(int nIndex);
+
+        private bool _IsExit = false;
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            _IsExit = true;
+            this.Close();
+            Application.Current.Shutdown();
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Show();
+            var Handle = new WindowInteropHelper(this).Handle;
+            ShowWindowAsync(Handle, Program.SW_SHOWNOMAL);//显示
+            SetForegroundWindow(Handle);//当到最前端
+        }
+
+        private void app_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!_IsExit)
+            {
+                this.Hide();
+                e.Cancel = true;
+            }
+        }
+
+        private void TaskbarIcon_TrayMouseDoubleClick(object sender, RoutedEventArgs e)
+        {
+            this.Show();
+            var Handle = new WindowInteropHelper(this).Handle;
+            ShowWindowAsync(Handle, Program.SW_SHOWNOMAL);//显示
+            SetForegroundWindow(Handle);//当到最前端
+        }
+
+        private uint m_nCursorIndex = 0;
+        private void NotifyCursorChange()
+        {
+            CURSORINFO vCurosrInfo;
+            vCurosrInfo.cbSize = Marshal.SizeOf(typeof(CURSORINFO));
+            GetCursorInfo(out vCurosrInfo);
+            uint nCursor = 0;
+            if (m_lLoadCursor.ContainsKey((int)vCurosrInfo.hCursor))
+            {
+                nCursor = m_lLoadCursor[(int)vCurosrInfo.hCursor];
+            }
+
+            if (m_nCursorIndex != nCursor && nCursor != 0)
+            {
+                m_nCursorIndex = nCursor;
+                var oo = new JObject();
+                oo["cmd"] = "SetCursor";
+                oo["cursor"] = m_nCursorIndex;
+                var data = Encoding.UTF8.GetBytes(oo.ToString());
+                trtcCloud?.sendCustomCmdMsg(1, data, (uint)data.Length, true, true);
+            }
+        }
     }
 }

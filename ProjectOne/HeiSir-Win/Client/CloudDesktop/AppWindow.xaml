@@ -3,12 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CloudDesktop"
+        xmlns:local="clr-namespace:CloudDesktop" xmlns:tb="http://www.hardcodet.net/taskbar"
         mc:Ignorable="d"
         x:Name="app"
         Title="云 桌 面 v1.0" Height="360" Width="640" FontFamily="Segoe UI" Background="#FFF2F3F4"
         WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" 
-        Closed="app_Closed" Loaded="app_Loaded" BorderThickness="1" BorderBrush="#44D2D2D2" >
+        Closed="app_Closed" Loaded="app_Loaded" BorderThickness="1" BorderBrush="#44D2D2D2" Closing="app_Closing" >
     <Window.Resources>
         <Style  x:Key="StatusLabelStyle" TargetType="Label">
             <Setter Property="Template">
@@ -83,7 +83,7 @@
             <TextBlock Grid.Column="1" Text="{Binding ElementName=app,Path=Title}" Margin="5,0" FontSize="16" VerticalAlignment="Center" Foreground="Black" />
             <Button x:Name="BtnClose" Grid.Column="3" VerticalAlignment="Center" BorderThickness="1" BorderBrush="Transparent" Width="18" Height="18" HorizontalAlignment="Center" Click="Button_Close" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" >
                 <Button.Background>
-                    <ImageBrush ImageSource="Resources/u12389.png"/>
+                    <ImageBrush ImageSource="Resources/close.png"/>
                 </Button.Background>
             </Button>
             <Label Grid.Row="1" Grid.ColumnSpan="4" BorderThickness="0,1,0,0" BorderBrush="#FFD2D2D2" Margin="0"></Label>
@@ -114,7 +114,7 @@
                 <Label Grid.Row="1" Content="您 的 信 息" VerticalContentAlignment="Center" Height="32" Margin="0" FontSize="14" Background="#FFE8A95F" Foreground="White" />
                 <Label Grid.Row="2" Content="终端 ID" VerticalContentAlignment="Center" Margin="8,0" FontSize="14" />
                 <TextBox x:Name="textBox_ComputerId" Grid.Row="3" Text="123456789" VerticalContentAlignment="Center" Margin="8,0" FontSize="16" FontWeight="UltraBold" BorderThickness="0" IsReadOnly="True" Background="{x:Null}" ></TextBox>
-                <Label Grid.Row="4" Content="临时密码" VerticalContentAlignment="Center" Margin="8,0" FontSize="14" />
+                <Label Grid.Row="4" Content="动态密码" VerticalContentAlignment="Center" Margin="8,0" FontSize="14" />
                 <TextBox x:Name="textBox_ComputerPassword" Grid.Row="5" Text="123456" VerticalContentAlignment="Center" Margin="8,0,64,0" FontSize="16" FontWeight="UltraBold" BorderThickness="0" IsReadOnly="True" Background="{x:Null}" ></TextBox>
                 <Button x:Name="BtnNewPsw" Grid.Row="5" Content="刷新" Foreground="#FFE8A95F" Background="{x:Null}" Width="32" BorderThickness="1" BorderBrush="{x:Null}" Margin="0,0,16,0" HorizontalAlignment="Right" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="BtnNewPsw_Click"></Button>
                 <Label  Grid.Row="7" BorderThickness="0,1,0,0" BorderBrush="#FFD2D2D2" Margin="0"></Label>
@@ -147,5 +147,25 @@
             <Label x:Name="statuIcon" Style="{StaticResource StatusLabelStyle}" HorizontalAlignment="Left" VerticalContentAlignment="Center" Width="10" Height="10" Margin="16,0" Background="#FF27C940"></Label>
             <Label x:Name="status" Content="连接服务器成功." VerticalContentAlignment="Center" Margin="26,0"></Label>
         </Grid>
+
+        <tb:TaskbarIcon IconSource="Resources/cloud.ico" TrayMouseDoubleClick="TaskbarIcon_TrayMouseDoubleClick">
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu Width="120px">
+                    <MenuItem 
+                    Header="显示主窗口" Click="MenuItem_Click_1" >
+                        <MenuItem.Icon>
+                            <Image Width="16" Height="16" Source="Resources/show.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem 
+                    Header="退出" Click="MenuItem_Click">
+                        <MenuItem.Icon>
+                            <Image Width="16" Height="16" Source="Resources/exit.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
+        </tb:TaskbarIcon>
     </Grid>
 </Window>

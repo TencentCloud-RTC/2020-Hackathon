@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <Deterministic>true</Deterministic>
+    <Deterministic>false</Deterministic>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
@@ -110,6 +110,12 @@
     <Reference Include="EngineIoClientDotNet, Version=0.9.22.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\EngineIoClientDotNet.0.9.22\lib\net45\EngineIoClientDotNet.dll</HintPath>
     </Reference>
+    <Reference Include="ExtendedResizeBorder, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExtendedResizeBorder.1.0.3\lib\net45\ExtendedResizeBorder.dll</HintPath>
+    </Reference>
+    <Reference Include="Hardcodet.Wpf.TaskbarNotification, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hardcodet.NotifyIcon.Wpf.1.0.8\lib\net45\Hardcodet.Wpf.TaskbarNotification.dll</HintPath>
+    </Reference>
     <Reference Include="ManageLiteAV" Condition="'$(Platform)' == 'x64'">
       <HintPath>..\SDK\CSharp\Win64\lib\ManageLiteAV.dll</HintPath>
     </Reference>
@@ -131,8 +137,12 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -218,23 +228,44 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />
-    <None Include="Properties\app.manifest" />
+    <None Include="Properties\app.manifest">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\u12389.png" />
-    <Resource Include="Resources\u12389_mouseOver.png" />
     <Resource Include="Resources\remote.png" />
     <Resource Include="app.ico" />
     <Resource Include="Resources\max.png" />
+    <Resource Include="Resources\cloud.ico" />
+    <Resource Include="Resources\exitFullScreen.png" />
+    <Resource Include="Resources\left.png" />
+    <Resource Include="Resources\right.png" />
+    <Resource Include="Resources\close.png" />
+    <Resource Include="Resources\mutiscreen.png" />
+    <Resource Include="Resources\mutiscreen1.png" />
+    <Resource Include="Resources\mutiscreen2.png" />
+    <Resource Include="Resources\mutiscreen3.png" />
+    <Resource Include="Resources\mutiscreen4.png" />
+    <Resource Include="Resources\mutiscreen5.png" />
+    <None Include="Resources\cloud.png" />
+    <Resource Include="Resources\mouse.png" />
+    <Resource Include="Resources\mouse_disable.png" />
+    <None Include="Resources\app.ico" />
+    <None Include="Resources\audio.png" />
+    <Resource Include="Resources\exit.png" />
+    <Resource Include="Resources\show.png" />
+    <Resource Include="Resources\min.png" />
+    <Resource Include="Resources\cloud2.ico" />
     <Content Include="thirdparty\Newtonsoft.Json.dll" />
     <Content Include="thirdparty\zlib.net.dll" />
   </ItemGroup>
@@ -259,6 +290,7 @@ if $(PlatformName)==x86 (
   set Platform=Win32
 )
 xcopy /D /E /I /F /Y "$(ProjectDir)..\SDK\CSharp\!Platform!\lib\*.dll" "$(ProjectDir)$(OutDir)"
+xcopy /D /E /I /F /Y "$(ProjectDir)$(OutDir)\*" "$(ProjectDir)..\installPackage\Resource\Bin\"
 ENDLOCAL</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
