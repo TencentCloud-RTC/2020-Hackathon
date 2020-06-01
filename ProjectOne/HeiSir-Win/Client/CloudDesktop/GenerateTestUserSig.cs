@@ -33,7 +33,7 @@ namespace CloudDesktop
         /// <remarks>
         /// 它是腾讯云用于区分客户的唯一标识。
         /// </remarks>
-        public const int SDKAPPID = 1400353109;
+        public const int SDKAPPID = 0;
 
         /// <summary>
         /// 计算签名用的加密密钥
@@ -46,7 +46,7 @@ namespace CloudDesktop
         /// 注意：该方案仅适用于调试Demo，正式上线前请将 UserSig 计算代码和密钥迁移到您的后台服务器上，以避免加密密钥泄露导致的流量盗用。
         /// 文档：https://cloud.tencent.com/document/product/647/17275#GetFromServer
         /// </remarks>
-        public const string SECRETKEY = @"01425e081cdd951a6eea0029cc710a541e3c7bdd07cb5c0f84b45e17dd40e825";
+        public const string SECRETKEY = @"";
 
         /// <summary>
         /// 签名过期时间，建议不要设置的过短
