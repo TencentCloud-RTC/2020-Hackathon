@@ -175,14 +175,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LoginWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -193,20 +185,12 @@
     <Compile Include="Common\Log.cs" />
     <Compile Include="Common\TLSSigAPIv2.cs" />
     <Compile Include="Common\Util.cs" />
-    <Compile Include="MyButton.cs" />
     <Compile Include="ScreenControl.xaml.cs">
       <DependentUpon>ScreenControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="TXLiteAVVideoView.cs" />
     <Compile Include="DataManager.cs" />
     <Compile Include="GenerateTestUserSig.cs" />
-    <Compile Include="LoginWindow.xaml.cs">
-      <DependentUpon>LoginWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Page Include="ScreenControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

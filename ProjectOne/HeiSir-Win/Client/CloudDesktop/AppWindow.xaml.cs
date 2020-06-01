@@ -2,6 +2,7 @@
 using ManageLiteAV;
 using Microsoft.Win32;
 using Newtonsoft.Json.Linq;
+using Quobject.Collections.Immutable;
 using Quobject.SocketIoClientDotNet.Client;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,7 @@ namespace CloudDesktop
         private int m_nMachineGUID;
         private string m_sMachineGUID;
         private string m_sMachinePassword;
+        private string m_sMachinePasswordFixed;
         private string ProductName = "HeiSirCloudDesktop";
         private Socket _socket = null; 
         private Manager _manager = null;
@@ -181,6 +183,12 @@ namespace CloudDesktop
                     ConnId.Items.Add(new ComboBoxItem() { Content = item });
                 }
             }
+            if (j["fixedpsw"] != null)
+            {
+                textBox_FixedPassword.Password = j["fixedpsw"].ToString();
+
+                m_sMachinePasswordFixed = textBox_FixedPassword.Password;
+            }
 
             RegIpcServer();
         }
@@ -234,7 +242,7 @@ namespace CloudDesktop
                 ["src_id"] = m_sMachineGUID,
                 ["dest_id"] = message["src_id"]
             };
-            if (message["password"].ToString() == m_sMachinePassword)
+            if (message["password"].ToString() == m_sMachinePassword || message["password"].ToString() == m_sMachinePasswordFixed)
             {
                 jObject["code"] = 0;
                 jObject["message"] = "success";
@@ -434,7 +442,7 @@ namespace CloudDesktop
         private string NewPassword()
         {
             m_sMachinePassword = Computer.MD5Encrypt(DateTime.Now.ToLongTimeString()).Substring(8, 6).ToLower();
-            m_sMachinePassword = "trtcsdk";
+            //m_sMachinePassword = "trtcsdk";
             textBox_ComputerPassword.Text = m_sMachinePassword;
             RegClient();
             return textBox_ComputerPassword.Text;
@@ -1105,6 +1113,30 @@ namespace CloudDesktop
                 var data = Encoding.UTF8.GetBytes(oo.ToString());
                 trtcCloud?.sendCustomCmdMsg(1, data, (uint)data.Length, true, true);
             }
+        }
+
+        private void BtnSetPsw_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var p = Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName), "config.json");
+                var j = JObject.Parse(File.Exists(p) ? File.ReadAllText(p, Encoding.UTF8) : "{}");
+                j["fixedpsw"] = textBox_FixedPassword.Password;
+                m_sMachinePasswordFixed = textBox_FixedPassword.Password;
+                File.WriteAllText(p, j.ToString(), Encoding.UTF8);
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void BtnShareLink_Click(object sender, RoutedEventArgs e)
+        {
+            var shareText = $"[云桌面]点击连接远程控制我的电脑\nhttps://heisir.djdeveloper.cn:3005/share.html?id=" +
+                $"{m_nMachineGUID}&psw={m_sMachinePassword}\n";
+
+            Clipboard.SetText(shareText);
         }
     }
 }
