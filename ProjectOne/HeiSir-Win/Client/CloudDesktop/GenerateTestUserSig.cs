@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Net;
 using System.Text;
 using CloudDesktop.Common;
 using tencentyun;
@@ -33,7 +35,7 @@ namespace CloudDesktop
         /// <remarks>
         /// 它是腾讯云用于区分客户的唯一标识。
         /// </remarks>
-        public const int SDKAPPID = 0;
+        public const int SDKAPPID = 1400353109;
 
         /// <summary>
         /// 计算签名用的加密密钥
@@ -100,11 +102,51 @@ namespace CloudDesktop
         /// </remarks>
         public string GenTestUserSig(string userId)
         {
+            return HttpPost("https://heisir.djdeveloper.cn:3005/getUserSign", $"{{\"user\":\"{userId}\"}}");
+
             if (SDKAPPID == 0 || string.IsNullOrEmpty(SECRETKEY)) return null;
             TLSSigAPIv2 api = new TLSSigAPIv2(SDKAPPID, SECRETKEY);
             // 统一转换为UTF8，SDK内部是用UTF8编码。
             return api.GenSig(Util.UTF16To8(userId));
         }
-        
+
+        #region 发送post请求
+        public static string HttpPost(string url,string str)
+        {
+
+            string result = "";
+            try
+            {
+
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
+                req.Method = "POST";
+                req.ContentType = "application/json";
+
+                byte[] data = Encoding.UTF8.GetBytes(str);//把字符串转换为字节
+
+                req.ContentLength = data.Length; //请求长度
+
+                using (Stream reqStream = req.GetRequestStream()) //获取
+                {
+                    reqStream.Write(data, 0, data.Length);//向当前流中写入字节
+                    reqStream.Close(); //关闭当前流
+                }
+
+                HttpWebResponse resp = (HttpWebResponse)req.GetResponse(); //响应结果
+                Stream stream = resp.GetResponseStream();
+                //获取响应内容
+                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                {
+                    result = reader.ReadToEnd();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return result;
+        }
+        #endregion
+
     }
 }
