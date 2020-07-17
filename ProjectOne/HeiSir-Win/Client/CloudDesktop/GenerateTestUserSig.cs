@@ -102,12 +102,9 @@ namespace CloudDesktop
         /// </remarks>
         public string GenTestUserSig(string userId)
         {
-            return HttpPost("https://heisir.djdeveloper.cn:3005/getUserSign", $"{{\"user\":\"{userId}\"}}");
-
-            if (SDKAPPID == 0 || string.IsNullOrEmpty(SECRETKEY)) return null;
-            TLSSigAPIv2 api = new TLSSigAPIv2(SDKAPPID, SECRETKEY);
-            // 统一转换为UTF8，SDK内部是用UTF8编码。
-            return api.GenSig(Util.UTF16To8(userId));
+            var timeStamp = (DateTime.Now.Ticks - TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1)).Ticks) / 10000;
+            var sign = Computer.MD5Encrypt($"{timeStamp}-HeiSir.CloudDesktop-{userId}-{timeStamp}");
+            return HttpPost($"https://{Program.HostName}/getUserSign", $"{{\"user\":\"{userId}\",\"t\":{timeStamp},\"sign\":\"{sign}\"}}");
         }
 
         #region 发送post请求

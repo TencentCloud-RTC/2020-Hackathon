@@ -97,7 +97,12 @@ namespace CloudDesktop
             Log.I($"onEnterRoom result = {result}");
 
             //trtcCloud?.muteLocalAudio(true);
+            trtcCloud?.muteLocalAudio(true);
             trtcCloud?.muteLocalVideo(true);
+            trtcCloud?.muteAllRemoteAudio(true);
+
+            trtcCloud?.stopLocalAudio();
+            trtcCloud?.stopLocalPreview();
             //trtcCloud.muteAllRemoteVideoStreams(false);
         }
 

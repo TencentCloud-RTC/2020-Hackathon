@@ -12,7 +12,8 @@ namespace CloudDesktop
 {
     public static class Program
     {
-        private static string ProductName = "HeiSirCloudDesktop";
+        public static string HostName = "cloud.heisir.cn";
+        public static string ProductName = "HeiSirCloudDesktop";
         // 外部函数声明
         [DllImport("User32.dll")]
         private static extern Int32 SetProcessDPIAware();

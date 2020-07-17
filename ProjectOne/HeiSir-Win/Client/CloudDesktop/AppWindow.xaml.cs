@@ -171,7 +171,7 @@ namespace CloudDesktop
             NewPassword();
             statuIcon.Background = System.Windows.Media.Brushes.Red;
             status.Content = "正在连接服务器...";
-            Endpoint = "https://heisir.djdeveloper.cn:3005";
+            Endpoint = $"https://{Program.HostName}";
             Reconnect();
 
             var p = Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName), "config.json");
@@ -575,6 +575,9 @@ namespace CloudDesktop
                     trtcCloud.muteLocalAudio(true);
                     trtcCloud.muteLocalVideo(true);
                     trtcCloud.muteAllRemoteAudio(true);
+
+                    trtcCloud.stopLocalAudio();
+                    trtcCloud.stopLocalPreview();
 
                     // 进房成功
                     mIsEnterSuccess = true;
